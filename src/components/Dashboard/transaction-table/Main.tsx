@@ -24,13 +24,13 @@ export default function Transactions() {
 
  return (
     <div key={index} style={style} className="h-14 grid gap-1 grid-cols-[10%_20%_30%_6%_10%_14%_10%] border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-      <div className="px-1 font-medium">{transaction._id}</div>
+      {/* <div className="px-1 font-medium">{transaction._id}</div>
       <div className="px-1">{transaction.town}</div>
       <div className="px-1">{transaction.street_name}</div>
       <div className="px-1">{transaction.block}</div>
       <div className="px-1">{transaction.flat_type}</div>
       <div className="px-1">{transaction.rent_approval_date}</div>
-      <div className="px-1">{transaction.monthly_rent}$</div>
+      <div className="px-1">{transaction.monthly_rent}$</div> */}
     </div>
  );
 };

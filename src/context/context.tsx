@@ -25,8 +25,8 @@ interface MyContextValue {
  setSelectedStreetNames: React.Dispatch<React.SetStateAction<string[]>>;
  selectedprojects: string[];
  setSelectedprojects: React.Dispatch<React.SetStateAction<string[]>>;
- selectedFlatType: string; // Corrected type
- setSelectedFlatType: React.Dispatch<React.SetStateAction<string>>;
+ selectedFlatType: (string|null); // Corrected type
+ setSelectedFlatType: React.Dispatch<React.SetStateAction<(string|null)>>;
  selectedMonths: string[];
  setSelectedMonths: React.Dispatch<React.SetStateAction<string[]>>;
  selectedProjectType: string; // Corrected type
@@ -85,7 +85,7 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
  const [selectedDistrictNames,     setSelectedDistrictsNames ] = useState<string[]>([]); // Corrected typo
  const [selectedStreetNames, setSelectedStreetNames] = useState<string[]>([]);
  const [selectedprojects, setSelectedprojects] = useState<string[]>([]);
- const [selectedFlatType, setSelectedFlatType] = useState<string>(''); // Corrected type
+ const [selectedFlatType, setSelectedFlatType] = useState<(string| null)>(''); // Corrected type
  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
  const [selectedProjectType, setSelectedProjectType] = useState<string>(''); // Corrected type
  const [selectedAreas, setSelectedAreas] = useState<string[]>([]);

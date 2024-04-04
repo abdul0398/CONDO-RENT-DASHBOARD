@@ -11,8 +11,12 @@ export default function FlatType() {
         selectedFlatType
     } = useContext(MyContext);
 
-    const handleButtonClick = (flatType :string) => {
-        setSelectedFlatType(selectedFlatType === flatType ? "" : flatType);
+    const handleButtonClick = (flatType :(string|null)) => {
+        if(flatType === selectedFlatType) {
+            setSelectedFlatType(null);
+        } else {
+            setSelectedFlatType(flatType);
+        }
     };
 
     const [isReady, setIsReady] = React.useState(false);
@@ -35,7 +39,7 @@ export default function FlatType() {
         // fetchData();
     }, []);
 
-    const getButtonClassName = (type : string) => {
+    const getButtonClassName = (type : (string | null)) => {
         return selectedFlatType === type ? 'bg-black text-white hover:bg-black hover:text-white' : '';
     };
 

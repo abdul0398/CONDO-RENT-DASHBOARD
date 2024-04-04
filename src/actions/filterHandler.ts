@@ -1,7 +1,6 @@
 // 'use server'
 
 import { FilterHandlerParams, filterHandlerReturn, rentalCollection } from "@/types/data";
-import  data  from "@/data/rentals.json";
 
 export const filterHandler = async  ({
   selectedDistrict,
@@ -12,7 +11,6 @@ export const filterHandler = async  ({
   selectedPropertyType,
   selectedAreas,
 }: FilterHandlerParams): Promise<filterHandlerReturn> => {
-  const transactions = data as rentalCollection[];
   // const filteredTransaction = transactions.filter((transaction, index) => {
 
   //   if (selectedTown && transaction.town !== selectedTown) {

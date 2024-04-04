@@ -18,7 +18,7 @@ export default function Home() {
  const [selectedDistrictNames, setSelectedDistrictsNames] = useState<string[]>([]);
  const [selectedStreetNames, setSelectedStreetNames] = useState<string[]>([]);
  const [selectedprojects, setSelectedprojects] = useState<string[]>([]);
- const [selectedFlatType, setSelectedFlatType] = useState<string>('');
+ const [selectedFlatType, setSelectedFlatType] = useState<(string | null)>('');
  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
  const [selectedProjectType, setSelectedProjectType] = useState<string>(''); // Added missing state
  const [selectedAreas, setSelectedAreas] = useState<string[]>([]); // Added missing state
