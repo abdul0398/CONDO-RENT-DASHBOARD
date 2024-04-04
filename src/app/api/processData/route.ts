@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import data from "@/data/rentals.json";
 import { allDistricts, allProjects, allStreets } from "@/data/constants";
 import {
   streets_areaSqftObj,
@@ -27,7 +26,6 @@ import {
 } from "@/data/projectRelation";
 import { RequestBody, ResponseBody, rentalCollection } from "@/types/data";
 
-const array: rentalCollection[] = data as rentalCollection[];
 
 export async function POST(req: NextRequest) {
   if (req.method === "POST") {
