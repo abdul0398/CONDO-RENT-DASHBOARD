@@ -7,14 +7,14 @@ interface RowProps {
  index: number;
  style: React.CSSProperties;
  data: { month: string; selected: boolean }[];
- onCheckboxChange: (index: number, checked: boolean) => void;
+ onCheckboxChange: (name: string, checked: boolean) => void;
 }
 
 const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
     return (
         <div style={style} className="flex mx-auto items-center">
             <input type="checkbox"
-                onChange={(e) => onCheckboxChange(index, e.target.checked)}
+                onChange={(e) => onCheckboxChange(data[index].month, e.target.checked)}
                 checked={data[index].selected}
                 className="mr-2"
             />
@@ -24,10 +24,29 @@ const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
 };
 
 export default function Months() {
-    const { months } = useContext(MyContext);
+    const { 
+        months,
+        selectedMonths,
+        selectedAreas,
+        selectedDistrictNames,
+        selectedFlatType,
+        selectedProjectType,
+        selectedStreetNames,
+        selectedprojects,
+        setSelectedMonths,
+        setAreas,
+        setFlatTypes,
+        setIsLoading,
+        setProperties,
+        setdistricts,
+        setStreets,
+        setprojects,
+        isLoading
+     } = useContext(MyContext);
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedMonths, setSelectedMonths,] = useState<boolean[]>(new Array(months.length).fill(false));
+  const [localLoading, setLocalLoading] = useState(true);
+
 
     // Filter streets based on search query
     const filteredMonths = months.filter((month, index) =>
@@ -36,22 +55,17 @@ export default function Months() {
 
     const itemData = filteredMonths.map((month, index) => ({
         month,
-        selected: selectedMonths[index]
+        selected: selectedMonths.includes(month) ? true : false,
     }));
 
-    const handleCheckboxChange = (index: number, checked: boolean) => {
-        setSelectedMonths(prev => {
-            const newSelectedDistricts = [...prev];
-            newSelectedDistricts[index] = checked;
-            return newSelectedDistricts;
-        });
-    
-        // // Update selectedStreetNames based on the checkbox change
-        // if (checked) {
-        //     setSelectedStreetNames(prev => [...prev, filteredStreets[index]]);
-        // } else {
-        //     setSelectedStreetNames(prev => prev.filter(name => name !== filteredStreets[index]));
-        // }
+    const handleCheckboxChange = (name: string, checked: boolean) => {
+        // Update selectedStreetNames based on the checkbox change
+        if (checked) {
+            setSelectedMonths(prev => [...prev, name]);
+        } else {
+            setSelectedMonths(prev => prev.filter(name => name !== name));
+        }
+        setIsLoading(true);
     };
     const [isReady, setIsReady] = useState(false);
 
@@ -62,18 +76,41 @@ export default function Months() {
 
 
     useEffect(() => {
-        // if (!isReady) return;
-        // async function fetchData() {
-        //     const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
-        //     setBlocks(values.filterBlocks);
-        //     setFlatTypes(values.filterFlatTypes);
-        //     setMonths(values.filterMonths);
-        //     setTowns(values.filterTowns);
-        //     setTransactions(values.filteredTransaction);
-        // }
-        // fetchData();
-    }, [])
+        if (!isReady) return;
+        setIsLoading(true);
+        setLocalLoading(false);
+    async function processData() {
+      const preData = {
+        selectedDistrictNames,
+        selectedStreetNames,
+        selectedprojects,
+        selectedFlatType,
+        selectedMonths,
+        selectedProjectType,
+        selectedAreas,
+      };
+      const res = await fetch("/api/processData", {
+        method: "POST",
+        body: JSON.stringify(preData),
+      });
+      const data: any = await res.json();
+      setprojects(data.projects);
+      setdistricts(data.districts);
+      setStreets(data.streets);
+    }
+    processData();
+    setLocalLoading(true);
+    setIsLoading(false);
+    }, [selectedMonths])
     
+
+    if (isLoading && localLoading) {
+        return (
+          <div className="h-full w-full flex items-center justify-center bg-white">
+            <p className="text-lg">Loading...</p>
+          </div>
+        );
+      }
 
     return (
         <section className="overflow-hidden">

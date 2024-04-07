@@ -39,10 +39,13 @@ export default function Projects() {
     setStreets,
     setdistricts,
     setIsLoading,
+    setMonths,
     isLoading
   } = useContext(MyContext);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [localLoading, setLocalLoading] = useState(true);
+
 
   // Filter streets based on search query
   const filteredProjects = projects.filter((project, index) =>
@@ -71,6 +74,8 @@ export default function Projects() {
 
   useEffect(() => {
     if (!isReady) return;
+    setIsLoading(true)
+    setLocalLoading(false);
     async function processData() {
       const preData = {
         selectedDistrictNames,
@@ -88,13 +93,15 @@ export default function Projects() {
       const data: any = await res.json();
       setdistricts(data.districts);
       setStreets(data.streets);
+      setMonths(data.months);
     }
     processData();
     setIsLoading(false);
+    setLocalLoading(true);
   }, [selectedprojects]);
 
 
-  if (isLoading) {
+  if (isLoading  && localLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center bg-white">
         <p className="text-lg">Loading...</p>

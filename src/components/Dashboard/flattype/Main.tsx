@@ -11,9 +11,9 @@ export default function FlatType() {
         selectedFlatType
     } = useContext(MyContext);
 
-    const handleButtonClick = (flatType :(string|null)) => {
+    const handleButtonClick = (flatType :(string|undefined)) => {
         if(flatType === selectedFlatType) {
-            setSelectedFlatType(null);
+            setSelectedFlatType(undefined);
         } else {
             setSelectedFlatType(flatType);
         }
@@ -39,7 +39,7 @@ export default function FlatType() {
         // fetchData();
     }, []);
 
-    const getButtonClassName = (type : (string | null)) => {
+    const getButtonClassName = (type : (string | undefined)) => {
         return selectedFlatType === type ? 'bg-black text-white hover:bg-black hover:text-white' : '';
     };
 

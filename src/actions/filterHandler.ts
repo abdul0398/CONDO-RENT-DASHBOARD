@@ -1,6 +1,6 @@
 // 'use server'
 
-import { FilterHandlerParams, filterHandlerReturn, rentalCollection } from "@/types/data";
+import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
 export const filterHandler = async  ({
   selectedDistrict,

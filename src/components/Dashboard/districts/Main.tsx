@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, use } from "react";
 import { FixedSizeList as List } from "react-window";
 import { MyContext } from "@/context/context";
-import { ResponseBody } from "@/types/data";
+import { ResponseBody, rentalData } from "@/types/data";
 
 interface RowProps {
   index: number;
@@ -41,10 +41,13 @@ export default function Districts() {
     selectedprojects,
     selectedStreetNames,
     setSelectedDistrictsNames,
-    isLoading
+    isLoading,
+    setIsLoading
   } = useContext(MyContext);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [localLoading, setLocalLoading] = useState(true);
+
 
   // Filter streets based on search query
   const filteredDistricts = districts.filter((district, index) =>
@@ -66,6 +69,7 @@ export default function Districts() {
         prev.filter((name) => name != name)
       );
     }
+    setIsLoading(true);
   };
   const [isReady, setIsReady] = useState(false);
 
@@ -76,6 +80,8 @@ export default function Districts() {
 
   useEffect(() => {
     if (!isReady) return;
+    setIsLoading(true);
+    setLocalLoading(false)
     async function processData() {
         const preData = {
             selectedDistrictNames,
@@ -90,13 +96,18 @@ export default function Districts() {
         method: "POST",
         body: JSON.stringify(preData),
       });
-      const data :any = await res.json();
+      const data :ResponseBody = await res.json();
       setprojects(data.projects);
       setStreets(data.streets);
+      setMonths(data.months);
     }
     processData();
+    setLocalLoading(true);
+    setIsLoading(false);
   }, [selectedDistrictNames]);
-  if (isLoading) {
+
+
+  if (isLoading && localLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center bg-white">
         <p className="text-lg">Loading...</p>

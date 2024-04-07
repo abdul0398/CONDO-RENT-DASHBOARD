@@ -1855,20 +1855,21 @@ const allStreets :string[]= [
 ];
 const allDistricts : string[]= [  "01",  "02",  "03",  "04",  "05",  "06",  "07",  "08",  "09",  "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "25",  "26",  "27",  "28",]
 
-const allBedrooms : (string|null)[] = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "00",
-  "03",
-  "05",
-  null,
-
+const allBedrooms : (string|undefined)[] = [
+  '1',
+  '2',
+  '3',
+  '4',
+  undefined,
+  '5',
+  '8',
+  '6',
+  '7',
+  '00',
+  '03',
+  '05',
+  'NA',
+  
 ];
 const allProjects : string[]= [
   "ELLIOT AT THE EAST COAST",

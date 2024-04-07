@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { allDistricts, allProjects, allStreets } from "@/data/constants";
+import {
+  allDistricts,
+  allProjects,
+  allStreets,
+  allMonths,
+} from "@/data/constants";
+import data1 from "@/data/rentals1.json";
+import data2 from "@/data/rentals2.json";
+import data3 from "@/data/rentals3.json";
+import data4 from "@/data/rentals4.json";
 import {
   streets_areaSqftObj,
   streets_districtObj,
@@ -24,8 +33,14 @@ import {
   project_propertyTypeObj,
   project_streetObj,
 } from "@/data/projectRelation";
-import { RequestBody, ResponseBody, rentalCollection } from "@/types/data";
+import { RequestBody, ResponseBody, rentalData } from "@/types/data";
 
+const array1 = data1 as Array<rentalData>;
+const array2 = data2 as Array<rentalData>;
+const array3 = data3 as Array<rentalData>;
+const array4 = data4 as Array<rentalData>;
+
+const allData: rentalData[] = [...array1, ...array2, ...array3, ...array4];
 
 export async function POST(req: NextRequest) {
   if (req.method === "POST") {
@@ -41,423 +56,233 @@ export async function POST(req: NextRequest) {
       selectedAreas,
     }: RequestBody = body;
 
-    let isAnyFilterSelected = true;
-    let isStreetFilterSelected = selectedStreetNames.length > 0;
-    let isDistrictFilterSelected = selectedDistrictNames.length > 0;
-    let isProjectFilterSelected = selectedprojects.length > 0;
-    
+    const filterDistricts: string[] = [];
+    const filterStreets: string[] = [];
+    const filterProjects: string[] = [];
+    const filterFlatTypes: (string | undefined)[] = [];
+    const filterMonths: string[] = [];
+    const filterProjectTypes: string[] = [];
+    const filterAreas: string[] = [];
 
-    if (
-      selectedDistrictNames.length === 0 &&
-      selectedStreetNames.length === 0 &&
-      selectedprojects.length === 0 &&
-      selectedFlatType.length === 0 &&
-      selectedMonths.length === 0 &&
-      !selectedProjectType &&
-      selectedAreas.length === 0
-    ) {
+    const filterTransactionData: rentalData[] = [];
 
-      isAnyFilterSelected = false
-    }    
-    
-    
-    // Street Filter Logic
-    let filterStreets: string[] = [];
-    // check if nothing is selected then return all streets
-    
-    let districtsStreets: string[] = [];
-    let projectsStreets: string[] = [];
-    let areaSqftStreets: string[] = [];
-    let leaseDateStreets: string[] = [];
-    let noOfBedRoomStreets: string[] = [];
-    let projectTypeStreets: string[] = [];
+    for (let i = 0; i < allData.length; i++) {
+      let isDistrictPresent = false;
+      let isStreetPresent = false;
+      let isProjectPresent = false;
+      let isFlatTypePresent = false;
+      let isMonthPresent = false;
+      let isProjectTypePresent = false;
+      let isAreaPresent = false;
 
-    if (selectedDistrictNames.length > 0) {
-      const districtSreetSet = new Set<string>();
-      for (let i = 0; i < selectedDistrictNames.length; i++) {
-        const array = district_streetObj[selectedDistrictNames[i]];
-        array.forEach((element) => {
-          districtSreetSet.add(element);
-        });
+      const street = allData[i].street;
+      const district = allData[i].district;
+      const project = allData[i].project;
+      const flatType = allData[i].noOfBedRoom;
+      const month = `20${allData[i].leaseDate.slice(2)}-${allData[
+        i
+      ].leaseDate.slice(0, 2)}`;
+      const projectType = allData[i].propertyType;
+      const area = allData[i].areaSqft;
+
+      if (selectedDistrictNames.length > 0) {
+        if (selectedDistrictNames.includes(district)) {
+          isDistrictPresent = true;
+        }
+      } else {
+        isDistrictPresent = true;
       }
-      districtsStreets = Array.from(districtSreetSet);
-    }
 
-    if (selectedprojects.length > 0) {
-      const projectSreetSet = new Set<string>();
-      for (let i = 0; i < selectedprojects.length; i++) {
-        const array = project_streetObj[selectedprojects[i]];
-        array.forEach((element) => {
-          projectSreetSet.add(element);
-        });
+      if (selectedStreetNames.length > 0) {
+        if (selectedStreetNames.includes(street)) {
+          isStreetPresent = true;
+        }
+      } else {
+        isStreetPresent = true;
       }
-      projectsStreets = Array.from(projectSreetSet);
-    }
 
-    if (selectedAreas.length > 0) {
-      const areaSqftStreetSet = new Set<string>();
-      for (let i = 0; i < selectedAreas.length; i++) {
-        const selectedArea = parseInt(selectedAreas[i]);
-        for (let key in streets_areaSqftObj) {
-          const array = streets_areaSqftObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            // Split the range properly
+      if (selectedprojects.length > 0) {
+        if (selectedprojects.includes(project)) {
+          isProjectPresent = true;
+        }
+      } else {
+        isProjectPresent = true;
+      }
 
-            // Handle special cases
-            if (elem === `<=1000` && selectedArea <= 1000) {
-              areaSqftStreetSet.add(key);
-            } else if (elem === `>3000` && selectedArea > 3000) {
-              areaSqftStreetSet.add(key);
-            } else {
-              const range = elem.split("-");
-              const lowerBound = parseFloat(range[0]);
-              const upperBound = parseFloat(range[1] || range[0]); // If upper bound is not provided, assume it's the same as lower bound
-              if (selectedArea >= lowerBound && selectedArea <= upperBound) {
-                areaSqftStreetSet.add(key);
+      if (selectedFlatType) {
+        if (selectedFlatType === flatType) {
+          isFlatTypePresent = true;
+        }
+      } else {
+        isFlatTypePresent = true;
+      }
+
+      if (selectedMonths.length > 0) {
+        if (selectedMonths.includes(month)) {
+          isMonthPresent = true;
+        }
+      } else {
+        isMonthPresent = true;
+      }
+
+      if (selectedProjectType) {
+        if (selectedProjectType === projectType) {
+          isProjectTypePresent = true;
+        }
+      } else {
+        isProjectTypePresent = true;
+      }
+
+      if (selectedAreas.length > 0) {
+        switch (area) {
+          case "<=1000":
+            selectedAreas.forEach((selectedArea) => {
+              if (parseInt(selectedArea) <= 1000) {
+                isAreaPresent = true;
               }
-            }
-          }
-        }
-      }
-      areaSqftStreets = Array.from(areaSqftStreetSet);
-    }
-
-    if (selectedFlatType.length > 0) {
-      const propertyTypeStreetSet = new Set<string>();
-      for (let i = 0; i < selectedFlatType.length; i++) {
-        for (let key in streets_noOfBedRoomObj) {
-          const array = streets_noOfBedRoomObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            if (elem == selectedFlatType[i]) {
-              propertyTypeStreetSet.add(key);
-            }
-          }
-        }
-      }
-      noOfBedRoomStreets = Array.from(propertyTypeStreetSet);
-    }
-
-    if (selectedMonths.length > 0) {
-      const leaseDateStreetSet = new Set<string>();
-      for (let i = 0; i < selectedMonths.length; i++) {
-        // change 2023-03 to 0323
-
-        const selectedMonth =
-          selectedMonths[i].split("-")[1] +
-          selectedMonths[i].split("-")[0].slice(2);
-        for (let key in streets_leaseDateObj) {
-          const array = streets_leaseDateObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            if (elem == selectedMonth) {
-              leaseDateStreetSet.add(key);
-            }
-          }
-        }
-      }
-      leaseDateStreets = Array.from(leaseDateStreetSet);
-    }
-
-    if (selectedProjectType.length > 0) {
-      const projectTypeStreetSet = new Set<string>();
-      for (let key in streets_projectObj) {
-        const array = streets_projectObj[key];
-        for (let j = 0; j < array.length; j++) {
-          const elem = array[j];
-          if (elem == selectedProjectType) {
-            projectTypeStreetSet.add(key);
-          }
-        }
-      }
-      projectTypeStreets = Array.from(projectTypeStreetSet);
-    }
-
-
-
-
-
-    // intersection of all the streets
-    filterStreets = intersection(districtsStreets, projectsStreets);
-    filterStreets = intersection(filterStreets, areaSqftStreets);
-    filterStreets = intersection(filterStreets, leaseDateStreets);
-    filterStreets = intersection(filterStreets, noOfBedRoomStreets);
-    filterStreets = intersection(filterStreets, projectTypeStreets);
-
-    if(!isDistrictFilterSelected && isStreetFilterSelected && !isProjectFilterSelected){
-      filterStreets = allStreets
-    }
-
-
-    // District Filter Logic
-    let filterDistricts: string[] = [];
-
-    let streetsDistricts: string[] = [];
-    let projectsDistricts: string[] = [];
-    let areaSqftDistricts: string[] = [];
-    let leaseDateDistricts: string[] = [];
-    let noOfBedRoomDistricts: string[] = [];
-    let projectTypeDistricts: string[] = [];
-
-    if (selectedStreetNames.length > 0) {
-      const streetDistrictSet = new Set<string>();
-      for (let i = 0; i < selectedStreetNames.length; i++) {
-        const array = streets_districtObj[selectedStreetNames[i]];
-        array.forEach((element) => {
-          streetDistrictSet.add(element);
-        });
-      }
-      streetsDistricts = Array.from(streetDistrictSet);
-    }
-
-    if (selectedprojects.length > 0) {
-      const projectDistrictSet = new Set<string>();
-      for (let i = 0; i < selectedprojects.length; i++) {
-        const array = project_districtObj[selectedprojects[i]];
-        array.forEach((element) => {
-          projectDistrictSet.add(element);
-        });
-      }
-      projectsDistricts = Array.from(projectDistrictSet);
-    }
-
-    if (selectedAreas.length > 0) {
-      const areaSqftDistrictSet = new Set<string>();
-      for (let i = 0; i < selectedAreas.length; i++) {
-        const selectedArea = parseInt(selectedAreas[i]);
-        for (let key in district_areaSqftObj) {
-          const array = district_areaSqftObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            // Split the range properly
-            // Handle special cases
-            if (elem === `<=1000` && selectedArea <= 1000) {
-              areaSqftDistrictSet.add(key);
-            } else if (elem === `>3000` && selectedArea > 3000) {
-              areaSqftDistrictSet.add(key);
-            } else {
-              const range = elem.split("-");
-              const lowerBound = parseFloat(range[0]);
-              const upperBound = parseFloat(range[1] || range[0]); // If upper bound is not provided, assume it's the same as lower bound
-              if (selectedArea >= lowerBound && selectedArea <= upperBound) {
-                areaSqftDistrictSet.add(key);
+            });
+            break;
+          case ">3000":
+            selectedAreas.forEach((selectedArea) => {
+              if (parseInt(selectedArea) > 3000) {
+                isAreaPresent = true;
               }
-            }
-          }
-        }
-      }
-      areaSqftDistricts = Array.from(areaSqftDistrictSet);
-    }
-
-    if (selectedFlatType.length > 0) {
-      const propertyTypeDistrictSet = new Set<string>();
-      for (let i = 0; i < selectedFlatType.length; i++) {
-        for (let key in district_noOfBedRoomObj) {
-          const array = district_noOfBedRoomObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            if (elem == selectedFlatType[i]) {
-              propertyTypeDistrictSet.add(key);
-            }
-          }
-        }
-      }
-      noOfBedRoomDistricts = Array.from(propertyTypeDistrictSet);
-    }
-
-    if (selectedMonths.length > 0) {
-      const leaseDateDistrictSet = new Set<string>();
-      for (let i = 0; i < selectedMonths.length; i++) {
-        // change 2023-03 to 0323
-        const selectedMonth =
-          selectedMonths[i].split("-")[1] +
-          selectedMonths[i].split("-")[0].slice(2);
-        for (let key in district_leaseDateObj) {
-          const array = district_leaseDateObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            if (elem == selectedMonth) {
-              leaseDateDistrictSet.add(key);
-            }
-          }
-        }
-      }
-      leaseDateDistricts = Array.from(leaseDateDistrictSet);
-    }
-
-
-    if (selectedProjectType.length > 0) {
-      const projectTypeDistrictSet = new Set<string>();
-      for (let key in district_projectObj) {
-        const array = district_projectObj[key];
-        for (let j = 0; j < array.length; j++) {
-          const elem = array[j];
-          if (elem == selectedProjectType) {
-            projectTypeDistrictSet.add(key);
-          }
-        }
-      }
-      projectTypeDistricts = Array.from(projectTypeDistrictSet);
-    }
-
-   
-
-    // intersection of all the districts
-    filterDistricts = intersection(streetsDistricts, projectsDistricts);
-    filterDistricts = intersection(filterDistricts, areaSqftDistricts);
-    filterDistricts = intersection(filterDistricts, leaseDateDistricts);
-    filterDistricts = intersection(filterDistricts, noOfBedRoomDistricts);
-    filterDistricts = intersection(filterDistricts, projectTypeDistricts);
-    
-    if(isDistrictFilterSelected && !isStreetFilterSelected && !isProjectFilterSelected){
-      filterDistricts = allDistricts
-    }
-
-
-    // // Project Filter Logic
-    let filterProjects: string[] = [];
-
-
-    let streetsProjects: string[] = [];
-    let districtsProjects: string[] = [];
-    let areaSqftProjects: string[] = [];
-    let leaseDateProjects: string[] = [];
-    let noOfBedRoomProjects: string[] = [];
-
-
-    if (selectedStreetNames.length > 0) {
-      const streetProjectSet = new Set<string>();
-      for (let i = 0; i < selectedStreetNames.length; i++) {
-        const array = streets_projectObj[selectedStreetNames[i]];
-        console.log(array)
-        array.forEach((element) => {
-          streetProjectSet.add(element);
-        });
-      }
-      streetsProjects = Array.from(streetProjectSet);
-    }
-
-    if (selectedDistrictNames.length > 0) {
-      const districtProjectSet = new Set<string>();
-      for (let i = 0; i < selectedDistrictNames.length; i++) {
-        const array = district_projectObj[selectedDistrictNames[i]];
-        array.forEach((element) => {
-          districtProjectSet.add(element);
-        });
-      }
-      districtsProjects = Array.from(districtProjectSet);
-    }
-
-
-    if (selectedAreas.length > 0) {
-      const areaSqftProjectSet = new Set<string>();
-      for (let i = 0; i < selectedAreas.length; i++) {
-        const selectedArea = parseInt(selectedAreas[i]);
-        for (let key in project_areaSqftObj) {
-          const array = project_areaSqftObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            // Split the range properly
-            // Handle special cases
-            if (elem === `<=1000` && selectedArea <= 1000) {
-              areaSqftProjectSet.add(key);
-            } else if (elem === `>3000` && selectedArea > 3000) {
-              areaSqftProjectSet.add(key);
-            } else {
-              const range = elem.split("-");
-              const lowerBound = parseFloat(range[0]);
-              const upperBound = parseFloat(range[1] || range[0]); // If upper bound is not provided, assume it's the same as lower bound
-              if (selectedArea >= lowerBound && selectedArea <= upperBound) {
-                areaSqftProjectSet.add(key);
+            });
+            break;
+          case "<=200":
+            selectedAreas.forEach((selectedArea) => {
+              if (parseInt(selectedArea) <= 200) {
+                isAreaPresent = true;
               }
-            }
-          }
+            });
+            break;
+          case ">8000":
+            selectedAreas.forEach((selectedArea) => {
+              if (parseInt(selectedArea) > 8000) {
+                isAreaPresent = true;
+              }
+            });
+            break;
+          default:
+            const range = area.split("-");
+            const lowerBound = parseFloat(range[0]);
+            const upperBound = parseFloat(range[1] || range[0]); // If upper bound is not provided, assume it's the same as lower bound
+            selectedAreas.forEach((selectedArea) => {
+              if (
+                parseInt(selectedArea) >= lowerBound &&
+                parseInt(selectedArea) <= upperBound
+              ) {
+                isAreaPresent = true;
+              }
+            });
+            break;
         }
+      } else {
+        isAreaPresent = true;
       }
-      areaSqftProjects = Array.from(areaSqftProjectSet);
-    }
 
-
-
-    if (selectedFlatType.length > 0) {
-      const propertyTypeProjectSet = new Set<string>();
-      for (let i = 0; i < selectedFlatType.length; i++) {
-        for (let key in project_noOfBedRoomObj) {
-          const array = project_noOfBedRoomObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            if (elem == selectedFlatType[i]) {
-              propertyTypeProjectSet.add(key);
-            }
-          }
-        }
+      if (
+        isStreetPresent &&
+        isProjectPresent &&
+        isFlatTypePresent &&
+        isMonthPresent &&
+        isProjectTypePresent &&
+        isAreaPresent
+      ) {
+        filterDistricts.push(district);
       }
-      noOfBedRoomProjects = Array.from(propertyTypeProjectSet);
-    }
 
-
-
-    if (selectedMonths.length > 0) {
-      const leaseDateProjectSet = new Set<string>();
-      for (let i = 0; i < selectedMonths.length; i++) {
-        // change 2023-03 to 0323
-        const selectedMonth =
-          selectedMonths[i].split("-")[1] +
-          selectedMonths[i].split("-")[0].slice(2);
-        for (let key in project_leaseDateObj) {
-          const array = project_leaseDateObj[key];
-          for (let j = 0; j < array.length; j++) {
-            const elem = array[j];
-            if (elem == selectedMonth) {
-              leaseDateProjectSet.add(key);
-            }
-          }
-        }
+      if (
+        isDistrictPresent &&
+        isProjectPresent &&
+        isFlatTypePresent &&
+        isMonthPresent &&
+        isProjectTypePresent &&
+        isAreaPresent
+      ) {
+        filterStreets.push(street);
       }
-      leaseDateProjects = Array.from(leaseDateProjectSet);
+
+      if (
+        isDistrictPresent &&
+        isStreetPresent &&
+        isFlatTypePresent &&
+        isMonthPresent &&
+        isProjectTypePresent &&
+        isAreaPresent
+      ) {
+        filterProjects.push(project);
+      }
+
+      if (
+        isDistrictPresent &&
+        isStreetPresent &&
+        isProjectPresent &&
+        isMonthPresent &&
+        isProjectTypePresent &&
+        isAreaPresent
+      ) {
+        filterFlatTypes.push(flatType);
+      }
+
+      if (
+        isDistrictPresent &&
+        isStreetPresent &&
+        isProjectPresent &&
+        isFlatTypePresent &&
+        isProjectTypePresent &&
+        isAreaPresent
+      ) {
+        filterMonths.push(month);
+      }
+
+      if (
+        isDistrictPresent &&
+        isStreetPresent &&
+        isProjectPresent &&
+        isFlatTypePresent &&
+        isMonthPresent &&
+        isAreaPresent
+      ) {
+        filterProjectTypes.push(projectType);
+      }
+
+      if (
+        isDistrictPresent &&
+        isStreetPresent &&
+        isProjectPresent &&
+        isFlatTypePresent &&
+        isMonthPresent &&
+        isProjectTypePresent
+      ) {
+        filterAreas.push(area);
+      }
+
+      if (
+        isDistrictPresent &&
+        isStreetPresent &&
+        isProjectPresent &&
+        isFlatTypePresent &&
+        isMonthPresent &&
+        isProjectTypePresent &&
+        isAreaPresent
+      ) {
+        filterTransactionData.push(allData[i]);
+      }
     }
 
-
-    // intersection of all the projects
-
-    filterProjects = intersection(streetsProjects, districtsProjects);
-    filterProjects = intersection(filterProjects, areaSqftProjects);
-    filterProjects = intersection(filterProjects, leaseDateProjects);
-    filterProjects = intersection(filterProjects, noOfBedRoomProjects);
-
-    if(isProjectFilterSelected && !isStreetFilterSelected && !isDistrictFilterSelected){
-      filterProjects = allProjects
-    }
-    
-    
     return NextResponse.json({
-      streets:isAnyFilterSelected?filterStreets:allStreets,
-      districts: isAnyFilterSelected?filterDistricts:allDistricts,
-      projects:isAnyFilterSelected?filterProjects:allProjects,
+      streets: [...new Set(filterStreets)].sort(),
+      districts: [...new Set(filterDistricts)].sort(),
+      projects: [...new Set(filterProjects)].sort(),
+      flatTypes: [...new Set(filterFlatTypes)].sort(),
+      months: [...new Set(filterMonths)].sort(),
+      projectTypes: [...new Set(filterProjectTypes)].sort(),
+      areas: [...new Set(filterAreas)].sort(),
+      rentalData: filterTransactionData,
     });
-
-
-
-    
-
-
-
-
-
   } else {
     // Handle any other HTTP method
     return NextResponse.error();
   }
 }
-
-const intersection = (a: string[], b: string[]) => {
-  // handle if not selected then return all streets
-  if (a.length === 0) {
-    return b;
-  }
-  if (b.length === 0) {
-    return a;
-  }
-  return a.filter((value) => b.includes(value));
-};

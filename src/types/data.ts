@@ -22,22 +22,19 @@ export type filterHandlerReturn = {
   filterAreas: string[];
 };
 
-export type rentalCollection = {
-  street: string;
-  x: string;
-  project: string;
-  y: string;
-  rental: rentalData[];
-};
 
-type rentalData = {
-    areaSqm: string;
-    leaseDate: string;
-    propertyType: string;
-    district: string;
-    areaSqft: string;
-    noOfBedRoom: string;
-    rent: number;
+export type rentalData = {
+  x: string;
+  y: string;
+  project: string;
+  street: string;
+  areaSqm: string;
+  leaseDate: string;
+  propertyType: string;
+  district: string;
+  areaSqft: string;
+  noOfBedRoom: string;
+  rent: number;
 }
 
 
@@ -45,7 +42,7 @@ export type RequestBody ={
   selectedDistrictNames: string[];
   selectedStreetNames: string[];
   selectedprojects: string[];
-  selectedFlatType: string;
+  selectedFlatType: (string| undefined);
   selectedMonths: string[];
   selectedProjectType: string;
   selectedAreas: string[];
@@ -56,8 +53,9 @@ export type ResponseBody = {
   districts: string[];
   streets: string[];
   projects: string[];
-  flatTypes: string[];
+  flatTypes: (string |undefined)[];
   months: string[];
   projectTypes: string[];
   areas: string[];
+  rentalData: rentalData[];
 };
