@@ -2,6 +2,15 @@ import React, { useState, useContext, useEffect, use } from "react";
 import { FixedSizeList as List } from "react-window";
 import { MyContext } from "@/context/context";
 import { ResponseBody, rentalData } from "@/types/data";
+import {
+  allDistricts,
+  allProjects,
+  allStreets,
+  allMonths,
+  allAreas,
+  allBedrooms,
+  allPropertyTypes,
+} from "@/data/constants";
 
 interface RowProps {
   index: number;
@@ -80,8 +89,8 @@ export default function Districts() {
 
   useEffect(() => {
     if (!isReady) return;
-    setIsLoading(true);
     setLocalLoading(false)
+    setIsLoading(true);
     async function processData() {
         const preData = {
             selectedDistrictNames,
@@ -92,18 +101,35 @@ export default function Districts() {
             selectedProjectType ,
             selectedAreas,
         }
-      const res = await fetch("/api/processData", {
-        method: "POST",
-        body: JSON.stringify(preData),
-      });
-      const data :ResponseBody = await res.json();
-      setprojects(data.projects);
-      setStreets(data.streets);
-      setMonths(data.months);
+
+        if(selectedDistrictNames.length === 0 && 
+          selectedStreetNames.length === 0 &&
+          selectedprojects.length === 0 &&
+          selectedFlatType === "" &&
+          selectedMonths.length === 0 &&
+          selectedProjectType === "" &&
+          selectedAreas.length === 0){
+            setprojects(allProjects);
+            setStreets(allStreets);
+            setMonths(allMonths);
+            setLocalLoading(true);
+            setIsLoading(false);
+            
+          }else{
+            
+            const res = await fetch("/api/processData", {
+              method: "POST",
+              body: JSON.stringify(preData),
+            });
+            const data :ResponseBody = await res.json();
+            setprojects(data.projects);
+            setStreets(data.streets);
+            setMonths(data.months);
+            setLocalLoading(true);
+            setIsLoading(false);
+        }
     }
     processData();
-    setLocalLoading(true);
-    setIsLoading(false);
   }, [selectedDistrictNames]);
 
 

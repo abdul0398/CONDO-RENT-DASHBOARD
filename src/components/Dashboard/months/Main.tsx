@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, use } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { MyContext } from "@/context/context";
+import { allDistricts, allProjects, allStreets } from '@/data/constants';
  
 
 interface RowProps {
@@ -77,8 +78,8 @@ export default function Months() {
 
     useEffect(() => {
         if (!isReady) return;
-        setIsLoading(true);
         setLocalLoading(false);
+        setIsLoading(true);
     async function processData() {
       const preData = {
         selectedDistrictNames,
@@ -89,6 +90,20 @@ export default function Months() {
         selectedProjectType,
         selectedAreas,
       };
+      if(selectedDistrictNames.length === 0 && 
+        selectedStreetNames.length === 0 &&
+        selectedprojects.length === 0 &&
+        selectedFlatType === "" &&
+        selectedMonths.length === 0 &&
+        selectedProjectType === "" &&
+        selectedAreas.length === 0){
+          setprojects(allProjects);
+          setStreets(allStreets);
+          setdistricts(allDistricts);
+          setLocalLoading(true);
+          setIsLoading(false);
+          
+        }else{
       const res = await fetch("/api/processData", {
         method: "POST",
         body: JSON.stringify(preData),
@@ -97,10 +112,11 @@ export default function Months() {
       setprojects(data.projects);
       setdistricts(data.districts);
       setStreets(data.streets);
+      setLocalLoading(true);
+      setIsLoading(false);
     }
+}
     processData();
-    setLocalLoading(true);
-    setIsLoading(false);
     }, [selectedMonths])
     
 
