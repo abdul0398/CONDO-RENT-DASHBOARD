@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, use } from "react";
 import { FixedSizeList as List } from "react-window";
 import { MyContext } from "@/context/context";
 import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import { ResponseBody } from "@/types/data";
 
 interface RowProps {
   index: number;
@@ -113,12 +114,12 @@ export default function Streets() {
         method: "POST",
         body: JSON.stringify(preData),
       });
-      const data: any = await res.json();
+      const data: ResponseBody = await res.json();
       setprojects(data.projects);
       setdistricts(data.districts);
       setMonths(data.months);
       setAreas(data.areas);
-      setProperties(data.properties);
+      setProperties(data.projectTypes);
       setFlatTypes(data.flatTypes);
       setIsLoading(false);
       setLocalLoading(true);
