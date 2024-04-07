@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/actions/filterHandler";
-import { ResponseBody, filterHandlerReturn } from "@/types/data";
+import { ResponseBody, filterHandlerReturn, rentalData } from "@/types/data";
 import React, { useContext, useEffect, useMemo } from "react";
 import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import data from "@/data/rentals1.json";
 
 export default function FlatType() {
   const {
@@ -25,9 +26,13 @@ export default function FlatType() {
     selectedMonths,
     selectedProjectType,
     selectedAreas,
+    setTransactions
+
   } = useContext(MyContext);
   const [isReady, setIsReady] = React.useState(false);
   const [localLoading, setLocalLoading] = React.useState(true);
+  const array = data as rentalData[];
+
 
   const handleButtonClick = (flatType: string | undefined) => {
     if (flatType === selectedFlatType) {
@@ -72,6 +77,8 @@ export default function FlatType() {
         setdistricts(allDistricts);
         setProperties(allPropertyTypes);
         setAreas(allAreas);
+        setTransactions(array);
+
         setLocalLoading(true);
         setIsLoading(false);
       } else {
@@ -86,6 +93,9 @@ export default function FlatType() {
         setMonths(data.months);
         setProperties(data.projectTypes);
         setAreas(data.areas);
+        setTransactions(data.rentalData);
+
+
         setLocalLoading(true);
         setIsLoading(false);
       }

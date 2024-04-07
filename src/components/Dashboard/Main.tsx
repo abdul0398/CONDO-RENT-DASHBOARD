@@ -7,6 +7,7 @@ import Properties from "./propertytype/Main";
 import Projects from "./projects/Main";
 import Districts from "./districts/Main";
 import Areas from "./areas/Main";
+import Transactions from "./transaction-table/Main";
 
 
 export default function Dashboard() {
@@ -57,6 +58,9 @@ export default function Dashboard() {
                     <Areas/>                
                 </div>
 
+            </section>
+            <section className="mt-5">
+                <Transactions />
             </section>
         </section>
     )

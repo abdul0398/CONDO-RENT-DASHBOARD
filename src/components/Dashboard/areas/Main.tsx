@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MyContext } from "@/context/context";
 import { allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
-import { ResponseBody } from '@/types/data';
+import { ResponseBody, rentalData } from '@/types/data';
+import data from "@/data/rentals1.json";
 
 export default function Areas() {
     const {
@@ -24,9 +25,12 @@ export default function Areas() {
         selectedProjectType,
         selectedAreas,
         setSelectedAreas,
-        areas
+        areas,
+        setTransactions
+
     } = useContext(MyContext);
     const [localLoading, setLocalLoading] = useState(true);
+    const array = data as rentalData[];
 
 
 
@@ -80,6 +84,7 @@ export default function Areas() {
             setdistricts(allDistricts);
             setProperties(allPropertyTypes);
             setFlatTypes(allBedrooms);
+            setTransactions(array);
           
             setLocalLoading(true);
             setIsLoading(false);
@@ -95,7 +100,8 @@ export default function Areas() {
             setMonths(data.months);
             setProperties(data.projectTypes);
             setFlatTypes(data.flatTypes);
-          
+            setTransactions(data.rentalData);
+
             setLocalLoading(true);
             setIsLoading(false);
           }
@@ -120,7 +126,7 @@ export default function Areas() {
                 {areas.map((block, i) => (
                     <div
                         key={i}
-                        className={`flex justify-center items-center border hover:border-slate-700 size-20 hover:cursor-pointer ${ selectedAreas.includes(block)  ? "bg-black text-white" : ""}`}
+                        className={`flex justify-center text-xs items-center border hover:border-slate-700 size-20 hover:cursor-pointer ${ selectedAreas.includes(block)  ? "bg-black text-white" : ""}`}
                         onClick={() => handleBlockClick(block)}
                     >
                         {block}

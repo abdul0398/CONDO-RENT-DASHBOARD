@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect, use } from "react";
 import { FixedSizeList as List } from "react-window";
 import { MyContext } from "@/context/context";
 import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
-import { ResponseBody } from "@/types/data";
+import { ResponseBody, rentalData } from "@/types/data";
+import data from "@/data/rentals1.json";
 
 interface RowProps {
   index: number;
@@ -44,11 +45,14 @@ export default function Streets() {
     setStreets,
     setdistricts,
     isLoading,
-    setIsLoading
+    setIsLoading,
+    setTransactions
   } = useContext(MyContext);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [localLoading, setLocalLoading] = useState(true);
+  const array = data as rentalData[];
+
 
   // Filter streets based on search query
   const filteredStreets = streets.filter((street, index) =>
@@ -105,9 +109,9 @@ export default function Streets() {
           setAreas(allAreas);
           setProperties(allPropertyTypes);
           setFlatTypes(allBedrooms);
+          setTransactions(array);
           setLocalLoading(true);
           setIsLoading(false);
-          
         }else{
           
       const res = await fetch("/api/processData", {
@@ -121,6 +125,8 @@ export default function Streets() {
       setAreas(data.areas);
       setProperties(data.projectTypes);
       setFlatTypes(data.flatTypes);
+      setTransactions(data.rentalData);
+      
       setIsLoading(false);
       setLocalLoading(true);
     }

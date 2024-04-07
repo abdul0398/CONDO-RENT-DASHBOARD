@@ -12,6 +12,8 @@ import {
   allPropertyTypes,
 } from "@/data/constants";
 
+import data from "@/data/rentals1.json";
+
 interface RowProps {
   index: number;
   style: React.CSSProperties;
@@ -51,11 +53,14 @@ export default function Districts() {
     selectedStreetNames,
     setSelectedDistrictsNames,
     isLoading,
+    setTransactions,
     setIsLoading
   } = useContext(MyContext);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [localLoading, setLocalLoading] = useState(true);
+  const array = data as rentalData[];
+
 
 
   // Filter streets based on search query
@@ -115,6 +120,7 @@ export default function Districts() {
             setFlatTypes(allBedrooms);
             setProperties(allPropertyTypes);
             setAreas(allAreas);
+            setTransactions(array);
             
             setLocalLoading(true);
             setIsLoading(false);
@@ -132,6 +138,7 @@ export default function Districts() {
             setFlatTypes(data.flatTypes);
             setProperties(data.projectTypes);
             setAreas(data.areas);
+            setTransactions(data.rentalData);
            
             setLocalLoading(true);
             setIsLoading(false);

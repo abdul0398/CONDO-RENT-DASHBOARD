@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect, use } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { MyContext } from "@/context/context";
 import { allAreas, allBedrooms, allDistricts, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
-
+import data from '@/data/rentals1.json';
+import { rentalData } from '@/types/data';
 
 interface RowProps {
     index: number;
@@ -42,11 +43,13 @@ export default function Months() {
         setdistricts,
         setStreets,
         setprojects,
+        setTransactions,
         isLoading
     } = useContext(MyContext);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [localLoading, setLocalLoading] = useState(true);
+    const array = data as rentalData[];
 
 
     // Filter streets based on search query
@@ -103,6 +106,7 @@ export default function Months() {
                 setAreas(allAreas);
                 setFlatTypes(allBedrooms);
                 setProperties(allPropertyTypes);
+                setTransactions(array);
 
                 setLocalLoading(true);
                 setIsLoading(false);
@@ -119,7 +123,7 @@ export default function Months() {
                 setAreas(data.areas);
                 setProperties(data.projectTypes);
                 setFlatTypes(data.flatTypes);
-
+                setTransactions(data.rentalData);
 
                 setLocalLoading(true);
                 setIsLoading(false);

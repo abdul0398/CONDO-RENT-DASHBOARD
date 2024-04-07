@@ -5,8 +5,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { MyContext } from "@/context/context";
 import { allBedrooms, allMonths, allProjects, allStreets , allPropertyTypes, allDistricts, allAreas} from "@/data/constants";
 import { rentalData } from "@/types/data";
-
+import data from "@/data/rentals1.json";
 export default function Home() {
+  const array = data as rentalData[]; 
+
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
  const [districts, setdistricts] = useState<string[]>(allDistricts);
  const [streets, setStreets] = useState<string[]>(allStreets);
@@ -22,7 +25,7 @@ export default function Home() {
  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
  const [selectedProjectType, setSelectedProjectType] = useState<string>(''); // Added missing state
  const [selectedAreas, setSelectedAreas] = useState<string[]>([]); // Added missing state
- const [transactions, setTransactions] = useState<rentalData[]>([]);
+ const [transactions, setTransactions] = useState<rentalData[]>(array);
 
  // Memoize context value to prevent unnecessary re-renders
  const contextValue = useMemo(() => ({
