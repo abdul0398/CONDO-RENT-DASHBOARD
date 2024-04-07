@@ -3,7 +3,7 @@ import React, { useState, useMemo } from "react";
 import Dashboard from "../components/Dashboard/Main";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { MyContext } from "@/context/context";
-import { allBedrooms, allMonths, allProjects, allStreets , allPropertyTypes, allDistricts, allAreas} from "@/data/constants";
+import { allBedrooms, allMonths, allProjects, allStreets , allPropertyTypes, allDistricts, allAreas, allGraphData} from "@/data/constants";
 import { rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 export default function Home() {
@@ -23,12 +23,14 @@ export default function Home() {
  const [selectedprojects, setSelectedprojects] = useState<string[]>([]);
  const [selectedFlatType, setSelectedFlatType] = useState<(string | undefined)>('');
  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
+ const [graphCalculation, setGraphCalculation] = useState<any>(allGraphData);
  const [selectedProjectType, setSelectedProjectType] = useState<string>(''); // Added missing state
  const [selectedAreas, setSelectedAreas] = useState<string[]>([]); // Added missing state
  const [transactions, setTransactions] = useState<rentalData[]>(array);
 
  // Memoize context value to prevent unnecessary re-renders
  const contextValue = useMemo(() => ({
+  graphCalculation, setGraphCalculation,
  transactions, setTransactions,
  isLoading, setIsLoading,
  districts, setdistricts,
@@ -45,7 +47,7 @@ export default function Home() {
  selectedMonths, setSelectedMonths,
  selectedProjectType, setSelectedProjectType, // Included missing state
  selectedAreas, setSelectedAreas // Included missing state
- }), [transactions, isLoading, districts, areas, streets, projects, flatTypes, months, properties, selectedDistrictNames, selectedStreetNames, selectedprojects, selectedFlatType, selectedMonths, selectedProjectType, selectedAreas, setProperties]);
+ }), [transactions, isLoading, districts, graphCalculation, areas, streets, projects, flatTypes, months, properties, selectedDistrictNames, selectedStreetNames, selectedprojects, selectedFlatType, selectedMonths, selectedProjectType, selectedAreas, setProperties]);
 
  return (
     <main className="h-full w-full pt-8">

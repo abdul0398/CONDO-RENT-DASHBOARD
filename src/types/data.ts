@@ -58,4 +58,5 @@ export type ResponseBody = {
   projectTypes: string[];
   areas: string[];
   rentalData: rentalData[];
+  graphCalculation: any;
 };

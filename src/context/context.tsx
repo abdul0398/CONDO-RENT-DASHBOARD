@@ -3,6 +3,8 @@ import React, { createContext, useState, ReactNode } from 'react';
 
 // Define the shape of the context value
 interface MyContextValue {
+  graphCalculation: any;
+  setGraphCalculation: React.Dispatch<React.SetStateAction<any>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
  districts: string[];
@@ -39,6 +41,8 @@ interface MyContextValue {
 
 // Create the context with a default value
 export const MyContext = createContext<MyContextValue>({
+  graphCalculation: {},
+  setGraphCalculation: () => {},
   isLoading: false,
   setIsLoading: () => {},
  districts: [],
@@ -82,6 +86,7 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
  const [months, setMonths] = useState<string[]>([]);
  const [properties, setProperties] = useState<string[]>([]); // Corrected typo
  const [areas, setAreas] = useState<string[]>([]);
+ const [graphCalculation, setGraphCalculation] = useState<any>({});
  const [selectedDistrictNames,     setSelectedDistrictsNames ] = useState<string[]>([]); // Corrected typo
  const [selectedStreetNames, setSelectedStreetNames] = useState<string[]>([]);
  const [selectedprojects, setSelectedprojects] = useState<string[]>([]);
@@ -93,7 +98,7 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
  // Provide the context value to children
  return (
-    <MyContext.Provider value={{  isLoading, setIsLoading,
+    <MyContext.Provider value={{  isLoading, setIsLoading, graphCalculation, setGraphCalculation,
       areas, setAreas, properties, setProperties, transactions, setTransactions, districts, setdistricts, streets, setStreets, projects, setprojects, flatTypes, setFlatTypes, months, setMonths, selectedDistrictNames, setSelectedDistrictsNames, selectedStreetNames, setSelectedStreetNames, selectedprojects, setSelectedprojects, selectedFlatType, setSelectedFlatType, selectedMonths, setSelectedMonths, selectedProjectType, setSelectedProjectType, selectedAreas, setSelectedAreas
     }}>
       {children}

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, use } from "react";
 import { FixedSizeList as List } from "react-window";
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 
@@ -46,7 +46,8 @@ export default function Streets() {
     setdistricts,
     isLoading,
     setIsLoading,
-    setTransactions
+    setTransactions,
+    setGraphCalculation
   } = useContext(MyContext);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -110,6 +111,9 @@ export default function Streets() {
           setProperties(allPropertyTypes);
           setFlatTypes(allBedrooms);
           setTransactions(array);
+          setGraphCalculation(allGraphData)
+
+
           setLocalLoading(true);
           setIsLoading(false);
         }else{
@@ -126,6 +130,7 @@ export default function Streets() {
       setProperties(data.projectTypes);
       setFlatTypes(data.flatTypes);
       setTransactions(data.rentalData);
+      setGraphCalculation(data.graphCalculation);
       
       setIsLoading(false);
       setLocalLoading(true);

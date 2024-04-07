@@ -10,6 +10,7 @@ import {
   allAreas,
   allBedrooms,
   allPropertyTypes,
+  allGraphData,
 } from "@/data/constants";
 
 import data from "@/data/rentals1.json";
@@ -54,7 +55,8 @@ export default function Districts() {
     setSelectedDistrictsNames,
     isLoading,
     setTransactions,
-    setIsLoading
+    setIsLoading,
+    setGraphCalculation
   } = useContext(MyContext);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -121,6 +123,8 @@ export default function Districts() {
             setProperties(allPropertyTypes);
             setAreas(allAreas);
             setTransactions(array);
+            setGraphCalculation(allGraphData)
+
             
             setLocalLoading(true);
             setIsLoading(false);
@@ -139,7 +143,7 @@ export default function Districts() {
             setProperties(data.projectTypes);
             setAreas(data.areas);
             setTransactions(data.rentalData);
-           
+            setGraphCalculation(data.graphCalculation);
             setLocalLoading(true);
             setIsLoading(false);
         }

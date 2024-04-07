@@ -3,7 +3,7 @@ import { MyContext } from "@/context/context";
 import { filterHandler } from "@/actions/filterHandler";
 import { ResponseBody, filterHandlerReturn, rentalData } from "@/types/data";
 import React, { useContext, useEffect, useMemo } from "react";
-import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
 import data from "@/data/rentals1.json";
 
 export default function FlatType() {
@@ -26,7 +26,8 @@ export default function FlatType() {
     selectedMonths,
     selectedProjectType,
     selectedAreas,
-    setTransactions
+    setTransactions,
+    setGraphCalculation
 
   } = useContext(MyContext);
   const [isReady, setIsReady] = React.useState(false);
@@ -78,6 +79,8 @@ export default function FlatType() {
         setProperties(allPropertyTypes);
         setAreas(allAreas);
         setTransactions(array);
+        setGraphCalculation(allGraphData)
+
 
         setLocalLoading(true);
         setIsLoading(false);
@@ -94,7 +97,7 @@ export default function FlatType() {
         setProperties(data.projectTypes);
         setAreas(data.areas);
         setTransactions(data.rentalData);
-
+        setGraphCalculation(data.graphCalculation);
 
         setLocalLoading(true);
         setIsLoading(false);

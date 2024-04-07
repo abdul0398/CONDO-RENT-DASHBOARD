@@ -8,14 +8,33 @@ import Projects from "./projects/Main";
 import Districts from "./districts/Main";
 import Areas from "./areas/Main";
 import Transactions from "./transaction-table/Main";
-
+import { Button } from "../ui/button";
+import { useContext } from "react";
+import { MyContext } from "@/context/context";
+import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
 
 export default function Dashboard() {
-    return (
-        <section className="mb-52 w-full mt-5 mx-auto bg-gray-100 shadow-md p-3 overflow-auto">
-            {/* <Towns /> */}
-            <section className="h-40 w-full">
+    const {setSelectedAreas, setGraphCalculation, setSelectedDistrictsNames, setSelectedFlatType, setSelectedMonths, setSelectedProjectType, setSelectedStreetNames, setSelectedprojects} = useContext(MyContext)
 
+    const handleReset = (e: any) => {
+        e.preventDefault()
+        setSelectedAreas([])
+        setGraphCalculation(allGraphData)
+        setSelectedDistrictsNames([])
+        setSelectedFlatType('')
+        setSelectedMonths([])
+        setSelectedProjectType('')
+        setSelectedStreetNames([])
+        setSelectedprojects([])
+
+    }
+
+
+    return (
+        <section className="mb-52 w-full mt-5 mx-auto bg-gray-100 shadow-md p-3 overflow-auto ">
+            {/* <Towns /> */}
+            <section className="h-40 w-full relative">
+            <Button className="bg-black text-white hover:bg-black hover:text-white absolute end-0" onClick={(e)=>{handleReset(e)}} variant="outline">Reset</Button>
             </section>
             <section className="flex mt-5">
                 <div className="w-[400px] border border-slate-300 h-[250px]">

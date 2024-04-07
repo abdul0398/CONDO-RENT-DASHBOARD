@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MyContext } from "@/context/context";
-import { allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
+import { allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
 import { ResponseBody, rentalData } from '@/types/data';
 import data from "@/data/rentals1.json";
 
@@ -26,7 +26,9 @@ export default function Areas() {
         selectedAreas,
         setSelectedAreas,
         areas,
-        setTransactions
+        setTransactions,
+        setGraphCalculation,
+        
 
     } = useContext(MyContext);
     const [localLoading, setLocalLoading] = useState(true);
@@ -46,16 +48,7 @@ export default function Areas() {
         });
     };
 
-        const [isReady, setIsReady] = useState(false);
-    useEffect(() => {
-        setIsReady(true);
-        async function start() {
-        }
-        start();
-    }, [])
-
     useEffect (() => {
-        if (!isReady) return;
         setLocalLoading(false);
         setIsLoading(true);
         async function processData() {
@@ -85,6 +78,7 @@ export default function Areas() {
             setProperties(allPropertyTypes);
             setFlatTypes(allBedrooms);
             setTransactions(array);
+            setGraphCalculation(allGraphData)
           
             setLocalLoading(true);
             setIsLoading(false);
@@ -101,6 +95,7 @@ export default function Areas() {
             setProperties(data.projectTypes);
             setFlatTypes(data.flatTypes);
             setTransactions(data.rentalData);
+            setGraphCalculation(data.graphCalculation);
 
             setLocalLoading(true);
             setIsLoading(false);

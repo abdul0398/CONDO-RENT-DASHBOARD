@@ -9,31 +9,7 @@ import data1 from "@/data/rentals1.json";
 import data2 from "@/data/rentals2.json";
 import data3 from "@/data/rentals3.json";
 import data4 from "@/data/rentals4.json";
-import {
-  streets_areaSqftObj,
-  streets_districtObj,
-  streets_leaseDateObj,
-  streets_noOfBedRoomObj,
-  streets_projectObj,
-  streets_propertyTypeObj,
-} from "@/data/streetRelation";
-import {
-  district_areaSqftObj,
-  district_leaseDateObj,
-  district_noOfBedRoomObj,
-  district_projectObj,
-  district_propertyTypeObj,
-  district_streetObj,
-} from "@/data/districtRelation";
-import {
-  project_areaSqftObj,
-  project_districtObj,
-  project_leaseDateObj,
-  project_noOfBedRoomObj,
-  project_propertyTypeObj,
-  project_streetObj,
-} from "@/data/projectRelation";
-import { RequestBody, ResponseBody, rentalData } from "@/types/data";
+import { RequestBody, rentalData } from "@/types/data";
 
 const array1 = data1 as Array<rentalData>;
 const array2 = data2 as Array<rentalData>;
@@ -66,6 +42,8 @@ export async function POST(req: NextRequest) {
 
     const filterTransactionData: rentalData[] = [];
 
+    const graphCalculation :any = {};
+
     for (let i = 0; i < allData.length; i++) {
       let isDistrictPresent = false;
       let isStreetPresent = false;
@@ -82,8 +60,21 @@ export async function POST(req: NextRequest) {
       const month = `20${allData[i].leaseDate.slice(2)}-${allData[
         i
       ].leaseDate.slice(0, 2)}`;
+
       const projectType = allData[i].propertyType;
       const area = allData[i].areaSqft;
+
+      
+      if(!graphCalculation[month]){
+        graphCalculation[month] = {
+          rents:[],
+          rentsqft:[]
+        };
+      }
+
+      
+
+      
 
       if (selectedDistrictNames.length > 0) {
         if (selectedDistrictNames.includes(district)) {
@@ -227,9 +218,20 @@ export async function POST(req: NextRequest) {
         isProjectTypePresent &&
         isAreaPresent
       ) {
+        const arrayAreas = area.split('-');
+      const areaSqft = (parseInt(arrayAreas[0]) + parseInt(arrayAreas[1])) / 2;
+      
+      graphCalculation[month].rents.push(allData[i].rent);
+      graphCalculation[month].rentsqft.push(allData[i].rent / areaSqft);
         filterTransactionData.push(allData[i]);
       }
     }
+
+    for(let month in graphCalculation){
+      graphCalculation[month].averageRent = graphCalculation[month].rents.reduce((a:number,b:number)=>a+b,0) / graphCalculation[month].rents.length;
+      graphCalculation[month].averageRentSqft = graphCalculation[month].rentsqft.reduce((a:number,b:number)=>a+b,0) / graphCalculation[month].rentsqft.length;
+    }
+
 
     return NextResponse.json({
       streets: [...new Set(filterStreets)].sort(),
@@ -240,6 +242,8 @@ export async function POST(req: NextRequest) {
       projectTypes: [...new Set(filterProjectTypes)].sort(),
       areas: [...new Set(filterAreas)].sort(),
       rentalData: filterTransactionData,
+      graphCalculation
+       
     });
   } else {
     // Handle any other HTTP method

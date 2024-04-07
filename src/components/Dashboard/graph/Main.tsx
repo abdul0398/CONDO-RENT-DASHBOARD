@@ -21,77 +21,51 @@ function getRandomColor() {
 
 // Defining the LineChart component
 const Graph = () => {
-    // const [isLoading, setLoading] = useState(true);
-    // const {transactions} = useContext(MyContext);
-    // const [dynamicDataset, setData] = useState<any[]>([]);
-    // const [dynamicLabels, setLabels] = useState<string[]>([])
+    const [isLoading, setLoading] = useState(true);
+    const {graphCalculation} = useContext(MyContext);
+    const [dynamicDataset, setData] = useState<any[]>([]);
+    const [dynamicLabels, setLabels] = useState<string[]>([])
 
-    // useEffect(() => {
-    //     const aggregatedData : {
-    //         [date:string]:{
-    //             [faltype:string]:{
-    //                 totalRent:number,
-    //                 count:number
-    //             }
-    //         }
-    //     }= {};
-    
-    //     // Aggregate transactions by rent_approval_date and flat_type
-    //     transactions.forEach(transaction => {
-    //         const date = transaction.rent_approval_date;
-    //         const flatType = transaction.flat_type;
-    //         const rent = parseInt(transaction.monthly_rent);
-    
-    //         if (!aggregatedData[date]) {
-    //             aggregatedData[date] = {};
-    //         }
-    
-    //         if (!aggregatedData[date][flatType]) {
-    //             aggregatedData[date][flatType] = { totalRent: 0, count: 0 };
-    //         }
-    
-    //         aggregatedData[date][flatType].totalRent += rent;
-    //         aggregatedData[date][flatType].count += 1;
-    //     });
-    //     const labels: string[] = Object.keys(aggregatedData);
-    //     const datasets :any[] = [];
+    useEffect(() => {
+        const labels: string[] = Object.keys(graphCalculation);
+       const dataset =  [
+            {
+                label: 'Rents',
+                data: Object.values(graphCalculation).map((data: any) => {
+                    return data.averageRent;
+                }),
+            },
+            {
+                label: 'Rent/Sqft',
+                data: Object.values(graphCalculation).map((data: any) => {
+                    return data.averageRentSqft;
+                }),
 
-    //     labels.sort();
-    //     // Create a dataset for each flat type
-    //     labels.forEach(date => {
-    //         const flatTypes = Object.keys(aggregatedData[date]);
-    //         flatTypes.forEach(flatType => {
-    //             if (!datasets.find(dataset => dataset.label === flatType)) {
-    //                 datasets.push({
-    //                     label: flatType,
-    //                     data: [],
-    //                     borderColor: getRandomColor(),
-    //                     fill: false
-    //                 });
-    //             }
+            },
+        ]
+        setData(dataset);
+        setLabels(labels);
+        setLoading(false);
+
+    }, [graphCalculation]);
+    const data = {
+        labels: dynamicLabels,
+        datasets: dynamicDataset
+    };
+
     
-    //             const totalRent = aggregatedData[date][flatType].totalRent;
-    //             const count = aggregatedData[date][flatType].count;
-    //             const averageRent = totalRent / count;
-    
-    //             const dataset = datasets.find(dataset => dataset.label === flatType);
-    //             dataset.data.push(averageRent);
-    //         });
-            
-    //     });
-    //     datasets.sort((a, b) => a.label.localeCompare(b.label));
-    //     setData(datasets);
-    //     setLabels(labels);
-    //     setLoading(false);
-    // }, [transactions]);
-    // const data = {
-    //     labels: dynamicLabels,
-    //     datasets: dynamicDataset
-    // };
+    if (isLoading) {
+        return (
+          <div className="h-full w-full flex items-center justify-center bg-white">
+            <p className="text-lg">Loading...</p>
+          </div>
+        );
+    }
+
 
     return (
-        <div className="h-96 border border-slate-700 w-full">
-            {/* <Line height={1000} width={1300} data={data} /> */}
+        <div className="h-96 border bg-white w-full ps-5">
+            <Line height={1000} width={1300} data={data} />
         </div>
     );
 };

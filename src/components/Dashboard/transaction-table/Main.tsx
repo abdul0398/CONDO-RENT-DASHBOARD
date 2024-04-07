@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { use, useEffect } from 'react';
 import { MyContext } from "@/context/context";
 import { useContext } from "react";
 import dynamic from 'next/dynamic';
@@ -10,8 +10,8 @@ const List = dynamic(() => import('react-window').then((mod) => mod.FixedSizeLis
 });
 
 export default function Transactions() {
- const { transactions } = useContext(MyContext);
-
+ const { transactions, isLoading} = useContext(MyContext);
+const [localLoading, setLocalLoading] = React.useState(true);
 
  
  // Define the Row component with proper types for props
@@ -37,6 +37,15 @@ export default function Transactions() {
     </div>
  );
 };
+
+
+if (isLoading) {
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-white">
+      <p className="text-lg">Loading...</p>
+    </div>
+  );
+}
 
  return (
     <div className="flex flex-col bg-white">

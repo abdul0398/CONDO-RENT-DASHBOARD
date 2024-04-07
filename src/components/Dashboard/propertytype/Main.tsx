@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allStreets } from "@/data/constants";
+import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allStreets } from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
 import { useContext, useEffect, useState } from "react";
 import data from "@/data/rentals1.json";
@@ -25,7 +25,8 @@ export default function Properties() {
     selectedStreetNames,
     isLoading,
     setIsLoading,
-    setTransactions
+    setTransactions,
+    setGraphCalculation
   } = useContext(MyContext)
   const [localLoading, setLocalLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
@@ -76,6 +77,8 @@ export default function Properties() {
         setFlatTypes(allBedrooms);
         setAreas(allAreas);
           setTransactions(array);
+          setGraphCalculation(allGraphData)
+
 
         setLocalLoading(true);
         setIsLoading(false);
@@ -94,6 +97,7 @@ export default function Properties() {
         setFlatTypes(data.flatTypes);
         setAreas(data.areas);
         setTransactions(data.rentalData);
+        setGraphCalculation(data.graphCalculation);
 
         setLocalLoading(true);
         setIsLoading(false);
