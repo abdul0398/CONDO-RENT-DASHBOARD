@@ -1,21 +1,42 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MyContext } from "@/context/context";
-import { filterHandlerReturn } from '@/types/data';
-import { filterHandler } from '@/actions/filterHandler';
+import { allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
+import { ResponseBody } from '@/types/data';
 
 export default function Areas() {
     const {
-areas,
-
+        flatTypes,
+        setSelectedFlatType,
+        selectedFlatType,
+        isLoading,
+        setIsLoading,
+        setAreas,
+        setFlatTypes,
+        setMonths,
+        setProperties,
+        setprojects,
+        setStreets,
+        setdistricts,
+        selectedDistrictNames,
+        selectedStreetNames,
+        selectedprojects,
+        selectedMonths,
+        selectedProjectType,
+        selectedAreas,
+        setSelectedAreas,
+        areas
     } = useContext(MyContext);
-    const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
-    const handleBlockClick = (block:string) => {
+    const [localLoading, setLocalLoading] = useState(true);
+
+
+
+    const handleBlockClick = (areas:string) => {
         setSelectedAreas(prev => {
             const newSelectedBlocks = [...prev]
-            if (newSelectedBlocks.includes(block)) {
-                newSelectedBlocks.splice(newSelectedBlocks.indexOf(block), 1);
+            if (newSelectedBlocks.includes(areas)) {
+                newSelectedBlocks.splice(newSelectedBlocks.indexOf(areas), 1);
             } else {
-                newSelectedBlocks.push(block);
+                newSelectedBlocks.push(areas);
             }
             return newSelectedBlocks;
         });
@@ -30,17 +51,68 @@ areas,
     }, [])
 
     useEffect (() => {
-        // if (!isReady) return;
-        // async function fetchData() {
-        //     const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
-        //     setStreets(values.filterStreets);
-        //     setFlatTypes(values.filterFlatTypes);
-        //     setMonths(values.filterMonths);
-        //     setTowns(values.filterTowns);
-        //     setTransactions(values.filteredTransaction);
-        // }
-        // fetchData();
-    }, []);
+        if (!isReady) return;
+        setLocalLoading(false);
+        setIsLoading(true);
+        async function processData() {
+          const preData = {
+            selectedDistrictNames,
+            selectedStreetNames,
+            selectedprojects,
+            selectedFlatType,
+            selectedMonths,
+            selectedProjectType,
+            selectedAreas,
+          };
+    
+          if (
+            selectedDistrictNames.length === 0 &&
+            selectedStreetNames.length === 0 &&
+            selectedprojects.length === 0 &&
+            selectedFlatType === "" &&
+            selectedMonths.length === 0 &&
+            selectedProjectType === "" &&
+            selectedAreas.length === 0
+          ) {
+            setprojects(allProjects);
+            setStreets(allStreets);
+            setMonths(allMonths);
+            setdistricts(allDistricts);
+            setProperties(allPropertyTypes);
+            setFlatTypes(allBedrooms);
+          
+            setLocalLoading(true);
+            setIsLoading(false);
+          } else {
+            const res = await fetch("/api/processData", {
+              method: "POST",
+              body: JSON.stringify(preData),
+            });
+            const data: ResponseBody = await res.json();
+            setdistricts(data.districts);
+            setprojects(data.projects);
+            setStreets(data.streets);
+            setMonths(data.months);
+            setProperties(data.projectTypes);
+            setFlatTypes(data.flatTypes);
+          
+            setLocalLoading(true);
+            setIsLoading(false);
+          }
+        }
+        processData();
+    }, [selectedAreas]);
+
+
+    if (isLoading && localLoading) {
+        return (
+          <div className="h-full w-full flex items-center justify-center bg-white">
+            <p className="text-lg">Loading...</p>
+          </div>
+        );
+      }
+    
+
 
     return (
         <div className="">

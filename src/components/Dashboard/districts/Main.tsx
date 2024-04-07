@@ -112,6 +112,10 @@ export default function Districts() {
             setprojects(allProjects);
             setStreets(allStreets);
             setMonths(allMonths);
+            setFlatTypes(allBedrooms);
+            setProperties(allPropertyTypes);
+            setAreas(allAreas);
+            
             setLocalLoading(true);
             setIsLoading(false);
             
@@ -125,6 +129,10 @@ export default function Districts() {
             setprojects(data.projects);
             setStreets(data.streets);
             setMonths(data.months);
+            setFlatTypes(data.flatTypes);
+            setProperties(data.projectTypes);
+            setAreas(data.areas);
+           
             setLocalLoading(true);
             setIsLoading(false);
         }

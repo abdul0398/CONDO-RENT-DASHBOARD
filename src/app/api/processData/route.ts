@@ -134,48 +134,8 @@ export async function POST(req: NextRequest) {
       }
 
       if (selectedAreas.length > 0) {
-        switch (area) {
-          case "<=1000":
-            selectedAreas.forEach((selectedArea) => {
-              if (parseInt(selectedArea) <= 1000) {
-                isAreaPresent = true;
-              }
-            });
-            break;
-          case ">3000":
-            selectedAreas.forEach((selectedArea) => {
-              if (parseInt(selectedArea) > 3000) {
-                isAreaPresent = true;
-              }
-            });
-            break;
-          case "<=200":
-            selectedAreas.forEach((selectedArea) => {
-              if (parseInt(selectedArea) <= 200) {
-                isAreaPresent = true;
-              }
-            });
-            break;
-          case ">8000":
-            selectedAreas.forEach((selectedArea) => {
-              if (parseInt(selectedArea) > 8000) {
-                isAreaPresent = true;
-              }
-            });
-            break;
-          default:
-            const range = area.split("-");
-            const lowerBound = parseFloat(range[0]);
-            const upperBound = parseFloat(range[1] || range[0]); // If upper bound is not provided, assume it's the same as lower bound
-            selectedAreas.forEach((selectedArea) => {
-              if (
-                parseInt(selectedArea) >= lowerBound &&
-                parseInt(selectedArea) <= upperBound
-              ) {
-                isAreaPresent = true;
-              }
-            });
-            break;
+        if (selectedAreas.includes(area)) {
+          isAreaPresent = true;
         }
       } else {
         isAreaPresent = true;

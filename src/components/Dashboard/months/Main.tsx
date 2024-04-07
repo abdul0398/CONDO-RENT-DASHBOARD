@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect, use } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { MyContext } from "@/context/context";
-import { allDistricts, allProjects, allStreets } from '@/data/constants';
- 
+import { allAreas, allBedrooms, allDistricts, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
+
 
 interface RowProps {
- index: number;
- style: React.CSSProperties;
- data: { month: string; selected: boolean }[];
- onCheckboxChange: (name: string, checked: boolean) => void;
+    index: number;
+    style: React.CSSProperties;
+    data: { month: string; selected: boolean }[];
+    onCheckboxChange: (name: string, checked: boolean) => void;
 }
 
 const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
@@ -25,7 +25,7 @@ const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
 };
 
 export default function Months() {
-    const { 
+    const {
         months,
         selectedMonths,
         selectedAreas,
@@ -43,15 +43,15 @@ export default function Months() {
         setStreets,
         setprojects,
         isLoading
-     } = useContext(MyContext);
+    } = useContext(MyContext);
 
     const [searchQuery, setSearchQuery] = useState('');
-  const [localLoading, setLocalLoading] = useState(true);
+    const [localLoading, setLocalLoading] = useState(true);
 
 
     // Filter streets based on search query
     const filteredMonths = months.filter((month, index) =>
-    month.toLowerCase().includes(searchQuery.toLowerCase())
+        month.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const itemData = filteredMonths.map((month, index) => ({
@@ -73,60 +73,69 @@ export default function Months() {
     useEffect(() => {
         // Set isReady to true after the initial render
         setIsReady(true);
-    },[])
+    }, [])
 
 
     useEffect(() => {
         if (!isReady) return;
         setLocalLoading(false);
         setIsLoading(true);
-    async function processData() {
-      const preData = {
-        selectedDistrictNames,
-        selectedStreetNames,
-        selectedprojects,
-        selectedFlatType,
-        selectedMonths,
-        selectedProjectType,
-        selectedAreas,
-      };
-      if(selectedDistrictNames.length === 0 && 
-        selectedStreetNames.length === 0 &&
-        selectedprojects.length === 0 &&
-        selectedFlatType === "" &&
-        selectedMonths.length === 0 &&
-        selectedProjectType === "" &&
-        selectedAreas.length === 0){
-          setprojects(allProjects);
-          setStreets(allStreets);
-          setdistricts(allDistricts);
-          setLocalLoading(true);
-          setIsLoading(false);
-          
-        }else{
-      const res = await fetch("/api/processData", {
-        method: "POST",
-        body: JSON.stringify(preData),
-      });
-      const data: any = await res.json();
-      setprojects(data.projects);
-      setdistricts(data.districts);
-      setStreets(data.streets);
-      setLocalLoading(true);
-      setIsLoading(false);
-    }
-}
-    processData();
+        async function processData() {
+            const preData = {
+                selectedDistrictNames,
+                selectedStreetNames,
+                selectedprojects,
+                selectedFlatType,
+                selectedMonths,
+                selectedProjectType,
+                selectedAreas,
+            };
+            if (selectedDistrictNames.length === 0 &&
+                selectedStreetNames.length === 0 &&
+                selectedprojects.length === 0 &&
+                selectedFlatType === "" &&
+                selectedMonths.length === 0 &&
+                selectedProjectType === "" &&
+                selectedAreas.length === 0) {
+                setprojects(allProjects);
+                setStreets(allStreets);
+                setdistricts(allDistricts);
+                setAreas(allAreas);
+                setFlatTypes(allBedrooms);
+                setProperties(allPropertyTypes);
+
+                setLocalLoading(true);
+                setIsLoading(false);
+
+            } else {
+                const res = await fetch("/api/processData", {
+                    method: "POST",
+                    body: JSON.stringify(preData),
+                });
+                const data: any = await res.json();
+                setprojects(data.projects);
+                setdistricts(data.districts);
+                setStreets(data.streets);
+                setAreas(data.areas);
+                setProperties(data.projectTypes);
+                setFlatTypes(data.flatTypes);
+
+
+                setLocalLoading(true);
+                setIsLoading(false);
+            }
+        }
+        processData();
     }, [selectedMonths])
-    
+
 
     if (isLoading && localLoading) {
         return (
-          <div className="h-full w-full flex items-center justify-center bg-white">
-            <p className="text-lg">Loading...</p>
-          </div>
+            <div className="h-full w-full flex items-center justify-center bg-white">
+                <p className="text-lg">Loading...</p>
+            </div>
         );
-      }
+    }
 
     return (
         <section className="overflow-hidden">

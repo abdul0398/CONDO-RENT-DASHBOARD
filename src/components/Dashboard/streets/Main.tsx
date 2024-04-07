@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, use } from "react";
 import { FixedSizeList as List } from "react-window";
 import { MyContext } from "@/context/context";
-import { allDistricts, allMonths, allProjects, allStreets } from "@/data/constants";
+import { allAreas, allBedrooms, allDistricts, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
 
 interface RowProps {
   index: number;
@@ -101,6 +101,9 @@ export default function Streets() {
           setprojects(allProjects);
           setdistricts(allDistricts);
           setMonths(allMonths);
+          setAreas(allAreas);
+          setProperties(allPropertyTypes);
+          setFlatTypes(allBedrooms);
           setLocalLoading(true);
           setIsLoading(false);
           
@@ -114,6 +117,9 @@ export default function Streets() {
       setprojects(data.projects);
       setdistricts(data.districts);
       setMonths(data.months);
+      setAreas(data.areas);
+      setProperties(data.properties);
+      setFlatTypes(data.flatTypes);
       setIsLoading(false);
       setLocalLoading(true);
     }
