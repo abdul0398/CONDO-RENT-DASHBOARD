@@ -10581,10 +10581,31 @@ async function mergeAndAverageRent() {
    const rent = elem.rent;
    const area = elem.areaSqft;
 
-   const exactArea = area.split('-');
-    const minArea = parseInt(exactArea[0]);
-    const maxArea = parseInt(exactArea[1]);
-    const averageArea = (minArea + maxArea) / 2;
+   let averageArea = 0;
+   if(area == "<=200" || area == ">3000" || area == ">8000" || area == "<=1000"){
+    switch (area) {
+      case "<=200":
+        averageArea = 200;
+        break;
+      case ">3000":
+        averageArea = 3000;
+        break;
+      case ">8000":
+        averageArea = 8000;
+        break;
+      case "<=1000":
+        averageArea = 1000;
+        break;
+      default:
+        break;
+    }
+   }else{
+     const exactArea = area.split('-');
+      const minArea = parseInt(exactArea[0]);
+      const maxArea = parseInt(exactArea[1]);
+      averageArea = (minArea + maxArea) / 2;
+
+   }
 
    ProjectDetails[project] = ProjectDetails[project] || { totalRent: 0, totalArea: 0, LATITUDE:coordinate[project].LATITUDE, LONGITUTDE:coordinate[project].LONGITUTDE, nonlanded:0, executive:0}
 

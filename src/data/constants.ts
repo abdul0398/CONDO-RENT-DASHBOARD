@@ -5144,8 +5144,8 @@ const allGraphData = {
 
 const coordinate :{
   [key: string]: {
-    totalRent: number;
-    totalArea: number;
+    totalRent: number | null;
+    totalArea: number | null;
     LATITUDE: number;
     LONGITUTDE: number;
     nonlanded: number;
@@ -5210,7 +5210,7 @@ const coordinate :{
   },
   "CLIVEDEN AT GRANGE": {
     totalRent: 2300727,
-    totalArea: null,
+    totalArea: 461600,
     LATITUDE: 1.2998152216174559,
     LONGITUTDE: 103.82593093937294,
     nonlanded: 179,
@@ -5218,7 +5218,7 @@ const coordinate :{
   },
   "THE COAST AT SENTOSA COVE": {
     totalRent: 3213511.5,
-    totalArea: null,
+    totalArea: 778450,
     LATITUDE: 1.24534285972879,
     LONGITUTDE: 103.84361675970044,
     nonlanded: 324,
@@ -5226,7 +5226,7 @@ const coordinate :{
   },
   "MARINA BAY SUITES": {
     totalRent: 3060526.5,
-    totalArea: null,
+    totalArea: 618300,
     LATITUDE: 1.2804263644026377,
     LONGITUTDE: 103.85206660150469,
     nonlanded: 321,
@@ -5234,7 +5234,7 @@ const coordinate :{
   },
   "LANDED HOUSING DEVELOPMENT": {
     totalRent: 116427923.5,
-    totalArea: null,
+    totalArea: 41868000,
     LATITUDE: 1.3184258746798854,
     LONGITUTDE: 103.82710759288207,
     nonlanded: 0,
@@ -5346,7 +5346,7 @@ const coordinate :{
   },
   "THE ESTA": {
     totalRent: 1772421.5,
-    totalArea: null,
+    totalArea: 457200,
     LATITUDE: 1.3023620525255208,
     LONGITUTDE: 103.89995230694237,
     nonlanded: 330,
@@ -5354,7 +5354,7 @@ const coordinate :{
   },
   "PARC SEABREEZE": {
     totalRent: 640970,
-    totalArea: null,
+    totalArea: 179500,
     LATITUDE: 1.3039908832750329,
     LONGITUTDE: 103.90586107793038,
     nonlanded: 120,
@@ -5370,7 +5370,7 @@ const coordinate :{
   },
   "PEBBLE BAY": {
     totalRent: 3190923.5,
-    totalArea: null,
+    totalArea: 893450,
     LATITUDE: 1.2981442888906478,
     LONGITUTDE: 103.87096394367471,
     nonlanded: 482,
@@ -5378,7 +5378,7 @@ const coordinate :{
   },
   "AMARYLLIS VILLE": {
     totalRent: 1297054,
-    totalArea: null,
+    totalArea: 293100,
     LATITUDE: 1.3147136367112433,
     LONGITUTDE: 103.84200901283405,
     nonlanded: 281,
@@ -5386,7 +5386,7 @@ const coordinate :{
   },
   "ARDMORE PARK": {
     totalRent: 3921090,
-    totalArea: null,
+    totalArea: 702300,
     LATITUDE: 1.3105030857329727,
     LONGITUTDE: 103.82956331619295,
     nonlanded: 247,
@@ -5450,7 +5450,7 @@ const coordinate :{
   },
   "RIVER PLACE": {
     totalRent: 3742340,
-    totalArea: null,
+    totalArea: 942400,
     LATITUDE: 1.2903034284463373,
     LONGITUTDE: 103.84131637303597,
     nonlanded: 800,
@@ -5458,7 +5458,7 @@ const coordinate :{
   },
   "THE SUNNY SPRING": {
     totalRent: 1127600,
-    totalArea: null,
+    totalArea: 391900,
     LATITUDE: 1.312133185975473,
     LONGITUTDE: 103.88951419329194,
     nonlanded: 344,
@@ -5498,7 +5498,7 @@ const coordinate :{
   },
   "THE ARCADIA": {
     totalRent: 790163,
-    totalArea: null,
+    totalArea: 234000,
     LATITUDE: 1.3333125992517272,
     LONGITUTDE: 103.80946200778052,
     nonlanded: 78,
@@ -5522,7 +5522,7 @@ const coordinate :{
   },
   "8 RODYK": {
     totalRent: 648962.5,
-    totalArea: null,
+    totalArea: 134200,
     LATITUDE: 1.290160396255316,
     LONGITUTDE: 103.8374755174078,
     nonlanded: 100,
@@ -5530,7 +5530,7 @@ const coordinate :{
   },
   "THE PEAK@BALMEG": {
     totalRent: 1106845.5,
-    totalArea: null,
+    totalArea: 332500,
     LATITUDE: 1.2823988480950035,
     LONGITUTDE: 103.78389056439441,
     nonlanded: 196,
@@ -5538,7 +5538,7 @@ const coordinate :{
   },
   "BLOSSOMS @ WOODLEIGH": {
     totalRent: 789830,
-    totalArea: null,
+    totalArea: 253250,
     LATITUDE: 1.3362721739152625,
     LONGITUTDE: 103.86914696415427,
     nonlanded: 194,
@@ -5586,7 +5586,7 @@ const coordinate :{
   },
   "LINCOLN SUITES": {
     totalRent: 1567980,
-    totalArea: null,
+    totalArea: 307950,
     LATITUDE: 1.3170311353951718,
     LONGITUTDE: 103.8426593760157,
     nonlanded: 330,
@@ -5602,7 +5602,7 @@ const coordinate :{
   },
   RIDGEWOOD: {
     totalRent: 1956956,
-    totalArea: null,
+    totalArea: 751600,
     LATITUDE: 1.317672138631571,
     LONGITUTDE: 103.77957724932583,
     nonlanded: 401,
@@ -5610,7 +5610,7 @@ const coordinate :{
   },
   "CAPE ROYALE": {
     totalRent: 6173635,
-    totalArea: null,
+    totalArea: 1239800,
     LATITUDE: 1.2408381281684693,
     LONGITUTDE: 103.8397140429619,
     nonlanded: 547,
@@ -5674,7 +5674,7 @@ const coordinate :{
   },
   "6 DERBYSHIRE": {
     totalRent: 862982.5,
-    totalArea: null,
+    totalArea: 181500,
     LATITUDE: 1.3156059581584822,
     LONGITUTDE: 103.84582137144378,
     nonlanded: 261,
@@ -5698,7 +5698,7 @@ const coordinate :{
   },
   "PARK INFINIA AT WEE NAM": {
     totalRent: 3454453,
-    totalArea: null,
+    totalArea: 710600,
     LATITUDE: 1.3151623151414418,
     LONGITUTDE: 103.84362794170045,
     nonlanded: 584,
@@ -5714,7 +5714,7 @@ const coordinate :{
   },
   "PALM ISLES": {
     totalRent: 1038416,
-    totalArea: null,
+    totalArea: 341150,
     LATITUDE: 1.3559551543426775,
     LONGITUTDE: 103.96400792773414,
     nonlanded: 408,
@@ -5738,7 +5738,7 @@ const coordinate :{
   },
   "THE RESIDENCES AT W SINGAPORE SENTOSA COVE": {
     totalRent: 4363199.5,
-    totalArea: null,
+    totalArea: 886200,
     LATITUDE: 1.2465700184356123,
     LONGITUTDE: 103.84299562054667,
     nonlanded: 451,
@@ -5794,7 +5794,7 @@ const coordinate :{
   },
   CITYLIGHTS: {
     totalRent: 2859719,
-    totalArea: null,
+    totalArea: 646300,
     LATITUDE: 1.3083497014054228,
     LONGITUTDE: 103.86320460944717,
     nonlanded: 689,
@@ -5810,7 +5810,7 @@ const coordinate :{
   },
   "THE OCEANFRONT @ SENTOSA COVE": {
     totalRent: 3036139,
-    totalArea: null,
+    totalArea: 666900,
     LATITUDE: 1.2444693145004497,
     LONGITUTDE: 103.84247042879443,
     nonlanded: 328,
@@ -5826,7 +5826,7 @@ const coordinate :{
   },
   "URBAN SUITES": {
     totalRent: 2191850,
-    totalArea: null,
+    totalArea: 403200,
     LATITUDE: 1.304304594405328,
     LONGITUTDE: 103.8384484371763,
     nonlanded: 244,
@@ -5922,7 +5922,7 @@ const coordinate :{
   },
   "CLOVER BY THE PARK": {
     totalRent: 1029716.5,
-    totalArea: null,
+    totalArea: 315850,
     LATITUDE: 1.3600021333830088,
     LONGITUTDE: 103.84625805509383,
     nonlanded: 208,
@@ -5938,7 +5938,7 @@ const coordinate :{
   },
   "NON-LANDED HOUSING DEVELOPMENT": {
     totalRent: 28344501,
-    totalArea: null,
+    totalArea: 9345950,
     LATITUDE: 1.3323815711753004,
     LONGITUTDE: 103.88517525112856,
     nonlanded: 7849,
@@ -5986,7 +5986,7 @@ const coordinate :{
   },
   "D'LEEDON": {
     totalRent: 9330197,
-    totalArea: null,
+    totalArea: 2119100,
     LATITUDE: 1.3163458330187217,
     LONGITUTDE: 103.80443092412808,
     nonlanded: 1672,
@@ -6082,7 +6082,7 @@ const coordinate :{
   },
   "DRAYCOTT EIGHT": {
     totalRent: 2388977,
-    totalArea: null,
+    totalArea: 436150,
     LATITUDE: 1.311451561681537,
     LONGITUTDE: 103.83210946572763,
     nonlanded: 189,
@@ -6106,7 +6106,7 @@ const coordinate :{
   },
   "UE SQUARE": {
     totalRent: 2545641.5,
-    totalArea: null,
+    totalArea: 667900,
     LATITUDE: 1.2930657245459518,
     LONGITUTDE: 103.84175484580496,
     nonlanded: 562,
@@ -6130,7 +6130,7 @@ const coordinate :{
   },
   "CARIBBEAN AT KEPPEL BAY": {
     totalRent: 6436065.5,
-    totalArea: null,
+    totalArea: 1362300,
     LATITUDE: 1.2674489015336268,
     LONGITUTDE: 103.81466434365925,
     nonlanded: 1004,
@@ -6266,7 +6266,7 @@ const coordinate :{
   },
   "ONE FORT": {
     totalRent: 285358,
-    totalArea: null,
+    totalArea: 88850,
     LATITUDE: 1.3002402535501472,
     LONGITUTDE: 103.88517841686858,
     nonlanded: 74,
@@ -6282,7 +6282,7 @@ const coordinate :{
   },
   "ONE SHENTON": {
     totalRent: 3693946,
-    totalArea: null,
+    totalArea: 712850,
     LATITUDE: 1.2792424146233545,
     LONGITUTDE: 103.85050233296299,
     nonlanded: 669,
@@ -6298,7 +6298,7 @@ const coordinate :{
   },
   "THE LINCOLN RESIDENCES": {
     totalRent: 589043,
-    totalArea: null,
+    totalArea: 136800,
     LATITUDE: 1.315321894664705,
     LONGITUTDE: 103.84248900000824,
     nonlanded: 87,
@@ -6314,7 +6314,7 @@ const coordinate :{
   },
   "A TREASURE TROVE": {
     totalRent: 1875237.5,
-    totalArea: null,
+    totalArea: 618300,
     LATITUDE: 1.4058141549765566,
     LONGITUTDE: 103.9002248397005,
     nonlanded: 602,
@@ -6386,7 +6386,7 @@ const coordinate :{
   },
   EUHABITAT: {
     totalRent: 2677905,
-    totalArea: null,
+    totalArea: 774800,
     LATITUDE: 1.327672661055485,
     LONGITUTDE: 103.90736367801772,
     nonlanded: 973,
@@ -6394,7 +6394,7 @@ const coordinate :{
   },
   "VALLEY PARK": {
     totalRent: 3931877.5,
-    totalArea: null,
+    totalArea: 1095900,
     LATITUDE: 1.2932259780551143,
     LONGITUTDE: 103.82851914421538,
     nonlanded: 848,
@@ -6402,7 +6402,7 @@ const coordinate :{
   },
   "PAVILION 11": {
     totalRent: 891123,
-    totalArea: null,
+    totalArea: 236400,
     LATITUDE: 1.324424580414058,
     LONGITUTDE: 103.84848220762981,
     nonlanded: 184,
@@ -6426,7 +6426,7 @@ const coordinate :{
   },
   "BRADDELL VIEW": {
     totalRent: 1232031.5,
-    totalArea: null,
+    totalArea: 588800,
     LATITUDE: 1.3411518889786012,
     LONGITUTDE: 103.84236039552154,
     nonlanded: 363,
@@ -6474,7 +6474,7 @@ const coordinate :{
   },
   SUMMERHILL: {
     totalRent: 761542.5,
-    totalArea: null,
+    totalArea: 289650,
     LATITUDE: 1.3601413915406844,
     LONGITUTDE: 103.76575930319427,
     nonlanded: 215,
@@ -6538,7 +6538,7 @@ const coordinate :{
   },
   "THE LINE @ TANJONG RHU": {
     totalRent: 762509,
-    totalArea: null,
+    totalArea: 187450,
     LATITUDE: 1.2984854673674358,
     LONGITUTDE: 103.8844827719105,
     nonlanded: 210,
@@ -6546,7 +6546,7 @@ const coordinate :{
   },
   "ASTRID MEADOWS": {
     totalRent: 2109890,
-    totalArea: null,
+    totalArea: 549200,
     LATITUDE: 1.3196768233421814,
     LONGITUTDE: 103.79516927055882,
     nonlanded: 249,
@@ -6578,7 +6578,7 @@ const coordinate :{
   },
   "THE WHARF RESIDENCE": {
     totalRent: 1816783,
-    totalArea: null,
+    totalArea: 348600,
     LATITUDE: 1.2931184955066242,
     LONGITUTDE: 103.84026720594571,
     nonlanded: 258,
@@ -6650,7 +6650,7 @@ const coordinate :{
   },
   "THE LUMOS": {
     totalRent: 596794.5,
-    totalArea: null,
+    totalArea: 177250,
     LATITUDE: 1.2989868928821418,
     LONGITUTDE: 103.83198213099324,
     nonlanded: 86,
@@ -6666,7 +6666,7 @@ const coordinate :{
   },
   "GRANGE HEIGHTS": {
     totalRent: 1256560,
-    totalArea: null,
+    totalArea: 431000,
     LATITUDE: 1.297828860763496,
     LONGITUTDE: 103.83515881214055,
     nonlanded: 191,
@@ -6674,7 +6674,7 @@ const coordinate :{
   },
   "BAYSHORE PARK": {
     totalRent: 3175300,
-    totalArea: null,
+    totalArea: 1110200,
     LATITUDE: 1.3106947165624534,
     LONGITUTDE: 103.9380442495396,
     nonlanded: 979,
@@ -6682,7 +6682,7 @@ const coordinate :{
   },
   "THE CAIRNHILL": {
     totalRent: 430655.5,
-    totalArea: null,
+    totalArea: 181400,
     LATITUDE: 1.3064796430544612,
     LONGITUTDE: 103.8393655631977,
     nonlanded: 69,
@@ -6698,7 +6698,7 @@ const coordinate :{
   },
   "THE TESSARINA": {
     totalRent: 1396988,
-    totalArea: null,
+    totalArea: 404600,
     LATITUDE: 1.3321104476774523,
     LONGITUTDE: 103.7891482060045,
     nonlanded: 313,
@@ -6730,7 +6730,7 @@ const coordinate :{
   },
   "HILLION RESIDENCES": {
     totalRent: 1777858,
-    totalArea: null,
+    totalArea: 423650,
     LATITUDE: 1.378585097976217,
     LONGITUTDE: 103.76390813141441,
     nonlanded: 626,
@@ -6746,7 +6746,7 @@ const coordinate :{
   },
   "TROPICAL SPRING": {
     totalRent: 497507,
-    totalArea: null,
+    totalArea: 186550,
     LATITUDE: 1.3415261771703852,
     LONGITUTDE: 103.95574137045863,
     nonlanded: 140,
@@ -6754,7 +6754,7 @@ const coordinate :{
   },
   "EASTERN LAGOON": {
     totalRent: 1015783,
-    totalArea: null,
+    totalArea: 353100,
     LATITUDE: 1.3140149325049202,
     LONGITUTDE: 103.93462579214828,
     nonlanded: 359,
@@ -6794,7 +6794,7 @@ const coordinate :{
   },
   "THE MINTON": {
     totalRent: 1958391.5,
-    totalArea: null,
+    totalArea: 648000,
     LATITUDE: 1.351503213861718,
     LONGITUTDE: 103.88187987122691,
     nonlanded: 592,
@@ -6802,7 +6802,7 @@ const coordinate :{
   },
   "SERANGOON GARDEN ESTATE": {
     totalRent: 3767747,
-    totalArea: null,
+    totalArea: 1510000,
     LATITUDE: 1.3644113218816833,
     LONGITUTDE: 103.86764283487025,
     nonlanded: 26,
@@ -6826,7 +6826,7 @@ const coordinate :{
   },
   CYAN: {
     totalRent: 2609028.5,
-    totalArea: null,
+    totalArea: 577750,
     LATITUDE: 1.3171623293191062,
     LONGITUTDE: 103.82991152918385,
     nonlanded: 447,
@@ -6866,7 +6866,7 @@ const coordinate :{
   },
   "CAIRNHILL PLAZA": {
     totalRent: 1137543.5,
-    totalArea: null,
+    totalArea: 401300,
     LATITUDE: 1.3069430501574673,
     LONGITUTDE: 103.83678131194372,
     nonlanded: 157,
@@ -6882,7 +6882,7 @@ const coordinate :{
   },
   ECHELON: {
     totalRent: 2592132,
-    totalArea: null,
+    totalArea: 493100,
     LATITUDE: 1.2906971959349482,
     LONGITUTDE: 103.81792015821333,
     nonlanded: 569,
@@ -6962,7 +6962,7 @@ const coordinate :{
   },
   ECO: {
     totalRent: 2673357.5,
-    totalArea: null,
+    totalArea: 718750,
     LATITUDE: 1.3239191529762275,
     LONGITUTDE: 103.94520568100808,
     nonlanded: 957,
@@ -6970,7 +6970,7 @@ const coordinate :{
   },
   "CORALS AT KEPPEL BAY": {
     totalRent: 2653140.5,
-    totalArea: null,
+    totalArea: 479750,
     LATITUDE: 1.2662934699921733,
     LONGITUTDE: 103.81715107340997,
     nonlanded: 445,
@@ -6986,7 +6986,7 @@ const coordinate :{
   },
   "THE CENTREPOINT": {
     totalRent: 612846,
-    totalArea: null,
+    totalArea: 145100,
     LATITUDE: 1.3020326424518287,
     LONGITUTDE: 103.83984296028768,
     nonlanded: 165,
@@ -7058,7 +7058,7 @@ const coordinate :{
   },
   "CUSCADEN RESIDENCES": {
     totalRent: 1111407.5,
-    totalArea: null,
+    totalArea: 251450,
     LATITUDE: 1.3049609423337865,
     LONGITUTDE: 103.8269058595494,
     nonlanded: 177,
@@ -7122,7 +7122,7 @@ const coordinate :{
   },
   "THE AZURE": {
     totalRent: 1519475,
-    totalArea: null,
+    totalArea: 344500,
     LATITUDE: 1.251452582149678,
     LONGITUTDE: 103.84794691818747,
     nonlanded: 179,
@@ -7154,7 +7154,7 @@ const coordinate :{
   },
   "LEONIE CONDOTEL": {
     totalRent: 2585306.5,
-    totalArea: null,
+    totalArea: 729700,
     LATITUDE: 1.2969726097251275,
     LONGITUTDE: 103.83398004470276,
     nonlanded: 268,
@@ -7178,7 +7178,7 @@ const coordinate :{
   },
   "KUM HING COURT": {
     totalRent: 556838,
-    totalArea: null,
+    totalArea: 238400,
     LATITUDE: 1.3021714854004203,
     LONGITUTDE: 103.82638013503689,
     nonlanded: 145,
@@ -7186,7 +7186,7 @@ const coordinate :{
   },
   "THE HILLSIDE": {
     totalRent: 683495.5,
-    totalArea: null,
+    totalArea: 273150,
     LATITUDE: 1.3526758580247409,
     LONGITUTDE: 103.7676796995649,
     nonlanded: 193,
@@ -7202,7 +7202,7 @@ const coordinate :{
   },
   LUMIERE: {
     totalRent: 1177052,
-    totalArea: null,
+    totalArea: 235450,
     LATITUDE: 1.2742129523403267,
     LONGITUTDE: 103.84594209474501,
     nonlanded: 340,
@@ -7290,7 +7290,7 @@ const coordinate :{
   },
   "DOUBLE BAY RESIDENCES": {
     totalRent: 1802428.5,
-    totalArea: null,
+    totalArea: 564900,
     LATITUDE: 1.340773792914257,
     LONGITUTDE: 103.95628888836985,
     nonlanded: 487,
@@ -7298,7 +7298,7 @@ const coordinate :{
   },
   "V ON SHENTON": {
     totalRent: 4272865,
-    totalArea: null,
+    totalArea: 747100,
     LATITUDE: 1.2771684098909208,
     LONGITUTDE: 103.84922755130322,
     nonlanded: 856,
@@ -7354,7 +7354,7 @@ const coordinate :{
   },
   "FRASER RESIDENCE SINGAPORE": {
     totalRent: 827887,
-    totalArea: null,
+    totalArea: 175700,
     LATITUDE: 1.3055605071581635,
     LONGITUTDE: 103.83683962647723,
     nonlanded: 129,
@@ -7370,7 +7370,7 @@ const coordinate :{
   },
   "THE MAKENA": {
     totalRent: 2023945,
-    totalArea: null,
+    totalArea: 650000,
     LATITUDE: 1.2967840795314687,
     LONGITUTDE: 103.89412811434656,
     nonlanded: 453,
@@ -7394,7 +7394,7 @@ const coordinate :{
   },
   "ONE JERVOIS": {
     totalRent: 1921930,
-    totalArea: null,
+    totalArea: 452900,
     LATITUDE: 1.2929635649903646,
     LONGITUTDE: 103.82514044051742,
     nonlanded: 353,
@@ -7402,7 +7402,7 @@ const coordinate :{
   },
   "SOLEIL @ SINARAN": {
     totalRent: 3033594.5,
-    totalArea: null,
+    totalArea: 555700,
     LATITUDE: 1.31951975354727,
     LONGITUTDE: 103.84500944546669,
     nonlanded: 557,
@@ -7442,7 +7442,7 @@ const coordinate :{
   },
   "PEACH GARDEN": {
     totalRent: 535950,
-    totalArea: null,
+    totalArea: 252150,
     LATITUDE: 1.2972627926327742,
     LONGITUTDE: 103.89583712751792,
     nonlanded: 51,
@@ -7506,7 +7506,7 @@ const coordinate :{
   },
   RIVERGATE: {
     totalRent: 5210960,
-    totalArea: null,
+    totalArea: 1015000,
     LATITUDE: 1.2921329413482976,
     LONGITUTDE: 103.8363399634053,
     nonlanded: 649,
@@ -7530,7 +7530,7 @@ const coordinate :{
   },
   HILLTOPS: {
     totalRent: 2632608,
-    totalArea: null,
+    totalArea: 379950,
     LATITUDE: 1.3071809020052918,
     LONGITUTDE: 103.83862378376297,
     nonlanded: 246,
@@ -7546,7 +7546,7 @@ const coordinate :{
   },
   "THE SAIL @ MARINA BAY": {
     totalRent: 9891440,
-    totalArea: null,
+    totalArea: 1814200,
     LATITUDE: 1.2808544688564538,
     LONGITUTDE: 103.85274295259043,
     nonlanded: 1877,
@@ -7586,7 +7586,7 @@ const coordinate :{
   },
   "CHANGI RISE CONDOMINIUM": {
     totalRent: 851959,
-    totalArea: null,
+    totalArea: 330700,
     LATITUDE: 1.348695628105849,
     LONGITUTDE: 103.96047435372343,
     nonlanded: 259,
@@ -7602,7 +7602,7 @@ const coordinate :{
   },
   "ASPEN HEIGHTS": {
     totalRent: 3488363,
-    totalArea: null,
+    totalArea: 915250,
     LATITUDE: 1.2947841699789238,
     LONGITUTDE: 103.84012444373009,
     nonlanded: 651,
@@ -7618,7 +7618,7 @@ const coordinate :{
   },
   VIVA: {
     totalRent: 2699427,
-    totalArea: null,
+    totalArea: 521800,
     LATITUDE: 1.3157815543779638,
     LONGITUTDE: 103.84379295452186,
     nonlanded: 359,
@@ -7658,7 +7658,7 @@ const coordinate :{
   },
   "THE PARC CONDOMINIUM": {
     totalRent: 2476977.5,
-    totalArea: null,
+    totalArea: 729800,
     LATITUDE: 1.3108227407384503,
     LONGITUTDE: 103.76265664250487,
     nonlanded: 556,
@@ -7690,7 +7690,7 @@ const coordinate :{
   },
   "RHAPSODY ON MOUNT ELIZABETH": {
     totalRent: 365125,
-    totalArea: null,
+    totalArea: 86200,
     LATITUDE: 1.3067638704012796,
     LONGITUTDE: 103.8362515584278,
     nonlanded: 61,
@@ -7778,7 +7778,7 @@ const coordinate :{
   },
   "WATTEN ESTATE": {
     totalRent: 1522111,
-    totalArea: null,
+    totalArea: 640750,
     LATITUDE: 1.326069812704938,
     LONGITUTDE: 103.81009690574969,
     nonlanded: 0,
@@ -7810,7 +7810,7 @@ const coordinate :{
   },
   "ASCENTIA SKY": {
     totalRent: 1910661.5,
-    totalArea: null,
+    totalArea: 439900,
     LATITUDE: 1.2910323869246874,
     LONGITUTDE: 103.81691682831547,
     nonlanded: 335,
@@ -7826,7 +7826,7 @@ const coordinate :{
   },
   "CAIRNHILL CREST": {
     totalRent: 1994379.5,
-    totalArea: null,
+    totalArea: 475350,
     LATITUDE: 1.3058828333383916,
     LONGITUTDE: 103.83876185583753,
     nonlanded: 302,
@@ -7906,7 +7906,7 @@ const coordinate :{
   },
   "CONCOURSE SKYLINE": {
     totalRent: 3300943,
-    totalArea: null,
+    totalArea: 699750,
     LATITUDE: 1.3002125133752764,
     LONGITUTDE: 103.86193803979643,
     nonlanded: 587,
@@ -7946,7 +7946,7 @@ const coordinate :{
   },
   "TWIN REGENCY": {
     totalRent: 1343040,
-    totalArea: null,
+    totalArea: 293800,
     LATITUDE: 1.2848370004974619,
     LONGITUTDE: 103.82839914939277,
     nonlanded: 230,
@@ -7978,7 +7978,7 @@ const coordinate :{
   },
   "COCO PALMS": {
     totalRent: 1965503.5,
-    totalArea: null,
+    totalArea: 530050,
     LATITUDE: 1.3715722288660146,
     LONGITUTDE: 103.94638722149806,
     nonlanded: 637,
@@ -8042,7 +8042,7 @@ const coordinate :{
   },
   WATERVIEW: {
     totalRent: 1044073.5,
-    totalArea: null,
+    totalArea: 346800,
     LATITUDE: 1.3479952242609112,
     LONGITUTDE: 103.92632239053232,
     nonlanded: 344,
@@ -8058,7 +8058,7 @@ const coordinate :{
   },
   "THE SEAWIND": {
     totalRent: 1167317.5,
-    totalArea: null,
+    totalArea: 305700,
     LATITUDE: 1.3110741642270523,
     LONGITUTDE: 103.91456299194792,
     nonlanded: 319,
@@ -8090,7 +8090,7 @@ const coordinate :{
   },
   "THE BAYSHORE": {
     totalRent: 2668016,
-    totalArea: null,
+    totalArea: 903950,
     LATITUDE: 1.3126710101188097,
     LONGITUTDE: 103.93938867107285,
     nonlanded: 822,
@@ -8122,7 +8122,7 @@ const coordinate :{
   },
   "THE INTERLACE": {
     totalRent: 5629392,
-    totalArea: null,
+    totalArea: 1517250,
     LATITUDE: 1.2821232686607351,
     LONGITUTDE: 103.80294728485812,
     nonlanded: 906,
@@ -8162,7 +8162,7 @@ const coordinate :{
   },
   "THOMSON 800": {
     totalRent: 1049567.5,
-    totalArea: null,
+    totalArea: 358550,
     LATITUDE: 1.3411524412548568,
     LONGITUTDE: 103.83882051143594,
     nonlanded: 232,
@@ -8178,7 +8178,7 @@ const coordinate :{
   },
   "MARTIN PLACE RESIDENCES": {
     totalRent: 2656033.5,
-    totalArea: null,
+    totalArea: 509750,
     LATITUDE: 1.2942230737788512,
     LONGITUTDE: 103.8381364682086,
     nonlanded: 418,
@@ -8194,7 +8194,7 @@ const coordinate :{
   },
   "REFLECTIONS AT KEPPEL BAY": {
     totalRent: 10727462,
-    totalArea: null,
+    totalArea: 2269800,
     LATITUDE: 1.2672256366327912,
     LONGITUTDE: 103.8110728707632,
     nonlanded: 1456,
@@ -8234,7 +8234,7 @@ const coordinate :{
   },
   "SANCTUARY GREEN": {
     totalRent: 1849327.5,
-    totalArea: null,
+    totalArea: 536450,
     LATITUDE: 1.2966680932370624,
     LONGITUTDE: 103.87134356005613,
     nonlanded: 440,
@@ -8250,7 +8250,7 @@ const coordinate :{
   },
   "THE LAURELS": {
     totalRent: 2109002.5,
-    totalArea: null,
+    totalArea: 357650,
     LATITUDE: 1.3048493077980354,
     LONGITUTDE: 103.83797248184852,
     nonlanded: 348,
@@ -8314,7 +8314,7 @@ const coordinate :{
   },
   SOUTHBANK: {
     totalRent: 1055146,
-    totalArea: null,
+    totalArea: 221550,
     LATITUDE: 1.3062626096410066,
     LONGITUTDE: 103.864243624939,
     nonlanded: 252,
@@ -8330,7 +8330,7 @@ const coordinate :{
   },
   ARCHIPELAGO: {
     totalRent: 1762875,
-    totalArea: null,
+    totalArea: 596400,
     LATITUDE: 1.3384874663251092,
     LONGITUTDE: 103.92126983136853,
     nonlanded: 457,
@@ -8346,7 +8346,7 @@ const coordinate :{
   },
   "LAKESIDE TOWER": {
     totalRent: 242790,
-    totalArea: null,
+    totalArea: 150200,
     LATITUDE: 1.337881428926041,
     LONGITUTDE: 103.72523916070841,
     nonlanded: 77,
@@ -8426,7 +8426,7 @@ const coordinate :{
   },
   "FOUR SEASONS PARK": {
     totalRent: 1999157.5,
-    totalArea: null,
+    totalArea: 427000,
     LATITUDE: 1.3039132627238321,
     LONGITUTDE: 103.82778324477914,
     nonlanded: 169,
@@ -8482,7 +8482,7 @@ const coordinate :{
   },
   "WATERSCAPE AT CAVENAGH": {
     totalRent: 1850022.5,
-    totalArea: null,
+    totalArea: 455350,
     LATITUDE: 1.304156835855571,
     LONGITUTDE: 103.84102591817371,
     nonlanded: 375,
@@ -8490,7 +8490,7 @@ const coordinate :{
   },
   "MARINA BAY RESIDENCES": {
     totalRent: 5535655.5,
-    totalArea: null,
+    totalArea: 878900,
     LATITUDE: 1.2797152736972925,
     LONGITUTDE: 103.8549227793937,
     nonlanded: 683,
@@ -8498,7 +8498,7 @@ const coordinate :{
   },
   "MANDARIN GARDENS": {
     totalRent: 2410417.5,
-    totalArea: null,
+    totalArea: 877250,
     LATITUDE: 1.307613085362949,
     LONGITUTDE: 103.92515712752706,
     nonlanded: 651,
@@ -8506,7 +8506,7 @@ const coordinate :{
   },
   "PANDAN VALLEY": {
     totalRent: 1875822,
-    totalArea: null,
+    totalArea: 825800,
     LATITUDE: 1.3186920895023937,
     LONGITUTDE: 103.77810676233345,
     nonlanded: 398,
@@ -8554,7 +8554,7 @@ const coordinate :{
   },
   SILVERSEA: {
     totalRent: 3125602,
-    totalArea: null,
+    totalArea: 690600,
     LATITUDE: 1.3000655547754618,
     LONGITUTDE: 103.90316617412967,
     nonlanded: 444,
@@ -8562,7 +8562,7 @@ const coordinate :{
   },
   "MELROSE PARK": {
     totalRent: 1254245,
-    totalArea: null,
+    totalArea: 313550,
     LATITUDE: 1.2932684077798824,
     LONGITUTDE: 103.83048432768992,
     nonlanded: 199,
@@ -8570,7 +8570,7 @@ const coordinate :{
   },
   "ONE AMBER": {
     totalRent: 2451927,
-    totalArea: null,
+    totalArea: 653800,
     LATITUDE: 1.3020473367216938,
     LONGITUTDE: 103.89914693788752,
     nonlanded: 513,
@@ -8578,7 +8578,7 @@ const coordinate :{
   },
   "ARDMORE RESIDENCE": {
     totalRent: 2550789.5,
-    totalArea: null,
+    totalArea: 299400,
     LATITUDE: 1.3101517230962163,
     LONGITUTDE: 103.8286415313677,
     nonlanded: 100,
@@ -8674,7 +8674,7 @@ const coordinate :{
   },
   "SOMMERVILLE PARK": {
     totalRent: 2726911,
-    totalArea: null,
+    totalArea: 862600,
     LATITUDE: 1.3118571082534118,
     LONGITUTDE: 103.80690596673112,
     nonlanded: 389,
@@ -8698,7 +8698,7 @@ const coordinate :{
   },
   "TIONG BAHRU ESTATE": {
     totalRent: 2549179,
-    totalArea: null,
+    totalArea: 599300,
     LATITUDE: 1.2835763672284688,
     LONGITUTDE: 103.83475631722771,
     nonlanded: 639,
@@ -8706,7 +8706,7 @@ const coordinate :{
   },
   TRILIGHT: {
     totalRent: 2207820,
-    totalArea: null,
+    totalArea: 505150,
     LATITUDE: 1.3148597105621398,
     LONGITUTDE: 103.83976376754353,
     nonlanded: 315,
@@ -8730,7 +8730,7 @@ const coordinate :{
   },
   "COSTA RHU": {
     totalRent: 3398683,
-    totalArea: null,
+    totalArea: 996150,
     LATITUDE: 1.2971358094966097,
     LONGITUTDE: 103.86698013587403,
     nonlanded: 633,
@@ -8738,7 +8738,7 @@ const coordinate :{
   },
   "RIS GRANDEUR": {
     totalRent: 704287.5,
-    totalArea: null,
+    totalArea: 291300,
     LATITUDE: 1.3742217956524247,
     LONGITUTDE: 103.94023033760932,
     nonlanded: 223,
@@ -8770,7 +8770,7 @@ const coordinate :{
   },
   SEAHILL: {
     totalRent: 1712762,
-    totalArea: null,
+    totalArea: 414350,
     LATITUDE: 1.29896591568377,
     LONGITUTDE: 103.7646894869247,
     nonlanded: 512,
@@ -8802,7 +8802,7 @@ const coordinate :{
   },
   "MARINA ONE RESIDENCES": {
     totalRent: 7065855,
-    totalArea: null,
+    totalArea: 1172150,
     LATITUDE: 1.2772798252701099,
     LONGITUTDE: 103.8537591726053,
     nonlanded: 1176,
@@ -8810,7 +8810,7 @@ const coordinate :{
   },
   "THE ROCHESTER RESIDENCES": {
     totalRent: 3030830.5,
-    totalArea: null,
+    totalArea: 763200,
     LATITUDE: 1.3052635757127928,
     LONGITUTDE: 103.78842707486322,
     nonlanded: 580,
@@ -8834,7 +8834,7 @@ const coordinate :{
   },
   "WATER PLACE": {
     totalRent: 1501254,
-    totalArea: null,
+    totalArea: 414750,
     LATITUDE: 1.2967215853475105,
     LONGITUTDE: 103.87285003209018,
     nonlanded: 322,
@@ -8874,7 +8874,7 @@ const coordinate :{
   },
   "AMBER RESIDENCES": {
     totalRent: 695125,
-    totalArea: null,
+    totalArea: 182350,
     LATITUDE: 1.3013314091057546,
     LONGITUTDE: 103.900884260869,
     nonlanded: 116,
@@ -8882,7 +8882,7 @@ const coordinate :{
   },
   "SKIES MILTONIA": {
     totalRent: 920826.5,
-    totalArea: null,
+    totalArea: 322400,
     LATITUDE: 1.4183971490015,
     LONGITUTDE: 103.8472292158728,
     nonlanded: 365,
@@ -8890,7 +8890,7 @@ const coordinate :{
   },
   "KOVAN RESIDENCES": {
     totalRent: 1527276.5,
-    totalArea: null,
+    totalArea: 457800,
     LATITUDE: 1.3611248352663232,
     LONGITUTDE: 103.88532541744075,
     nonlanded: 331,
@@ -8914,7 +8914,7 @@ const coordinate :{
   },
   "NEWTON 21": {
     totalRent: 348538,
-    totalArea: null,
+    totalArea: 93000,
     LATITUDE: 1.314965408994171,
     LONGITUTDE: 103.8405232422295,
     nonlanded: 73,
@@ -9010,7 +9010,7 @@ const coordinate :{
   },
   BOTANNIA: {
     totalRent: 1521724.5,
-    totalArea: null,
+    totalArea: 467000,
     LATITUDE: 1.3187836205412227,
     LONGITUTDE: 103.7545439605277,
     nonlanded: 355,
@@ -9042,7 +9042,7 @@ const coordinate :{
   },
   "CITYVISTA RESIDENCES": {
     totalRent: 1132664,
-    totalArea: null,
+    totalArea: 309650,
     LATITUDE: 1.3090787323893505,
     LONGITUTDE: 103.83753403545184,
     nonlanded: 123,
@@ -9050,7 +9050,7 @@ const coordinate :{
   },
   "ONE-NORTH RESIDENCES": {
     totalRent: 2603980.5,
-    totalArea: null,
+    totalArea: 611950,
     LATITUDE: 1.3016485427314417,
     LONGITUTDE: 103.78994953778046,
     nonlanded: 625,
@@ -9058,7 +9058,7 @@ const coordinate :{
   },
   "FERNWOOD TOWERS": {
     totalRent: 554836,
-    totalArea: null,
+    totalArea: 231450,
     LATITUDE: 1.3095121458128554,
     LONGITUTDE: 103.92508966788384,
     nonlanded: 153,
@@ -9106,7 +9106,7 @@ const coordinate :{
   },
   "SPRING PARK ESTATE": {
     totalRent: 225550,
-    totalArea: null,
+    totalArea: 99500,
     LATITUDE: 1.3154372450657226,
     LONGITUTDE: 103.93774597863951,
     nonlanded: 0,
@@ -9170,7 +9170,7 @@ const coordinate :{
   },
   "DUO RESIDENCES": {
     totalRent: 5473276,
-    totalArea: null,
+    totalArea: 906300,
     LATITUDE: 1.2990889815801243,
     LONGITUTDE: 103.8577790643495,
     nonlanded: 1063,
@@ -9194,7 +9194,7 @@ const coordinate :{
   },
   "GUILIN VIEW": {
     totalRent: 838468.5,
-    totalArea: null,
+    totalArea: 315750,
     LATITUDE: 1.3547969223672995,
     LONGITUTDE: 103.75321756496497,
     nonlanded: 267,
@@ -9202,7 +9202,7 @@ const coordinate :{
   },
   "LEEDON RESIDENCE": {
     totalRent: 3149175,
-    totalArea: null,
+    totalArea: 575600,
     LATITUDE: 1.3138870032857928,
     LONGITUTDE: 103.80153823272934,
     nonlanded: 263,
@@ -9226,7 +9226,7 @@ const coordinate :{
   },
   PARVIS: {
     totalRent: 2742244,
-    totalArea: null,
+    totalArea: 595150,
     LATITUDE: 1.309902483833475,
     LONGITUTDE: 103.79982076665245,
     nonlanded: 336,
@@ -9306,7 +9306,7 @@ const coordinate :{
   },
   "BURLINGTON SQUARE": {
     totalRent: 1162120,
-    totalArea: null,
+    totalArea: 290850,
     LATITUDE: 1.3021672417512578,
     LONGITUTDE: 103.85265309257296,
     nonlanded: 305,
@@ -9346,7 +9346,7 @@ const coordinate :{
   },
   "SEMBAWANG HILLS ESTATE": {
     totalRent: 895915,
-    totalArea: null,
+    totalArea: 433200,
     LATITUDE: 1.376850759785204,
     LONGITUTDE: 103.82774769621092,
     nonlanded: 18,
@@ -9362,7 +9362,7 @@ const coordinate :{
   },
   "BALMORAL 8": {
     totalRent: 220750,
-    totalArea: null,
+    totalArea: 68850,
     LATITUDE: 1.314579004793257,
     LONGITUTDE: 103.83212166705749,
     nonlanded: 34,
@@ -9386,7 +9386,7 @@ const coordinate :{
   },
   "ORCHARD SCOTTS": {
     totalRent: 2996995,
-    totalArea: null,
+    totalArea: 644850,
     LATITUDE: 1.3096036779950104,
     LONGITUTDE: 103.83838745227408,
     nonlanded: 307,
@@ -9402,7 +9402,7 @@ const coordinate :{
   },
   "OCEAN PARK": {
     totalRent: 902739,
-    totalArea: null,
+    totalArea: 333800,
     LATITUDE: 1.3083594092734396,
     LONGITUTDE: 103.9189209499624,
     nonlanded: 167,
@@ -9442,7 +9442,7 @@ const coordinate :{
   },
   "PALM RESIDENCE": {
     totalRent: 147900,
-    totalArea: null,
+    totalArea: 66250,
     LATITUDE: 1.343341622464756,
     LONGITUTDE: 103.76912911112271,
     nonlanded: 50,
@@ -9466,7 +9466,7 @@ const coordinate :{
   },
   "THE GLYNDEBOURNE": {
     totalRent: 1683553.5,
-    totalArea: null,
+    totalArea: 399300,
     LATITUDE: 1.3221406925205457,
     LONGITUTDE: 103.82366716395912,
     nonlanded: 234,
@@ -9474,7 +9474,7 @@ const coordinate :{
   },
   "THE SUMMIT": {
     totalRent: 556679,
-    totalArea: null,
+    totalArea: 218750,
     LATITUDE: 1.3167878040991212,
     LONGITUTDE: 103.94073548885372,
     nonlanded: 166,
@@ -9554,7 +9554,7 @@ const coordinate :{
   },
   TRESALVEO: {
     totalRent: 1044288,
-    totalArea: null,
+    totalArea: 322650,
     LATITUDE: 1.3511065021002415,
     LONGITUTDE: 103.8407370781888,
     nonlanded: 282,
@@ -9562,7 +9562,7 @@ const coordinate :{
   },
   "GRANGE INFINITE": {
     totalRent: 727700,
-    totalArea: null,
+    totalArea: 149800,
     LATITUDE: 1.2994978346612682,
     LONGITUTDE: 103.83470291999247,
     nonlanded: 61,
@@ -9578,7 +9578,7 @@ const coordinate :{
   },
   "THE BERTH BY THE COVE": {
     totalRent: 1891525,
-    totalArea: null,
+    totalArea: 499650,
     LATITUDE: 1.249146767266681,
     LONGITUTDE: 103.84626332753052,
     nonlanded: 278,
@@ -9594,7 +9594,7 @@ const coordinate :{
   },
   "CLEMENTI GREEN": {
     totalRent: 142450,
-    totalArea: null,
+    totalArea: 61000,
     LATITUDE: 1.3235305578380079,
     LONGITUTDE: 103.77276631264496,
     nonlanded: 0,
@@ -9618,7 +9618,7 @@ const coordinate :{
   },
   "FERRELL RESIDENCES": {
     totalRent: 307675,
-    totalArea: null,
+    totalArea: 78150,
     LATITUDE: 1.3176218488283076,
     LONGITUTDE: 103.83228073046213,
     nonlanded: 41,
@@ -9634,7 +9634,7 @@ const coordinate :{
   },
   "SUI GENERIS": {
     totalRent: 551425,
-    totalArea: null,
+    totalArea: 127850,
     LATITUDE: 1.316347115590815,
     LONGITUTDE: 103.8344339531477,
     nonlanded: 67,
@@ -9650,7 +9650,7 @@ const coordinate :{
   },
   "SHELFORD SUITES": {
     totalRent: 272625,
-    totalArea: null,
+    totalArea: 77250,
     LATITUDE: 1.3266530231956695,
     LONGITUTDE: 103.8127347349891,
     nonlanded: 59,
@@ -9666,7 +9666,7 @@ const coordinate :{
   },
   "ST REGIS RESIDENCES SINGAPORE": {
     totalRent: 2260886.5,
-    totalArea: null,
+    totalArea: 442000,
     LATITUDE: 1.3055241078432565,
     LONGITUTDE: 103.82654085441511,
     nonlanded: 191,
@@ -9714,7 +9714,7 @@ const coordinate :{
   },
   DUET: {
     totalRent: 525453.5,
-    totalArea: null,
+    totalArea: 144500,
     LATITUDE: 1.3113719925881857,
     LONGITUTDE: 103.80430080023676,
     nonlanded: 78,
@@ -9738,7 +9738,7 @@ const coordinate :{
   },
   "SCOTTS 28": {
     totalRent: 1166464,
-    totalArea: null,
+    totalArea: 291650,
     LATITUDE: 1.3098570868504473,
     LONGITUTDE: 103.83496784977359,
     nonlanded: 178,
@@ -9754,7 +9754,7 @@ const coordinate :{
   },
   "THE CASCADIA": {
     totalRent: 2016792,
-    totalArea: null,
+    totalArea: 521250,
     LATITUDE: 1.3338907355696983,
     LONGITUTDE: 103.78760501066999,
     nonlanded: 473,
@@ -9770,7 +9770,7 @@ const coordinate :{
   },
   "TAN TONG MENG TOWER": {
     totalRent: 183250,
-    totalArea: null,
+    totalArea: 118950,
     LATITUDE: 1.3278429816963204,
     LONGITUTDE: 103.8416915410495,
     nonlanded: 40,
@@ -9778,7 +9778,7 @@ const coordinate :{
   },
   "TREVOSE PARK": {
     totalRent: 887998,
-    totalArea: null,
+    totalArea: 275150,
     LATITUDE: 1.3247354688955246,
     LONGITUTDE: 103.82581753232667,
     nonlanded: 169,
@@ -9834,7 +9834,7 @@ const coordinate :{
   },
   "THE EDGE ON CAIRNHILL": {
     totalRent: 256475,
-    totalArea: null,
+    totalArea: 60150,
     LATITUDE: 1.3088919274716933,
     LONGITUTDE: 103.8370609278768,
     nonlanded: 26,
@@ -9842,7 +9842,7 @@ const coordinate :{
   },
   "CITYSCAPE @FARRER PARK": {
     totalRent: 1270581.5,
-    totalArea: null,
+    totalArea: 383100,
     LATITUDE: 1.318098054091974,
     LONGITUTDE: 103.85153683519648,
     nonlanded: 329,
@@ -9858,7 +9858,7 @@ const coordinate :{
   },
   "HOLLAND PEAK": {
     totalRent: 833945,
-    totalArea: null,
+    totalArea: 282450,
     LATITUDE: 1.3091676634151506,
     LONGITUTDE: 103.80225172287835,
     nonlanded: 185,
@@ -9946,7 +9946,7 @@ const coordinate :{
   },
   "SUITES @ CAIRNHILL": {
     totalRent: 877282,
-    totalArea: null,
+    totalArea: 185350,
     LATITUDE: 1.3100644219300195,
     LONGITUTDE: 103.83657074341167,
     nonlanded: 111,
@@ -9994,7 +9994,7 @@ const coordinate :{
   },
   "SETIA RESIDENCES": {
     totalRent: 334000,
-    totalArea: null,
+    totalArea: 78000,
     LATITUDE: 1.315855209669892,
     LONGITUTDE: 103.83988097263526,
     nonlanded: 26,
@@ -10034,7 +10034,7 @@ const coordinate :{
   },
   "THE ORANGE GROVE": {
     totalRent: 979368,
-    totalArea: null,
+    totalArea: 237800,
     LATITUDE: 1.3136767223927202,
     LONGITUTDE: 103.82632801767096,
     nonlanded: 94,
@@ -10042,7 +10042,7 @@ const coordinate :{
   },
   "FABER HILLS": {
     totalRent: 1284623,
-    totalArea: null,
+    totalArea: 645850,
     LATITUDE: 1.319109864039688,
     LONGITUTDE: 103.75929535729469,
     nonlanded: 15,
@@ -10082,7 +10082,7 @@ const coordinate :{
   },
   "KATONG PLAZA": {
     totalRent: 48300,
-    totalArea: null,
+    totalArea: 21700,
     LATITUDE: 1.304115423883094,
     LONGITUTDE: 103.90394244107223,
     nonlanded: 14,
@@ -10178,7 +10178,7 @@ const coordinate :{
   },
   "THE HACIENDA": {
     totalRent: 462603.5,
-    totalArea: null,
+    totalArea: 181650,
     LATITUDE: 1.3146202344514641,
     LONGITUTDE: 103.92696482821506,
     nonlanded: 102,
@@ -10186,7 +10186,7 @@ const coordinate :{
   },
   "BELLE VUE RESIDENCES": {
     totalRent: 2726127.5,
-    totalArea: null,
+    totalArea: 614400,
     LATITUDE: 1.296650786332556,
     LONGITUTDE: 103.84184121290875,
     nonlanded: 271,
@@ -10202,7 +10202,7 @@ const coordinate :{
   },
   "YONG AN PARK": {
     totalRent: 2319316,
-    totalArea: null,
+    totalArea: 677450,
     LATITUDE: 1.2956167566559678,
     LONGITUTDE: 103.83430917346253,
     nonlanded: 264,
@@ -10226,7 +10226,7 @@ const coordinate :{
   },
   "GENTLE VILLAS": {
     totalRent: 539875,
-    totalArea: null,
+    totalArea: 166250,
     LATITUDE: 1.3215788967754574,
     LONGITUTDE: 103.84015841699552,
     nonlanded: 0,
@@ -10258,7 +10258,7 @@ const coordinate :{
   },
   "LAKEPOINT CONDOMINIUM": {
     totalRent: 630255,
-    totalArea: null,
+    totalArea: 322300,
     LATITUDE: 1.3417782657348207,
     LONGITUTDE: 103.71826675693674,
     nonlanded: 172,
@@ -10290,7 +10290,7 @@ const coordinate :{
   },
   "336 RIVER VALLEY": {
     totalRent: 333289,
-    totalArea: null,
+    totalArea: 136250,
     LATITUDE: 1.2960712408743305,
     LONGITUTDE: 103.83846952577757,
     nonlanded: 75,
@@ -10298,7 +10298,7 @@ const coordinate :{
   },
   "REGENCY PARK": {
     totalRent: 2828062.5,
-    totalArea: null,
+    totalArea: 757550,
     LATITUDE: 1.2958805535713276,
     LONGITUTDE: 103.82679746649953,
     nonlanded: 284,
@@ -10314,7 +10314,7 @@ const coordinate :{
   },
   "INTERNATIONAL PLAZA": {
     totalRent: 1061850.5,
-    totalArea: null,
+    totalArea: 324850,
     LATITUDE: 1.2759307168972807,
     LONGITUTDE: 103.84597692067555,
     nonlanded: 268,
@@ -10330,7 +10330,7 @@ const coordinate :{
   },
   "AVON PARK": {
     totalRent: 569775.5,
-    totalArea: null,
+    totalArea: 218450,
     LATITUDE: 1.3391676385683136,
     LONGITUTDE: 103.8697010251979,
     nonlanded: 136,
@@ -10370,7 +10370,7 @@ const coordinate :{
   },
   CASCADALE: {
     totalRent: 364550,
-    totalArea: null,
+    totalArea: 180850,
     LATITUDE: 1.3454220176861122,
     LONGITUTDE: 103.96389418908073,
     nonlanded: 127,
@@ -10386,7 +10386,7 @@ const coordinate :{
   },
   "THE TRILINQ": {
     totalRent: 1739179,
-    totalArea: null,
+    totalArea: 417950,
     LATITUDE: 1.318574298202709,
     LONGITUTDE: 103.76120892188784,
     nonlanded: 483,
@@ -10426,7 +10426,7 @@ const coordinate :{
   },
   "HIGH POINT": {
     totalRent: 470100,
-    totalArea: null,
+    totalArea: 183200,
     LATITUDE: 1.3084044791296956,
     LONGITUTDE: 103.83553984930028,
     nonlanded: 66,
@@ -10458,7 +10458,7 @@ const coordinate :{
   },
   "SHAW PLAZA - TWIN HEIGHTS": {
     totalRent: 363965,
-    totalArea: null,
+    totalArea: 138400,
     LATITUDE: 1.324903598460325,
     LONGITUTDE: 103.85136793082826,
     nonlanded: 91,
@@ -10482,7 +10482,7 @@ const coordinate :{
   },
   "THE CLAYMORE": {
     totalRent: 1752924,
-    totalArea: null,
+    totalArea: 425050,
     LATITUDE: 1.309181034492217,
     LONGITUTDE: 103.83167135562914,
     nonlanded: 153,
@@ -10514,7 +10514,7 @@ const coordinate :{
   },
   "THREE THREE ROBIN": {
     totalRent: 257090,
-    totalArea: null,
+    totalArea: 59750,
     LATITUDE: 1.3168841504620097,
     LONGITUTDE: 103.82874333093156,
     nonlanded: 37,
@@ -10626,7 +10626,7 @@ const coordinate :{
   },
   "TAN CHIN TUAN MANSION": {
     totalRent: 472937.5,
-    totalArea: null,
+    totalArea: 87000,
     LATITUDE: 1.305310029516181,
     LONGITUTDE: 103.83769178437122,
     nonlanded: 29,
@@ -10642,7 +10642,7 @@ const coordinate :{
   },
   "ST THOMAS SUITES": {
     totalRent: 2191998.5,
-    totalArea: null,
+    totalArea: 442550,
     LATITUDE: 1.2984996341570674,
     LONGITUTDE: 103.83584459902295,
     nonlanded: 195,
@@ -10706,7 +10706,7 @@ const coordinate :{
   },
   "JUNIPER AT ARDMORE": {
     totalRent: 137175,
-    totalArea: null,
+    totalArea: 35250,
     LATITUDE: 1.30881360041898,
     LONGITUTDE: 103.82959049683338,
     nonlanded: 12,
@@ -10730,7 +10730,7 @@ const coordinate :{
   },
   "THE LINCOLN MODERN": {
     totalRent: 289550,
-    totalArea: null,
+    totalArea: 80800,
     LATITUDE: 1.3152695786428281,
     LONGITUTDE: 103.84300579867188,
     nonlanded: 59,
@@ -10754,7 +10754,7 @@ const coordinate :{
   },
   "THE METROPOLITAN CONDOMINIUM": {
     totalRent: 1967112.5,
-    totalArea: null,
+    totalArea: 478650,
     LATITUDE: 1.2905460173378784,
     LONGITUTDE: 103.81594171786827,
     nonlanded: 377,
@@ -10762,7 +10762,7 @@ const coordinate :{
   },
   "THE LIGHT @ CAIRNHILL": {
     totalRent: 1050925,
-    totalArea: null,
+    totalArea: 242500,
     LATITUDE: 1.306366876976358,
     LONGITUTDE: 103.83835462249584,
     nonlanded: 148,
@@ -10810,7 +10810,7 @@ const coordinate :{
   },
   "GRANDE VISTA": {
     totalRent: 466036,
-    totalArea: null,
+    totalArea: 236950,
     LATITUDE: 1.3883494576746847,
     LONGITUTDE: 103.85136760060671,
     nonlanded: 129,
@@ -10842,7 +10842,7 @@ const coordinate :{
   },
   "ONE TREE HILL RESIDENCE": {
     totalRent: 443575,
-    totalArea: null,
+    totalArea: 105250,
     LATITUDE: 1.300701454455679,
     LONGITUTDE: 103.82458769664122,
     nonlanded: 74,
@@ -10858,7 +10858,7 @@ const coordinate :{
   },
   ALTEZ: {
     totalRent: 3242305.5,
-    totalArea: null,
+    totalArea: 506250,
     LATITUDE: 1.2747017997957666,
     LONGITUTDE: 103.8443908070964,
     nonlanded: 561,
@@ -10866,7 +10866,7 @@ const coordinate :{
   },
   "NASSIM MANSION": {
     totalRent: 985633,
-    totalArea: null,
+    totalArea: 221800,
     LATITUDE: 1.3101433622479535,
     LONGITUTDE: 103.81927539530436,
     nonlanded: 75,
@@ -10882,7 +10882,7 @@ const coordinate :{
   },
   "D'GROVE VILLAS": {
     totalRent: 476701.5,
-    totalArea: null,
+    totalArea: 165600,
     LATITUDE: 1.3090856904391817,
     LONGITUTDE: 103.8276519971346,
     nonlanded: 68,
@@ -10914,7 +10914,7 @@ const coordinate :{
   },
   "RESIDENCES @ KILLINEY": {
     totalRent: 862292,
-    totalArea: null,
+    totalArea: 171650,
     LATITUDE: 1.2968087351659512,
     LONGITUTDE: 103.83811763914868,
     nonlanded: 112,
@@ -10962,7 +10962,7 @@ const coordinate :{
   },
   "LUSH ON HOLLAND HILL": {
     totalRent: 468320,
-    totalArea: null,
+    totalArea: 120750,
     LATITUDE: 1.308949967016369,
     LONGITUTDE: 103.80055671395596,
     nonlanded: 74,
@@ -10978,7 +10978,7 @@ const coordinate :{
   },
   "BOULEVARD VUE": {
     totalRent: 280750,
-    totalArea: null,
+    totalArea: 39000,
     LATITUDE: 1.3031650389803837,
     LONGITUTDE: 103.82897634019245,
     nonlanded: 13,
@@ -11002,7 +11002,7 @@ const coordinate :{
   },
   "THE BOTANIC ON LLOYD": {
     totalRent: 833350,
-    totalArea: null,
+    totalArea: 187900,
     LATITUDE: 1.2968772493733836,
     LONGITUTDE: 103.83931037742168,
     nonlanded: 89,
@@ -11010,7 +11010,7 @@ const coordinate :{
   },
   "THREE BALMORAL": {
     totalRent: 318553,
-    totalArea: null,
+    totalArea: 71450,
     LATITUDE: 1.3140124817750198,
     LONGITUTDE: 103.83052120647392,
     nonlanded: 64,
@@ -11026,7 +11026,7 @@ const coordinate :{
   },
   "PEOPLE'S PARK COMPLEX": {
     totalRent: 775083,
-    totalArea: null,
+    totalArea: 224400,
     LATITUDE: 1.2841996042982031,
     LONGITUTDE: 103.84264918781342,
     nonlanded: 281,
@@ -11042,7 +11042,7 @@ const coordinate :{
   },
   "BEDOK COURT": {
     totalRent: 374030,
-    totalArea: null,
+    totalArea: 195500,
     LATITUDE: 1.3215185057058094,
     LONGITUTDE: 103.9446260450563,
     nonlanded: 98,
@@ -11050,7 +11050,7 @@ const coordinate :{
   },
   "SKYLINE 360 @ SAINT THOMAS WALK": {
     totalRent: 852655,
-    totalArea: null,
+    totalArea: 159000,
     LATITUDE: 1.2968149565587934,
     LONGITUTDE: 103.83679614482571,
     nonlanded: 78,
@@ -11122,7 +11122,7 @@ const coordinate :{
   },
   "NASSIM PARK RESIDENCES": {
     totalRent: 1843750.5,
-    totalArea: null,
+    totalArea: 225000,
     LATITUDE: 1.3078119305579319,
     LONGITUTDE: 103.82305864839746,
     nonlanded: 75,
@@ -11218,7 +11218,7 @@ const coordinate :{
   },
   "THE MORNINGSIDE": {
     totalRent: 599850,
-    totalArea: null,
+    totalArea: 181750,
     LATITUDE: 1.295332020587528,
     LONGITUTDE: 103.8359216021455,
     nonlanded: 94,
@@ -11234,7 +11234,7 @@ const coordinate :{
   },
   "MARINA COLLECTION": {
     totalRent: 1985635,
-    totalArea: null,
+    totalArea: 439750,
     LATITUDE: 1.2442511608051656,
     LONGITUTDE: 103.83972697329857,
     nonlanded: 190,
@@ -11258,7 +11258,7 @@ const coordinate :{
   },
   "THE DRAYCOTT": {
     totalRent: 1155169,
-    totalArea: null,
+    totalArea: 370100,
     LATITUDE: 1.3117378714819472,
     LONGITUTDE: 103.83171966210438,
     nonlanded: 161,
@@ -11282,7 +11282,7 @@ const coordinate :{
   },
   "CAVENAGH COURT": {
     totalRent: 257175,
-    totalArea: null,
+    totalArea: 95650,
     LATITUDE: 1.3099590874020262,
     LONGITUTDE: 103.84308880846511,
     nonlanded: 48,
@@ -11290,7 +11290,7 @@ const coordinate :{
   },
   "BUCKLEY CLASSIQUE": {
     totalRent: 671160,
-    totalArea: null,
+    totalArea: 139900,
     LATITUDE: 1.317871287512497,
     LONGITUTDE: 103.84027524507414,
     nonlanded: 88,
@@ -11298,7 +11298,7 @@ const coordinate :{
   },
   SEASCAPE: {
     totalRent: 3091337,
-    totalArea: null,
+    totalArea: 639300,
     LATITUDE: 1.2398697585401324,
     LONGITUTDE: 103.8383099362135,
     nonlanded: 252,
@@ -11314,7 +11314,7 @@ const coordinate :{
   },
   "BEAVERTON COURT": {
     totalRent: 357972,
-    totalArea: null,
+    totalArea: 116600,
     LATITUDE: 1.3159974004642918,
     LONGITUTDE: 103.7760038100487,
     nonlanded: 45,
@@ -11402,7 +11402,7 @@ const coordinate :{
   },
   WOODHAVEN: {
     totalRent: 1554067.5,
-    totalArea: null,
+    totalArea: 524200,
     LATITUDE: 1.4309435202293381,
     LONGITUTDE: 103.78398122071248,
     nonlanded: 475,
@@ -11442,7 +11442,7 @@ const coordinate :{
   },
   "LEONIE PARC VIEW": {
     totalRent: 502925,
-    totalArea: null,
+    totalArea: 117900,
     LATITUDE: 1.2989250926907265,
     LONGITUTDE: 103.83420873415287,
     nonlanded: 54,
@@ -11458,7 +11458,7 @@ const coordinate :{
   },
   "DUCHESS RESIDENCES": {
     totalRent: 1122855,
-    totalArea: null,
+    totalArea: 309450,
     LATITUDE: 1.3240973848166193,
     LONGITUTDE: 103.80150709972298,
     nonlanded: 143,
@@ -11514,7 +11514,7 @@ const coordinate :{
   },
   "THOMSON GARDEN ESTATE": {
     totalRent: 443360,
-    totalArea: null,
+    totalArea: 179500,
     LATITUDE: 1.35321915925074,
     LONGITUTDE: 103.83907247306435,
     nonlanded: 0,
@@ -11570,7 +11570,7 @@ const coordinate :{
   },
   "SENNETT ESTATE": {
     totalRent: 1293698,
-    totalArea: null,
+    totalArea: 538150,
     LATITUDE: 1.331764029833633,
     LONGITUTDE: 103.87467874868119,
     nonlanded: 155,
@@ -11682,7 +11682,7 @@ const coordinate :{
   },
   "LLOYD SIXTYFIVE": {
     totalRent: 1197861,
-    totalArea: null,
+    totalArea: 188000,
     LATITUDE: 1.297215337880335,
     LONGITUTDE: 103.8388581263605,
     nonlanded: 142,
@@ -11706,7 +11706,7 @@ const coordinate :{
   },
   "FUYONG ESTATE": {
     totalRent: 195093,
-    totalArea: null,
+    totalArea: 111250,
     LATITUDE: 1.361240114596505,
     LONGITUTDE: 103.76782390317224,
     nonlanded: 0,
@@ -11746,7 +11746,7 @@ const coordinate :{
   },
   "THE SCOTTS TOWER": {
     totalRent: 2169983,
-    totalArea: null,
+    totalArea: 349900,
     LATITUDE: 1.310061402540261,
     LONGITUTDE: 103.83557228772372,
     nonlanded: 415,
@@ -11762,7 +11762,7 @@ const coordinate :{
   },
   "SKY@ELEVEN": {
     totalRent: 1902034.5,
-    totalArea: null,
+    totalArea: 494950,
     LATITUDE: 1.3317334367114146,
     LONGITUTDE: 103.84164636915091,
     nonlanded: 200,
@@ -11778,7 +11778,7 @@ const coordinate :{
   },
   "BAN GUAN PARK": {
     totalRent: 1726764,
-    totalArea: null,
+    totalArea: 682000,
     LATITUDE: 1.3244155560908388,
     LONGITUTDE: 103.78742733193864,
     nonlanded: 0,
@@ -11858,7 +11858,7 @@ const coordinate :{
   },
   "THE IMPERIAL": {
     totalRent: 1674375,
-    totalArea: null,
+    totalArea: 345500,
     LATITUDE: 1.2946639052794504,
     LONGITUTDE: 103.842446334458,
     nonlanded: 224,
@@ -11922,7 +11922,7 @@ const coordinate :{
   },
   NOMU: {
     totalRent: 507317,
-    totalArea: null,
+    totalArea: 106500,
     LATITUDE: 1.2997400009630748,
     LONGITUTDE: 103.8470413356787,
     nonlanded: 109,
@@ -11954,7 +11954,7 @@ const coordinate :{
   },
   "THE TRIZON": {
     totalRent: 2178060,
-    totalArea: null,
+    totalArea: 582350,
     LATITUDE: 1.3173470740406534,
     LONGITUTDE: 103.7778074007778,
     nonlanded: 349,
@@ -12026,7 +12026,7 @@ const coordinate :{
   },
   ORION: {
     totalRent: 555520,
-    totalArea: null,
+    totalArea: 129050,
     LATITUDE: 1.3086851968955495,
     LONGITUTDE: 103.82766867517829,
     nonlanded: 78,
@@ -12034,7 +12034,7 @@ const coordinate :{
   },
   "8 NAPIER": {
     totalRent: 1129425,
-    totalArea: null,
+    totalArea: 169950,
     LATITUDE: 1.3069800772045113,
     LONGITUTDE: 103.82063309396045,
     nonlanded: 72,
@@ -12050,7 +12050,7 @@ const coordinate :{
   },
   "SHEARES VILLE": {
     totalRent: 301925,
-    totalArea: null,
+    totalArea: 85800,
     LATITUDE: 1.2933266393598546,
     LONGITUTDE: 103.82534114260224,
     nonlanded: 52,
@@ -12082,7 +12082,7 @@ const coordinate :{
   },
   "LE CRESCENDO": {
     totalRent: 568566,
-    totalArea: null,
+    totalArea: 183900,
     LATITUDE: 1.3305538407922919,
     LONGITUTDE: 103.8883507632483,
     nonlanded: 173,
@@ -12090,7 +12090,7 @@ const coordinate :{
   },
   SAGE: {
     totalRent: 1081700,
-    totalArea: null,
+    totalArea: 170050,
     LATITUDE: 1.3077667339201602,
     LONGITUTDE: 103.82424280980318,
     nonlanded: 59,
@@ -12098,7 +12098,7 @@ const coordinate :{
   },
   "GALLOP GABLES": {
     totalRent: 1429117,
-    totalArea: null,
+    totalArea: 381600,
     LATITUDE: 1.3147158705181474,
     LONGITUTDE: 103.80762764194283,
     nonlanded: 200,
@@ -12122,7 +12122,7 @@ const coordinate :{
   },
   "MACPHERSON GARDEN ESTATE": {
     totalRent: 348895,
-    totalArea: null,
+    totalArea: 120500,
     LATITUDE: 1.3323465366360365,
     LONGITUTDE: 103.88138563471117,
     nonlanded: 0,
@@ -12154,7 +12154,7 @@ const coordinate :{
   },
   "SOUTH BEACH RESIDENCES": {
     totalRent: 1562400,
-    totalArea: null,
+    totalArea: 177000,
     LATITUDE: 1.294442733426494,
     LONGITUTDE: 103.85608329414273,
     nonlanded: 106,
@@ -12162,7 +12162,7 @@ const coordinate :{
   },
   "WINDY HEIGHTS": {
     totalRent: 308437.5,
-    totalArea: null,
+    totalArea: 162300,
     LATITUDE: 1.3275373983952596,
     LONGITUTDE: 103.91063642714009,
     nonlanded: 65,
@@ -12186,7 +12186,7 @@ const coordinate :{
   },
   "HORIZON TOWERS": {
     totalRent: 1530705.5,
-    totalArea: null,
+    totalArea: 530800,
     LATITUDE: 1.2975404717718693,
     LONGITUTDE: 103.83261217123732,
     nonlanded: 220,
@@ -12202,7 +12202,7 @@ const coordinate :{
   },
   "TANGLIN HILL CONDOMINIUM": {
     totalRent: 669900,
-    totalArea: null,
+    totalArea: 232000,
     LATITUDE: 1.3023337637298318,
     LONGITUTDE: 103.81771382611092,
     nonlanded: 78,
@@ -12210,7 +12210,7 @@ const coordinate :{
   },
   "THE MARQ ON PATERSON HILL": {
     totalRent: 1608900,
-    totalArea: null,
+    totalArea: 135000,
     LATITUDE: 1.3002469068470608,
     LONGITUTDE: 103.82902632281858,
     nonlanded: 45,
@@ -12226,7 +12226,7 @@ const coordinate :{
   },
   "PEACE CENTRE / MANSIONS": {
     totalRent: 340538,
-    totalArea: null,
+    totalArea: 196600,
     LATITUDE: 1.3011607216192211,
     LONGITUTDE: 103.84922473335232,
     nonlanded: 82,
@@ -12234,7 +12234,7 @@ const coordinate :{
   },
   "THE VERMONT ON CAIRNHILL": {
     totalRent: 1439527,
-    totalArea: null,
+    totalArea: 284100,
     LATITUDE: 1.3090809175291434,
     LONGITUTDE: 103.83822079946344,
     nonlanded: 224,
@@ -12258,7 +12258,7 @@ const coordinate :{
   },
   "VILLAGE TOWER": {
     totalRent: 146750,
-    totalArea: null,
+    totalArea: 51100,
     LATITUDE: 1.315097028961059,
     LONGITUTDE: 103.77785551631713,
     nonlanded: 23,
@@ -12290,7 +12290,7 @@ const coordinate :{
   },
   AALTO: {
     totalRent: 1034324,
-    totalArea: null,
+    totalArea: 262850,
     LATITUDE: 1.298071007574063,
     LONGITUTDE: 103.89742209232543,
     nonlanded: 149,
@@ -12338,7 +12338,7 @@ const coordinate :{
   },
   "OPERA ESTATE": {
     totalRent: 952270,
-    totalArea: null,
+    totalArea: 428700,
     LATITUDE: 1.3206481938141665,
     LONGITUTDE: 103.9270112410541,
     nonlanded: 18,
@@ -12370,7 +12370,7 @@ const coordinate :{
   },
   "WING ON LIFE GARDEN": {
     totalRent: 461683,
-    totalArea: null,
+    totalArea: 132000,
     LATITUDE: 1.3174277744841745,
     LONGITUTDE: 103.83157893005591,
     nonlanded: 44,
@@ -12386,7 +12386,7 @@ const coordinate :{
   },
   "LOYANG VALLEY": {
     totalRent: 829420,
-    totalArea: null,
+    totalArea: 423850,
     LATITUDE: 1.3691519590699865,
     LONGITUTDE: 103.97062751287203,
     nonlanded: 264,
@@ -12434,7 +12434,7 @@ const coordinate :{
   },
   "THE OLIV": {
     totalRent: 657784.5,
-    totalArea: null,
+    totalArea: 109500,
     LATITUDE: 1.3148875372129585,
     LONGITUTDE: 103.83151744744806,
     nonlanded: 37,
@@ -12442,7 +12442,7 @@ const coordinate :{
   },
   TRIBECA: {
     totalRent: 1278175.5,
-    totalArea: null,
+    totalArea: 287800,
     LATITUDE: 1.2909860647378293,
     LONGITUTDE: 103.83441513313869,
     nonlanded: 257,
@@ -12562,7 +12562,7 @@ const coordinate :{
   },
   "LA SUISSE": {
     totalRent: 1051025,
-    totalArea: null,
+    totalArea: 380950,
     LATITUDE: 1.3471038229434884,
     LONGITUTDE: 103.79065426254925,
     nonlanded: 147,
@@ -12594,7 +12594,7 @@ const coordinate :{
   },
   "HAWAII TOWER": {
     totalRent: 630671,
-    totalArea: null,
+    totalArea: 273800,
     LATITUDE: 1.2969565970026586,
     LONGITUTDE: 103.8905733976917,
     nonlanded: 121,
@@ -12722,7 +12722,7 @@ const coordinate :{
   },
   "GOODWOOD RESIDENCE": {
     totalRent: 3204606,
-    totalArea: null,
+    totalArea: 576250,
     LATITUDE: 1.3150510873339591,
     LONGITUTDE: 103.835571581408,
     nonlanded: 252,
@@ -12746,7 +12746,7 @@ const coordinate :{
   },
   "OLA RESIDENCES": {
     totalRent: 277075,
-    totalArea: null,
+    totalArea: 79200,
     LATITUDE: 1.3030584533088656,
     LONGITUTDE: 103.89904410411141,
     nonlanded: 52,
@@ -12754,7 +12754,7 @@ const coordinate :{
   },
   "TOMLINSON HEIGHTS": {
     totalRent: 1209944,
-    totalArea: null,
+    totalArea: 176500,
     LATITUDE: 1.3030184461852612,
     LONGITUTDE: 103.82700078337963,
     nonlanded: 62,
@@ -12778,7 +12778,7 @@ const coordinate :{
   },
   "THE EQUATORIAL": {
     totalRent: 548106,
-    totalArea: null,
+    totalArea: 153600,
     LATITUDE: 1.320228365357134,
     LONGITUTDE: 103.82476234538191,
     nonlanded: 99,
@@ -12794,7 +12794,7 @@ const coordinate :{
   },
   "LIANG SEAH PLACE": {
     totalRent: 276922,
-    totalArea: null,
+    totalArea: 71950,
     LATITUDE: 1.2980033161888636,
     LONGITUTDE: 103.85627749719461,
     nonlanded: 76,
@@ -12826,7 +12826,7 @@ const coordinate :{
   },
   "JERVOIS MANSIONS": {
     totalRent: 244475.5,
-    totalArea: null,
+    totalArea: 90750,
     LATITUDE: 1.292671959852457,
     LONGITUTDE: 103.82411272214787,
     nonlanded: 41,
@@ -12850,7 +12850,7 @@ const coordinate :{
   },
   "LANDBAY CONDOMINIUM": {
     totalRent: 432688,
-    totalArea: null,
+    totalArea: 147000,
     LATITUDE: 1.3128529681373704,
     LONGITUTDE: 103.93591275079507,
     nonlanded: 135,
@@ -12930,7 +12930,7 @@ const coordinate :{
   },
   "MADISON RESIDENCES": {
     totalRent: 440350,
-    totalArea: null,
+    totalArea: 105050,
     LATITUDE: 1.31853477192048,
     LONGITUTDE: 103.82999810940788,
     nonlanded: 55,
@@ -12938,7 +12938,7 @@ const coordinate :{
   },
   "THE VIEW @ MEYER": {
     totalRent: 262820,
-    totalArea: null,
+    totalArea: 79050,
     LATITUDE: 1.298310022239599,
     LONGITUTDE: 103.88710986234352,
     nonlanded: 48,
@@ -12970,7 +12970,7 @@ const coordinate :{
   },
   MONTVIEW: {
     totalRent: 542525,
-    totalArea: null,
+    totalArea: 160850,
     LATITUDE: 1.316637160015219,
     LONGITUTDE: 103.77740424523354,
     nonlanded: 98,
@@ -13018,7 +13018,7 @@ const coordinate :{
   },
   "ORCHARD BEL AIR": {
     totalRent: 509725,
-    totalArea: null,
+    totalArea: 170400,
     LATITUDE: 1.3022557173729852,
     LONGITUTDE: 103.82503652057613,
     nonlanded: 57,
@@ -13082,7 +13082,7 @@ const coordinate :{
   },
   "MEIER SUITES": {
     totalRent: 436046,
-    totalArea: null,
+    totalArea: 127750,
     LATITUDE: 1.2988413778048424,
     LONGITUTDE: 103.8885741224139,
     nonlanded: 55,
@@ -13114,7 +13114,7 @@ const coordinate :{
   },
   "TERESA VILLE": {
     totalRent: 758645,
-    totalArea: null,
+    totalArea: 319500,
     LATITUDE: 1.2760819256227007,
     LONGITUTDE: 103.82408835506739,
     nonlanded: 179,
@@ -13122,7 +13122,7 @@ const coordinate :{
   },
   "TREASURE ON BALMORAL": {
     totalRent: 1224050.5,
-    totalArea: null,
+    totalArea: 311750,
     LATITUDE: 1.3140290894189308,
     LONGITUTDE: 103.83006278879975,
     nonlanded: 150,
@@ -13138,7 +13138,7 @@ const coordinate :{
   },
   "BRADDELL HEIGHTS ESTATE": {
     totalRent: 1194990,
-    totalArea: null,
+    totalArea: 498500,
     LATITUDE: 1.3431555666023607,
     LONGITUTDE: 103.86188628200051,
     nonlanded: 0,
@@ -13162,7 +13162,7 @@ const coordinate :{
   },
   "LEONIE HILL RESIDENCES": {
     totalRent: 646075,
-    totalArea: null,
+    totalArea: 146050,
     LATITUDE: 1.297253450717283,
     LONGITUTDE: 103.83327550106185,
     nonlanded: 108,
@@ -13210,7 +13210,7 @@ const coordinate :{
   },
   "RIVERWALK APARTMENTS": {
     totalRent: 801142.5,
-    totalArea: null,
+    totalArea: 213150,
     LATITUDE: 1.2890633280006072,
     LONGITUTDE: 103.84849124024957,
     nonlanded: 162,
@@ -13218,7 +13218,7 @@ const coordinate :{
   },
   "PATERSON RESIDENCE": {
     totalRent: 1179376.5,
-    totalArea: null,
+    totalArea: 257150,
     LATITUDE: 1.3001767474601806,
     LONGITUTDE: 103.83015708737156,
     nonlanded: 170,
@@ -13234,7 +13234,7 @@ const coordinate :{
   },
   "THE BOULEVARD RESIDENCE": {
     totalRent: 462300,
-    totalArea: null,
+    totalArea: 94900,
     LATITUDE: 1.3039990971693112,
     LONGITUTDE: 103.82882228414208,
     nonlanded: 47,
@@ -13242,7 +13242,7 @@ const coordinate :{
   },
   "KIM LIN PARK": {
     totalRent: 795350,
-    totalArea: null,
+    totalArea: 278000,
     LATITUDE: 1.3005331320405276,
     LONGITUTDE: 103.82626387109967,
     nonlanded: 0,
@@ -13266,7 +13266,7 @@ const coordinate :{
   },
   "THE TRUMPS": {
     totalRent: 616500,
-    totalArea: null,
+    totalArea: 185900,
     LATITUDE: 1.3201041959987885,
     LONGITUTDE: 103.91343875766299,
     nonlanded: 173,
@@ -13274,7 +13274,7 @@ const coordinate :{
   },
   "BOON TECK LODGE": {
     totalRent: 101750,
-    totalArea: null,
+    totalArea: 38200,
     LATITUDE: 1.3276075368539002,
     LONGITUTDE: 103.85097806134864,
     nonlanded: 25,
@@ -13354,7 +13354,7 @@ const coordinate :{
   },
   "HILLCREST PARK": {
     totalRent: 1420113,
-    totalArea: null,
+    totalArea: 578450,
     LATITUDE: 1.3321521942924852,
     LONGITUTDE: 103.8065948942171,
     nonlanded: 22,
@@ -13394,7 +13394,7 @@ const coordinate :{
   },
   "MARTIN NO 38": {
     totalRent: 920625,
-    totalArea: null,
+    totalArea: 148400,
     LATITUDE: 1.2921861207471201,
     LONGITUTDE: 103.83813250576183,
     nonlanded: 122,
@@ -13410,7 +13410,7 @@ const coordinate :{
   },
   "THE COLONNADE": {
     totalRent: 2330820.5,
-    totalArea: null,
+    totalArea: 492450,
     LATITUDE: 1.299677988249318,
     LONGITUTDE: 103.82751438990863,
     nonlanded: 167,
@@ -13498,7 +13498,7 @@ const coordinate :{
   },
   "THE TRILLIUM": {
     totalRent: 2138657,
-    totalArea: null,
+    totalArea: 461250,
     LATITUDE: 1.294700818634504,
     LONGITUTDE: 103.83253716893712,
     nonlanded: 258,
@@ -13530,7 +13530,7 @@ const coordinate :{
   },
   "THE SIXTH AVENUE RESIDENCES": {
     totalRent: 1032565,
-    totalArea: null,
+    totalArea: 304600,
     LATITUDE: 1.327417864238137,
     LONGITUTDE: 103.792653792137,
     nonlanded: 185,
@@ -13546,7 +13546,7 @@ const coordinate :{
   },
   "THE FORD @ HOLLAND": {
     totalRent: 685905.5,
-    totalArea: null,
+    totalArea: 146550,
     LATITUDE: 1.3135596063554795,
     LONGITUTDE: 103.79389859381699,
     nonlanded: 177,
@@ -13594,7 +13594,7 @@ const coordinate :{
   },
   "RAJAH TOWERS": {
     totalRent: 196030,
-    totalArea: null,
+    totalArea: 104000,
     LATITUDE: 1.3274952518735343,
     LONGITUTDE: 103.8488151381554,
     nonlanded: 48,
@@ -13778,7 +13778,7 @@ const coordinate :{
   },
   "MUTIARA CREST": {
     totalRent: 211100,
-    totalArea: null,
+    totalArea: 62300,
     LATITUDE: 1.2959346765053117,
     LONGITUTDE: 103.82943802382219,
     nonlanded: 47,
@@ -13818,7 +13818,7 @@ const coordinate :{
   },
   "REGENCY SUITES": {
     totalRent: 554775,
-    totalArea: null,
+    totalArea: 120900,
     LATITUDE: 1.2842743066541533,
     LONGITUTDE: 103.82905512625804,
     nonlanded: 96,
@@ -13834,7 +13834,7 @@ const coordinate :{
   },
   MIRO: {
     totalRent: 775576.5,
-    totalArea: null,
+    totalArea: 202500,
     LATITUDE: 1.3140195193896638,
     LONGITUTDE: 103.84242983140845,
     nonlanded: 127,
@@ -13866,7 +13866,7 @@ const coordinate :{
   },
   "PARC VERA": {
     totalRent: 660075.5,
-    totalArea: null,
+    totalArea: 220100,
     LATITUDE: 1.363851231076462,
     LONGITUTDE: 103.8953824501878,
     nonlanded: 229,
@@ -13890,7 +13890,7 @@ const coordinate :{
   },
   GLENTREES: {
     totalRent: 1069255,
-    totalArea: null,
+    totalArea: 331700,
     LATITUDE: 1.316522084369213,
     LONGITUTDE: 103.78539046237954,
     nonlanded: 168,
@@ -13898,7 +13898,7 @@ const coordinate :{
   },
   "BALMORAL HILLS": {
     totalRent: 494840,
-    totalArea: null,
+    totalArea: 135800,
     LATITUDE: 1.316260577403368,
     LONGITUTDE: 103.82821195375239,
     nonlanded: 73,
@@ -13930,7 +13930,7 @@ const coordinate :{
   },
   "CHELSEA GARDENS": {
     totalRent: 349225,
-    totalArea: null,
+    totalArea: 101800,
     LATITUDE: 1.313040002890004,
     LONGITUTDE: 103.82729295447096,
     nonlanded: 45,
@@ -13978,7 +13978,7 @@ const coordinate :{
   },
   "NEWTON ONE": {
     totalRent: 712319,
-    totalArea: null,
+    totalArea: 170300,
     LATITUDE: 1.3141395822484838,
     LONGITUTDE: 103.83939753018586,
     nonlanded: 101,
@@ -14002,7 +14002,7 @@ const coordinate :{
   },
   "LEONIE TOWERS": {
     totalRent: 900715,
-    totalArea: null,
+    totalArea: 305450,
     LATITUDE: 1.2970942363278246,
     LONGITUTDE: 103.83187921169129,
     nonlanded: 104,
@@ -14018,7 +14018,7 @@ const coordinate :{
   },
   "FAR HORIZON GARDENS": {
     totalRent: 425532,
-    totalArea: null,
+    totalArea: 199950,
     LATITUDE: 1.3832928774982773,
     LONGITUTDE: 103.8391306781766,
     nonlanded: 141,
@@ -14074,7 +14074,7 @@ const coordinate :{
   },
   "DE ROYALE": {
     totalRent: 453086.5,
-    totalArea: null,
+    totalArea: 149050,
     LATITUDE: 1.328311613621866,
     LONGITUTDE: 103.84917076869841,
     nonlanded: 122,
@@ -14090,7 +14090,7 @@ const coordinate :{
   },
   "MARINE BLUE": {
     totalRent: 597150,
-    totalArea: null,
+    totalArea: 133400,
     LATITUDE: 1.3039970318987697,
     LONGITUTDE: 103.90482316417705,
     nonlanded: 161,
@@ -14138,7 +14138,7 @@ const coordinate :{
   },
   "38 AMBER": {
     totalRent: 358220,
-    totalArea: null,
+    totalArea: 101150,
     LATITUDE: 1.3006504517867319,
     LONGITUTDE: 103.90078507622935,
     nonlanded: 91,
@@ -14146,7 +14146,7 @@ const coordinate :{
   },
   "NOVENA SUITES": {
     totalRent: 514755,
-    totalArea: null,
+    totalArea: 114200,
     LATITUDE: 1.3188135254466777,
     LONGITUTDE: 103.84467519100822,
     nonlanded: 139,
@@ -14226,7 +14226,7 @@ const coordinate :{
   },
   "CLEMENTI PARK": {
     totalRent: 2797304.5,
-    totalArea: null,
+    totalArea: 1234650,
     LATITUDE: 1.324562111775682,
     LONGITUTDE: 103.76543796779741,
     nonlanded: 339,
@@ -14282,7 +14282,7 @@ const coordinate :{
   },
   "DUNEARN ESTATE": {
     totalRent: 909502,
-    totalArea: null,
+    totalArea: 344000,
     LATITUDE: 1.3264539605364405,
     LONGITUTDE: 103.82201819489141,
     nonlanded: 0,
@@ -14298,7 +14298,7 @@ const coordinate :{
   },
   "MOUNT FABER LODGE": {
     totalRent: 431363,
-    totalArea: null,
+    totalArea: 161350,
     LATITUDE: 1.2688378531120268,
     LONGITUTDE: 103.82468902647508,
     nonlanded: 76,
@@ -14314,7 +14314,7 @@ const coordinate :{
   },
   "THE CORNWALL": {
     totalRent: 823000,
-    totalArea: null,
+    totalArea: 213450,
     LATITUDE: 1.31251810234211,
     LONGITUTDE: 103.80072697186246,
     nonlanded: 166,
@@ -14346,7 +14346,7 @@ const coordinate :{
   },
   "WOODGROVE CONDOMINIUM": {
     totalRent: 670652.5,
-    totalArea: null,
+    totalArea: 269050,
     LATITUDE: 1.4293343884772851,
     LONGITUTDE: 103.78302952135255,
     nonlanded: 162,
@@ -14362,7 +14362,7 @@ const coordinate :{
   },
   "VISIN APARTMENTS": {
     totalRent: 154350,
-    totalArea: null,
+    totalArea: 47550,
     LATITUDE: 1.3161325617582942,
     LONGITUTDE: 103.8428195592939,
     nonlanded: 44,
@@ -14370,7 +14370,7 @@ const coordinate :{
   },
   "STARLIGHT SUITES": {
     totalRent: 841677.5,
-    totalArea: null,
+    totalArea: 183850,
     LATITUDE: 1.2936502151508242,
     LONGITUTDE: 103.83720315030484,
     nonlanded: 200,
@@ -14386,7 +14386,7 @@ const coordinate :{
   },
   "MEADOWS @ PEIRCE": {
     totalRent: 1195715,
-    totalArea: null,
+    totalArea: 476000,
     LATITUDE: 1.3812768228262393,
     LONGITUTDE: 103.82750230698426,
     nonlanded: 331,
@@ -14394,7 +14394,7 @@ const coordinate :{
   },
   "THE GRANGE": {
     totalRent: 1179303,
-    totalArea: null,
+    totalArea: 259500,
     LATITUDE: 1.3014254699268804,
     LONGITUTDE: 103.8241868737539,
     nonlanded: 123,
@@ -14442,7 +14442,7 @@ const coordinate :{
   },
   "THE ARTE": {
     totalRent: 1186938,
-    totalArea: null,
+    totalArea: 373150,
     LATITUDE: 1.3284442773184626,
     LONGITUTDE: 103.84233776965971,
     nonlanded: 238,
@@ -14458,7 +14458,7 @@ const coordinate :{
   },
   "21 ANDERSON": {
     totalRent: 541050,
-    totalArea: null,
+    totalArea: 118050,
     LATITUDE: 1.3127179112405158,
     LONGITUTDE: 103.82805184429625,
     nonlanded: 59,
@@ -14554,7 +14554,7 @@ const coordinate :{
   },
   "SOUTHAVEN II": {
     totalRent: 768470,
-    totalArea: null,
+    totalArea: 318400,
     LATITUDE: 1.3464634613448294,
     LONGITUTDE: 103.77358004383822,
     nonlanded: 224,
@@ -14650,7 +14650,7 @@ const coordinate :{
   },
   "THE RITZ-CARLTON RESIDENCES SINGAPORE CAIRNHILL": {
     totalRent: 689230,
-    totalArea: null,
+    totalArea: 112950,
     LATITUDE: 1.3079629540264792,
     LONGITUTDE: 103.83611907782947,
     nonlanded: 39,
@@ -14666,7 +14666,7 @@ const coordinate :{
   },
   "CLEMENTIWOODS CONDOMINIUM": {
     totalRent: 901844,
-    totalArea: null,
+    totalArea: 265250,
     LATITUDE: 1.2966561132405345,
     LONGITUTDE: 103.7682721550321,
     nonlanded: 208,
@@ -14722,7 +14722,7 @@ const coordinate :{
   },
   "WATERFALL GARDENS": {
     totalRent: 1084095,
-    totalArea: null,
+    totalArea: 275050,
     LATITUDE: 1.3115704977312843,
     LONGITUTDE: 103.8048015142044,
     nonlanded: 128,
@@ -14738,7 +14738,7 @@ const coordinate :{
   },
   "LEONIE GARDENS": {
     totalRent: 1129559.5,
-    totalArea: null,
+    totalArea: 357200,
     LATITUDE: 1.2981925214346877,
     LONGITUTDE: 103.83263467878052,
     nonlanded: 158,
@@ -14810,7 +14810,7 @@ const coordinate :{
   },
   "REIGNWOOD HAMILTON SCOTTS": {
     totalRent: 819696.5,
-    totalArea: null,
+    totalArea: 160000,
     LATITUDE: 1.3113669343310999,
     LONGITUTDE: 103.83602056179485,
     nonlanded: 58,
@@ -14946,7 +14946,7 @@ const coordinate :{
   },
   "CASA CAIRNHILL": {
     totalRent: 357053.5,
-    totalArea: null,
+    totalArea: 118150,
     LATITUDE: 1.3080435199163205,
     LONGITUTDE: 103.839635365809,
     nonlanded: 70,
@@ -14962,7 +14962,7 @@ const coordinate :{
   },
   "HOLLAND GROVE": {
     totalRent: 813996,
-    totalArea: null,
+    totalArea: 262500,
     LATITUDE: 1.313468876818825,
     LONGITUTDE: 103.77897197352662,
     nonlanded: 0,
@@ -15026,7 +15026,7 @@ const coordinate :{
   },
   "SCOTTS HIGHPARK": {
     totalRent: 838600,
-    totalArea: null,
+    totalArea: 181850,
     LATITUDE: 1.3124476478874878,
     LONGITUTDE: 103.83676937199375,
     nonlanded: 85,
@@ -15034,7 +15034,7 @@ const coordinate :{
   },
   "EMERALD HILL CONSERVATION AREA": {
     totalRent: 1563028,
-    totalArea: null,
+    totalArea: 362400,
     LATITUDE: 1.303266678116469,
     LONGITUTDE: 103.83793158305988,
     nonlanded: 24,
@@ -15042,7 +15042,7 @@ const coordinate :{
   },
   "BEVERLY HILL": {
     totalRent: 857225,
-    totalArea: null,
+    totalArea: 192000,
     LATITUDE: 1.2984593033065328,
     LONGITUTDE: 103.82562878887451,
     nonlanded: 64,
@@ -15098,7 +15098,7 @@ const coordinate :{
   },
   KELIVILLE: {
     totalRent: 157400,
-    totalArea: null,
+    totalArea: 80300,
     LATITUDE: 1.3554591994088354,
     LONGITUTDE: 103.83387737600479,
     nonlanded: 43,
@@ -15194,7 +15194,7 @@ const coordinate :{
   },
   "YGK GARDEN": {
     totalRent: 260030,
-    totalArea: null,
+    totalArea: 75600,
     LATITUDE: 1.3128379389417482,
     LONGITUTDE: 103.79928578286493,
     nonlanded: 31,
@@ -15210,7 +15210,7 @@ const coordinate :{
   },
   "VILLA DELLE ROSE": {
     totalRent: 1553412.5,
-    totalArea: null,
+    totalArea: 504200,
     LATITUDE: 1.3130033954994715,
     LONGITUTDE: 103.80788776716496,
     nonlanded: 176,
@@ -15314,7 +15314,7 @@ const coordinate :{
   },
   "THE TATE RESIDENCES": {
     totalRent: 1183331,
-    totalArea: null,
+    totalArea: 237850,
     LATITUDE: 1.3083876375732622,
     LONGITUTDE: 103.83072712715224,
     nonlanded: 100,
@@ -15370,7 +15370,7 @@ const coordinate :{
   },
   "PEOPLE'S PARK CENTRE": {
     totalRent: 208750,
-    totalArea: null,
+    totalArea: 99300,
     LATITUDE: 1.2858063326446887,
     LONGITUTDE: 103.84399745813026,
     nonlanded: 56,
@@ -15426,7 +15426,7 @@ const coordinate :{
   },
   "HOOVER PARK": {
     totalRent: 206570,
-    totalArea: null,
+    totalArea: 103500,
     LATITUDE: 1.3421376348918441,
     LONGITUTDE: 103.77323432555362,
     nonlanded: 0,
@@ -15450,7 +15450,7 @@ const coordinate :{
   },
   "THE ARMADALE": {
     totalRent: 336655,
-    totalArea: null,
+    totalArea: 96700,
     LATITUDE: 1.3186349409432976,
     LONGITUTDE: 103.84019587048482,
     nonlanded: 88,
@@ -15514,7 +15514,7 @@ const coordinate :{
   },
   "GRAMERCY PARK": {
     totalRent: 1700744,
-    totalArea: null,
+    totalArea: 306550,
     LATITUDE: 1.298697972139659,
     LONGITUTDE: 103.82674001648526,
     nonlanded: 161,
@@ -15530,7 +15530,7 @@ const coordinate :{
   },
   "BEAUFORT ON NASSIM": {
     totalRent: 559243,
-    totalArea: null,
+    totalArea: 129550,
     LATITUDE: 1.3086505907112191,
     LONGITUTDE: 103.82482529858608,
     nonlanded: 61,
@@ -15538,7 +15538,7 @@ const coordinate :{
   },
   NASSIMVILLE: {
     totalRent: 406050,
-    totalArea: null,
+    totalArea: 75900,
     LATITUDE: 1.3076569866637346,
     LONGITUTDE: 103.82492070020493,
     nonlanded: 46,
@@ -15546,7 +15546,7 @@ const coordinate :{
   },
   "CAMELOT BY-THE-WATER": {
     totalRent: 644400,
-    totalArea: null,
+    totalArea: 180650,
     LATITUDE: 1.297739236784809,
     LONGITUTDE: 103.87593555581417,
     nonlanded: 64,
@@ -15594,7 +15594,7 @@ const coordinate :{
   },
   "THE LEGEND": {
     totalRent: 452500,
-    totalArea: null,
+    totalArea: 151100,
     LATITUDE: 1.3183696634108133,
     LONGITUTDE: 103.82943522665457,
     nonlanded: 93,
@@ -15618,7 +15618,7 @@ const coordinate :{
   },
   "ELIZABETH TOWER": {
     totalRent: 690894,
-    totalArea: null,
+    totalArea: 255800,
     LATITUDE: 1.306205968259502,
     LONGITUTDE: 103.83630844777325,
     nonlanded: 103,
@@ -15658,7 +15658,7 @@ const coordinate :{
   },
   "FLYNN PARK": {
     totalRent: 174615,
-    totalArea: null,
+    totalArea: 83300,
     LATITUDE: 1.278857825448734,
     LONGITUTDE: 103.79267420897304,
     nonlanded: 40,
@@ -15714,7 +15714,7 @@ const coordinate :{
   },
   "SIN THAI HIN BUILDING": {
     totalRent: 102250,
-    totalArea: null,
+    totalArea: 36900,
     LATITUDE: 1.301928625837358,
     LONGITUTDE: 103.85188753732356,
     nonlanded: 20,
@@ -15730,7 +15730,7 @@ const coordinate :{
   },
   "ORANGE GROVE RESIDENCES": {
     totalRent: 940524,
-    totalArea: null,
+    totalArea: 234050,
     LATITUDE: 1.313710766345594,
     LONGITUTDE: 103.82494331465506,
     nonlanded: 102,
@@ -15738,7 +15738,7 @@ const coordinate :{
   },
   "METRORESIDENCES NEWTON": {
     totalRent: 79084,
-    totalArea: null,
+    totalArea: 24600,
     LATITUDE: 1.316261578963244,
     LONGITUTDE: 103.84200547591352,
     nonlanded: 14,
@@ -15770,7 +15770,7 @@ const coordinate :{
   },
   STARPOINT: {
     totalRent: 24393,
-    totalArea: null,
+    totalArea: 14100,
     LATITUDE: 1.28851178768159,
     LONGITUTDE: 103.77742208351044,
     nonlanded: 7,
@@ -15810,7 +15810,7 @@ const coordinate :{
   },
   "THE LADYHILL": {
     totalRent: 519300,
-    totalArea: null,
+    totalArea: 115700,
     LATITUDE: 1.310348617050459,
     LONGITUTDE: 103.82509290716398,
     nonlanded: 43,
@@ -15834,7 +15834,7 @@ const coordinate :{
   },
   "CAPITOL PARK": {
     totalRent: 1177845,
-    totalArea: null,
+    totalArea: 417500,
     LATITUDE: 1.324249045898485,
     LONGITUTDE: 103.81456334784491,
     nonlanded: 0,
@@ -15842,7 +15842,7 @@ const coordinate :{
   },
   "SARKIES MANSIONS": {
     totalRent: 225400,
-    totalArea: null,
+    totalArea: 72750,
     LATITUDE: 1.3133154501436013,
     LONGITUTDE: 103.83633658184243,
     nonlanded: 36,
@@ -15906,7 +15906,7 @@ const coordinate :{
   },
   "VERDANA VILLAS": {
     totalRent: 310950,
-    totalArea: null,
+    totalArea: 144500,
     LATITUDE: 1.3590320848825508,
     LONGITUTDE: 103.86865496427954,
     nonlanded: 0,
@@ -15954,7 +15954,7 @@ const coordinate :{
   },
   "KENSINGTON PARK CONDOMINIUM": {
     totalRent: 1010839,
-    totalArea: null,
+    totalArea: 428300,
     LATITUDE: 1.3671499054716478,
     LONGITUTDE: 103.86924566078446,
     nonlanded: 245,
@@ -16010,7 +16010,7 @@ const coordinate :{
   },
   "WARNER COURT": {
     totalRent: 196837.5,
-    totalArea: null,
+    totalArea: 58650,
     LATITUDE: 1.3098994656856005,
     LONGITUTDE: 103.79641145633349,
     nonlanded: 45,
@@ -16026,7 +16026,7 @@ const coordinate :{
   },
   "BLAIR PLAIN CONSERVATION AREA": {
     totalRent: 1200470,
-    totalArea: null,
+    totalArea: 323900,
     LATITUDE: 1.2755262138298566,
     LONGITUTDE: 103.83572385827131,
     nonlanded: 6,
@@ -16050,7 +16050,7 @@ const coordinate :{
   },
   "GOODWOOD GARDENS": {
     totalRent: 266025,
-    totalArea: null,
+    totalArea: 61300,
     LATITUDE: 1.3145788945391461,
     LONGITUTDE: 103.83412726542,
     nonlanded: 34,
@@ -16106,7 +16106,7 @@ const coordinate :{
   },
   "SEVEN PALMS SENTOSA COVE": {
     totalRent: 1003900,
-    totalArea: null,
+    totalArea: 125650,
     LATITUDE: 1.2398554874446646,
     LONGITUTDE: 103.83145753233975,
     nonlanded: 44,
@@ -16122,7 +16122,7 @@ const coordinate :{
   },
   VOLARI: {
     totalRent: 889400,
-    totalArea: null,
+    totalArea: 206950,
     LATITUDE: 1.3148068846190242,
     LONGITUTDE: 103.83297842816779,
     nonlanded: 112,
@@ -16234,7 +16234,7 @@ const coordinate :{
   },
   HANA: {
     totalRent: 1387900,
-    totalArea: null,
+    totalArea: 147000,
     LATITUDE: 1.3041971007615558,
     LONGITUTDE: 103.82559975245653,
     nonlanded: 49,
@@ -16266,7 +16266,7 @@ const coordinate :{
   },
   "EWART PARK": {
     totalRent: 605250,
-    totalArea: null,
+    totalArea: 153000,
     LATITUDE: 1.3240526758605569,
     LONGITUTDE: 103.78276375115418,
     nonlanded: 10,
@@ -16330,7 +16330,7 @@ const coordinate :{
   },
   "ONE CHATSWORTH": {
     totalRent: 486205,
-    totalArea: null,
+    totalArea: 111000,
     LATITUDE: 1.2992674726380276,
     LONGITUTDE: 103.82481815026743,
     nonlanded: 37,
@@ -16354,7 +16354,7 @@ const coordinate :{
   },
   "SELETAR HILLS ESTATE": {
     totalRent: 1368348,
-    totalArea: null,
+    totalArea: 683650,
     LATITUDE: 1.3848886174580346,
     LONGITUTDE: 103.87489405053729,
     nonlanded: 32,
@@ -16394,7 +16394,7 @@ const coordinate :{
   },
   "THE BEVERLY": {
     totalRent: 448900,
-    totalArea: null,
+    totalArea: 184950,
     LATITUDE: 1.3389367970544443,
     LONGITUTDE: 103.76730312790214,
     nonlanded: 96,
@@ -16426,7 +16426,7 @@ const coordinate :{
   },
   "HONG KONG PARK": {
     totalRent: 687484,
-    totalArea: null,
+    totalArea: 290750,
     LATITUDE: 1.336778024955471,
     LONGITUTDE: 103.7858418981166,
     nonlanded: 0,
@@ -16434,7 +16434,7 @@ const coordinate :{
   },
   "THE TREVOSE": {
     totalRent: 685550,
-    totalArea: null,
+    totalArea: 209050,
     LATITUDE: 1.322967330516445,
     LONGITUTDE: 103.82535572524719,
     nonlanded: 121,
@@ -16458,7 +16458,7 @@ const coordinate :{
   },
   GARDENVILLE: {
     totalRent: 558491.5,
-    totalArea: null,
+    totalArea: 151750,
     LATITUDE: 1.3123787375056213,
     LONGITUTDE: 103.82738007707188,
     nonlanded: 80,
@@ -16554,7 +16554,7 @@ const coordinate :{
   },
   "GRAND DUCHESS AT ST PATRICK'S": {
     totalRent: 610850,
-    totalArea: null,
+    totalArea: 170100,
     LATITUDE: 1.3073071821907687,
     LONGITUTDE: 103.91611089115426,
     nonlanded: 101,
@@ -16562,7 +16562,7 @@ const coordinate :{
   },
   "NATHAN SUITES": {
     totalRent: 732455,
-    totalArea: null,
+    totalArea: 153700,
     LATITUDE: 1.2953012928607348,
     LONGITUTDE: 103.82707218781907,
     nonlanded: 102,
@@ -16578,7 +16578,7 @@ const coordinate :{
   },
   "THE HORIZON": {
     totalRent: 557623,
-    totalArea: null,
+    totalArea: 164750,
     LATITUDE: 1.2946012226639414,
     LONGITUTDE: 103.82681368084248,
     nonlanded: 95,
@@ -16586,7 +16586,7 @@ const coordinate :{
   },
   "ENG KONG PARK": {
     totalRent: 363500,
-    totalArea: null,
+    totalArea: 169000,
     LATITUDE: 1.3355189855252818,
     LONGITUTDE: 103.76829616352137,
     nonlanded: 12,
@@ -16610,7 +16610,7 @@ const coordinate :{
   },
   "NASSIM REGENCY": {
     totalRent: 896149.5,
-    totalArea: null,
+    totalArea: 186200,
     LATITUDE: 1.3117982129701216,
     LONGITUTDE: 103.81941611819447,
     nonlanded: 88,
@@ -16650,7 +16650,7 @@ const coordinate :{
   },
   "HONOLULU TOWER": {
     totalRent: 303475,
-    totalArea: null,
+    totalArea: 66000,
     LATITUDE: 1.3180104826285046,
     LONGITUTDE: 103.8311602588673,
     nonlanded: 22,
@@ -16770,7 +16770,7 @@ const coordinate :{
   },
   "HOLLAND GROVE PARK": {
     totalRent: 642438,
-    totalArea: null,
+    totalArea: 233500,
     LATITUDE: 1.3135358874543726,
     LONGITUTDE: 103.778965755734,
     nonlanded: 0,
@@ -16802,7 +16802,7 @@ const coordinate :{
   },
   "JADE MANSION": {
     totalRent: 216650,
-    totalArea: null,
+    totalArea: 67000,
     LATITUDE: 1.3133874826425584,
     LONGITUTDE: 103.79749744732673,
     nonlanded: 25,
@@ -16866,7 +16866,7 @@ const coordinate :{
   },
   "HERITAGE APARTMENTS": {
     totalRent: 422665,
-    totalArea: null,
+    totalArea: 101650,
     LATITUDE: 1.308747038505828,
     LONGITUTDE: 103.82916907049851,
     nonlanded: 45,
@@ -16874,7 +16874,7 @@ const coordinate :{
   },
   "PARADISE ISLAND": {
     totalRent: 604900,
-    totalArea: null,
+    totalArea: 165750,
     LATITUDE: 1.2490480605784677,
     LONGITUTDE: 103.84435628059153,
     nonlanded: 0,
@@ -16914,7 +16914,7 @@ const coordinate :{
   },
   "CHARISMA VIEW": {
     totalRent: 94000,
-    totalArea: null,
+    totalArea: 34050,
     LATITUDE: 1.3444783990535258,
     LONGITUTDE: 103.76845317152117,
     nonlanded: 30,
@@ -16954,7 +16954,7 @@ const coordinate :{
   },
   IRESIDENCES: {
     totalRent: 390450,
-    totalArea: null,
+    totalArea: 111300,
     LATITUDE: 1.3252078368639268,
     LONGITUTDE: 103.84556753221042,
     nonlanded: 96,
@@ -16962,7 +16962,7 @@ const coordinate :{
   },
   TURQUOISE: {
     totalRent: 1707200,
-    totalArea: null,
+    totalArea: 431000,
     LATITUDE: 1.2425153113552772,
     LONGITUTDE: 103.83667739744463,
     nonlanded: 176,
@@ -17026,7 +17026,7 @@ const coordinate :{
   },
   "JERVOIS COURT": {
     totalRent: 21000,
-    totalArea: null,
+    totalArea: 9000,
     LATITUDE: 1.294897182273899,
     LONGITUTDE: 103.81802190332465,
     nonlanded: 3,
@@ -17066,7 +17066,7 @@ const coordinate :{
   },
   "DESKER ROAD CONSERVATION AREA": {
     totalRent: 95683,
-    totalArea: null,
+    totalArea: 30450,
     LATITUDE: 1.3082812962464623,
     LONGITUTDE: 103.85593504604257,
     nonlanded: 7,
@@ -17082,7 +17082,7 @@ const coordinate :{
   },
   "NOUVEL 18": {
     totalRent: 1907705,
-    totalArea: null,
+    totalArea: 304500,
     LATITUDE: 1.3107671512804329,
     LONGITUTDE: 103.82824315311662,
     nonlanded: 156,
@@ -17154,7 +17154,7 @@ const coordinate :{
   },
   "THE HOLLAND COLLECTION": {
     totalRent: 388495,
-    totalArea: null,
+    totalArea: 118150,
     LATITUDE: 1.3089367758383013,
     LONGITUTDE: 103.80774452996282,
     nonlanded: 56,
@@ -17162,7 +17162,7 @@ const coordinate :{
   },
   "THE SOVEREIGN": {
     totalRent: 615250,
-    totalArea: null,
+    totalArea: 185950,
     LATITUDE: 1.2964770768062395,
     LONGITUTDE: 103.89333235809316,
     nonlanded: 67,
@@ -17202,7 +17202,7 @@ const coordinate :{
   },
   "THE SENTINEL": {
     totalRent: 158050,
-    totalArea: null,
+    totalArea: 51550,
     LATITUDE: 1.3163283766239728,
     LONGITUTDE: 103.84220429030552,
     nonlanded: 40,
@@ -17226,7 +17226,7 @@ const coordinate :{
   },
   "KAI FOOK MANSION": {
     totalRent: 185725,
-    totalArea: null,
+    totalArea: 59700,
     LATITUDE: 1.2846684486631388,
     LONGITUTDE: 103.82925993665769,
     nonlanded: 57,
@@ -17258,7 +17258,7 @@ const coordinate :{
   },
   "ST MICHAEL REGENCY": {
     totalRent: 111280,
-    totalArea: null,
+    totalArea: 40600,
     LATITUDE: 1.327858398098906,
     LONGITUTDE: 103.86379654674077,
     nonlanded: 30,
@@ -17338,7 +17338,7 @@ const coordinate :{
   },
   "RAFFLES PARK": {
     totalRent: 954850,
-    totalArea: null,
+    totalArea: 365000,
     LATITUDE: 1.3325676956567867,
     LONGITUTDE: 103.80324969377718,
     nonlanded: 0,
@@ -17370,7 +17370,7 @@ const coordinate :{
   },
   "SKYLINE @ ORCHARD BOULEVARD": {
     totalRent: 760849,
-    totalArea: null,
+    totalArea: 118200,
     LATITUDE: 1.3032411556822467,
     LONGITUTDE: 103.82948932365771,
     nonlanded: 55,
@@ -17410,7 +17410,7 @@ const coordinate :{
   },
   "FRANKEL ESTATE": {
     totalRent: 1644420,
-    totalArea: null,
+    totalArea: 744600,
     LATITUDE: 1.3154392544541877,
     LONGITUTDE: 103.91948905581329,
     nonlanded: 56,
@@ -17554,7 +17554,7 @@ const coordinate :{
   },
   "RACE COURSE RD/OWEN RD CON AREA": {
     totalRent: 76833,
-    totalArea: null,
+    totalArea: 23500,
     LATITUDE: 1.3128002158425518,
     LONGITUTDE: 103.84826499720322,
     nonlanded: 0,
@@ -17626,7 +17626,7 @@ const coordinate :{
   },
   M21: {
     totalRent: 271425,
-    totalArea: null,
+    totalArea: 82750,
     LATITUDE: 1.322467492149026,
     LONGITUTDE: 103.84882356681979,
     nonlanded: 65,
@@ -17762,7 +17762,7 @@ const coordinate :{
   },
   "SIGNATURE AT LEWIS": {
     totalRent: 200880,
-    totalArea: null,
+    totalArea: 57500,
     LATITUDE: 1.3207599138012662,
     LONGITUTDE: 103.8231396432016,
     nonlanded: 54,
@@ -17786,7 +17786,7 @@ const coordinate :{
   },
   "THE NASSIM": {
     totalRent: 815200,
-    totalArea: null,
+    totalArea: 91600,
     LATITUDE: 1.306473647376661,
     LONGITUTDE: 103.82321526703596,
     nonlanded: 36,
@@ -17866,7 +17866,7 @@ const coordinate :{
   },
   QUINTERRA: {
     totalRent: 263645,
-    totalArea: null,
+    totalArea: 72700,
     LATITUDE: 1.3185460129751203,
     LONGITUTDE: 103.78076782740689,
     nonlanded: 47,
@@ -17890,7 +17890,7 @@ const coordinate :{
   },
   "SEMBAWANG STRAITS ESTATE": {
     totalRent: 187500,
-    totalArea: null,
+    totalArea: 98800,
     LATITUDE: 1.4584157469027073,
     LONGITUTDE: 103.83729765060026,
     nonlanded: 1,
@@ -18090,7 +18090,7 @@ const coordinate :{
   },
   "18 SHELFORD": {
     totalRent: 121050,
-    totalArea: null,
+    totalArea: 36400,
     LATITUDE: 1.3274009894671888,
     LONGITUTDE: 103.81289679402221,
     nonlanded: 18,
@@ -18290,7 +18290,7 @@ const coordinate :{
   },
   "HENRY PARK": {
     totalRent: 723989,
-    totalArea: null,
+    totalArea: 302000,
     LATITUDE: 1.3120291983210575,
     LONGITUTDE: 103.78432345709476,
     nonlanded: 0,
@@ -18362,7 +18362,7 @@ const coordinate :{
   },
   "BREEZE BY THE EAST": {
     totalRent: 371485,
-    totalArea: null,
+    totalArea: 145700,
     LATITUDE: 1.313509735586625,
     LONGITUTDE: 103.93760110767174,
     nonlanded: 73,
@@ -18426,7 +18426,7 @@ const coordinate :{
   },
   "PARKWAY VIEW": {
     totalRent: 175920,
-    totalArea: null,
+    totalArea: 54800,
     LATITUDE: 1.3027997422586057,
     LONGITUTDE: 103.90403213603729,
     nonlanded: 37,
@@ -18490,7 +18490,7 @@ const coordinate :{
   },
   "THE SOLITAIRE": {
     totalRent: 526225,
-    totalArea: null,
+    totalArea: 139800,
     LATITUDE: 1.3147246610956498,
     LONGITUTDE: 103.82713023870033,
     nonlanded: 78,
@@ -18642,7 +18642,7 @@ const coordinate :{
   },
   "THE WATERLINE": {
     totalRent: 308700,
-    totalArea: null,
+    totalArea: 113250,
     LATITUDE: 1.366751772311499,
     LONGITUTDE: 103.87617247728677,
     nonlanded: 89,
@@ -18650,7 +18650,7 @@ const coordinate :{
   },
   "MANDALAY TOWERS": {
     totalRent: 95000,
-    totalArea: null,
+    totalArea: 41750,
     LATITUDE: 1.3238859015902955,
     LONGITUTDE: 103.84887764059378,
     nonlanded: 16,
@@ -18698,7 +18698,7 @@ const coordinate :{
   },
   "TOWNHOUSE APARTMENTS": {
     totalRent: 149041.5,
-    totalArea: null,
+    totalArea: 61850,
     LATITUDE: 1.309290123731089,
     LONGITUTDE: 103.84266996187695,
     nonlanded: 17,
@@ -18706,7 +18706,7 @@ const coordinate :{
   },
   "PEPYS HILL CONDOMINIUM": {
     totalRent: 138000,
-    totalArea: null,
+    totalArea: 50750,
     LATITUDE: 1.2776628640654022,
     LONGITUTDE: 103.79369594192887,
     nonlanded: 20,
@@ -18722,7 +18722,7 @@ const coordinate :{
   },
   "PARK PLACE RESIDENCES AT PLQ": {
     totalRent: 1951751.5,
-    totalArea: null,
+    totalArea: 325800,
     LATITUDE: 1.3167082749448002,
     LONGITUTDE: 103.89316151765533,
     nonlanded: 503,
@@ -18730,7 +18730,7 @@ const coordinate :{
   },
   "LIEN TOWERS": {
     totalRent: 289869,
-    totalArea: null,
+    totalArea: 69000,
     LATITUDE: 1.3098867045179459,
     LONGITUTDE: 103.80489903196352,
     nonlanded: 23,
@@ -18778,7 +18778,7 @@ const coordinate :{
   },
   "ORANGE REGENCY": {
     totalRent: 297873,
-    totalArea: null,
+    totalArea: 74150,
     LATITUDE: 1.3118417555861115,
     LONGITUTDE: 103.82462060693663,
     nonlanded: 42,
@@ -18850,7 +18850,7 @@ const coordinate :{
   },
   "SHAMROCK PARK": {
     totalRent: 1793917,
-    totalArea: null,
+    totalArea: 732500,
     LATITUDE: 1.3244070209968248,
     LONGITUTDE: 103.79665900943,
     nonlanded: 9,
@@ -18922,7 +18922,7 @@ const coordinate :{
   },
   "THE PEAK": {
     totalRent: 128100,
-    totalArea: null,
+    totalArea: 36000,
     LATITUDE: 1.2802082197295408,
     LONGITUTDE: 103.79368719568832,
     nonlanded: 12,
@@ -18978,7 +18978,7 @@ const coordinate :{
   },
   "BINJAI PARK": {
     totalRent: 869980,
-    totalArea: null,
+    totalArea: 291450,
     LATITUDE: 1.3420853151877912,
     LONGITUTDE: 103.78676106694819,
     nonlanded: 35,
@@ -19010,7 +19010,7 @@ const coordinate :{
   },
   "SOUTHAVEN I": {
     totalRent: 290470,
-    totalArea: null,
+    totalArea: 119950,
     LATITUDE: 1.3478316751963126,
     LONGITUTDE: 103.772836764538,
     nonlanded: 88,
@@ -19034,7 +19034,7 @@ const coordinate :{
   },
   "WINDSOR PARK ESTATE": {
     totalRent: 357700,
-    totalArea: null,
+    totalArea: 165200,
     LATITUDE: 1.358339158438351,
     LONGITUTDE: 103.82444307277282,
     nonlanded: 6,
@@ -19050,7 +19050,7 @@ const coordinate :{
   },
   "SERANGOON PARK": {
     totalRent: 337170,
-    totalArea: null,
+    totalArea: 159650,
     LATITUDE: 1.3466123691178464,
     LONGITUTDE: 103.86531909791468,
     nonlanded: 1,
@@ -19082,7 +19082,7 @@ const coordinate :{
   },
   "TANJONG PAGAR COMPLEX": {
     totalRent: 131586,
-    totalArea: null,
+    totalArea: 48650,
     LATITUDE: 1.2714987561630597,
     LONGITUTDE: 103.84226014773027,
     nonlanded: 47,
@@ -19122,7 +19122,7 @@ const coordinate :{
   },
   "ISLAND VIEW": {
     totalRent: 592146.5,
-    totalArea: null,
+    totalArea: 225750,
     LATITUDE: 1.2793530217220557,
     LONGITUTDE: 103.7936077107994,
     nonlanded: 76,
@@ -19186,7 +19186,7 @@ const coordinate :{
   },
   "WOODGROVE ESTATE": {
     totalRent: 941219,
-    totalArea: null,
+    totalArea: 498750,
     LATITUDE: 1.4286868103361754,
     LONGITUTDE: 103.77671463068859,
     nonlanded: 0,
@@ -19194,7 +19194,7 @@ const coordinate :{
   },
   "GOODLAND BUILDING": {
     totalRent: 75150,
-    totalArea: null,
+    totalArea: 19800,
     LATITUDE: 1.3106027575699075,
     LONGITUTDE: 103.85366952478394,
     nonlanded: 17,
@@ -19202,7 +19202,7 @@ const coordinate :{
   },
   "FONTANA HEIGHTS": {
     totalRent: 528075,
-    totalArea: null,
+    totalArea: 141000,
     LATITUDE: 1.3153009162017157,
     LONGITUTDE: 103.77686731615168,
     nonlanded: 47,
@@ -19234,7 +19234,7 @@ const coordinate :{
   },
   "KING'S GARDEN": {
     totalRent: 538075,
-    totalArea: null,
+    totalArea: 215500,
     LATITUDE: 1.3183574164876346,
     LONGITUTDE: 103.80229867876226,
     nonlanded: 0,
@@ -19274,7 +19274,7 @@ const coordinate :{
   },
   "WOOLLERTON PARK": {
     totalRent: 577250,
-    totalArea: null,
+    totalArea: 197150,
     LATITUDE: 1.3159392793486353,
     LONGITUTDE: 103.80896620572912,
     nonlanded: 49,
@@ -19418,7 +19418,7 @@ const coordinate :{
   },
   "SUTTON PLACE": {
     totalRent: 394135,
-    totalArea: null,
+    totalArea: 153400,
     LATITUDE: 1.313423694196945,
     LONGITUTDE: 103.80544022436256,
     nonlanded: 63,
@@ -19458,7 +19458,7 @@ const coordinate :{
   },
   "PARKVIEW ECLAT": {
     totalRent: 612225,
-    totalArea: null,
+    totalArea: 116400,
     LATITUDE: 1.300802209584251,
     LONGITUTDE: 103.82409134715652,
     nonlanded: 40,
@@ -19466,7 +19466,7 @@ const coordinate :{
   },
   "DUCHESS MANOR": {
     totalRent: 324000,
-    totalArea: null,
+    totalArea: 88450,
     LATITUDE: 1.3243526105853878,
     LONGITUTDE: 103.80759847696709,
     nonlanded: 66,
@@ -19482,7 +19482,7 @@ const coordinate :{
   },
   "RICH MANSIONS": {
     totalRent: 142750,
-    totalArea: null,
+    totalArea: 50050,
     LATITUDE: 1.3174019233733598,
     LONGITUTDE: 103.83361388438229,
     nonlanded: 28,
@@ -19506,7 +19506,7 @@ const coordinate :{
   },
   "NASSIM JADE": {
     totalRent: 701282,
-    totalArea: null,
+    totalArea: 170950,
     LATITUDE: 1.306578599073448,
     LONGITUTDE: 103.82588522292468,
     nonlanded: 71,
@@ -19514,7 +19514,7 @@ const coordinate :{
   },
   "THE BALMORAL": {
     totalRent: 708700,
-    totalArea: null,
+    totalArea: 289950,
     LATITUDE: 1.3148537876119313,
     LONGITUTDE: 103.82868794692453,
     nonlanded: 80,
@@ -19586,7 +19586,7 @@ const coordinate :{
   },
   "GALLOP GREEN": {
     totalRent: 629300,
-    totalArea: null,
+    totalArea: 125550,
     LATITUDE: 1.3152327194502862,
     LONGITUTDE: 103.80799180257523,
     nonlanded: 42,
@@ -19642,7 +19642,7 @@ const coordinate :{
   },
   "BUCKLEY 18": {
     totalRent: 528350,
-    totalArea: null,
+    totalArea: 139000,
     LATITUDE: 1.3183532540199323,
     LONGITUTDE: 103.84100677429,
     nonlanded: 86,
@@ -19714,7 +19714,7 @@ const coordinate :{
   },
   "GALLOP PARK": {
     totalRent: 112050,
-    totalArea: null,
+    totalArea: 36500,
     LATITUDE: 1.314621698021254,
     LONGITUTDE: 103.81294179538769,
     nonlanded: 0,
@@ -19746,7 +19746,7 @@ const coordinate :{
   },
   LIGHTHOUSE: {
     totalRent: 73950,
-    totalArea: null,
+    totalArea: 37950,
     LATITUDE: 1.3785743314995993,
     LONGITUTDE: 103.95919561180925,
     nonlanded: 20,
@@ -19962,7 +19962,7 @@ const coordinate :{
   },
   "SHELFORD GREEN": {
     totalRent: 261605,
-    totalArea: null,
+    totalArea: 94750,
     LATITUDE: 1.3246422308811265,
     LONGITUTDE: 103.81226076477365,
     nonlanded: 43,
@@ -20002,7 +20002,7 @@ const coordinate :{
   },
   CASABELLA: {
     totalRent: 395535,
-    totalArea: null,
+    totalArea: 125250,
     LATITUDE: 1.3235355863628657,
     LONGITUTDE: 103.7996429380992,
     nonlanded: 68,
@@ -20026,7 +20026,7 @@ const coordinate :{
   },
   "TWENTYONE ANGULLIA PARK": {
     totalRent: 863150,
-    totalArea: null,
+    totalArea: 129900,
     LATITUDE: 1.3036941494052283,
     LONGITUTDE: 103.83008434267987,
     nonlanded: 52,
@@ -20058,7 +20058,7 @@ const coordinate :{
   },
   "EDEN PARK": {
     totalRent: 394255,
-    totalArea: null,
+    totalArea: 157000,
     LATITUDE: 1.330843118111512,
     LONGITUTDE: 103.79152539568167,
     nonlanded: 0,
@@ -20098,7 +20098,7 @@ const coordinate :{
   },
   "KING ALBERT PARK": {
     totalRent: 406250,
-    totalArea: null,
+    totalArea: 110000,
     LATITUDE: 1.3330851921961302,
     LONGITUTDE: 103.7785441023926,
     nonlanded: 0,
@@ -20218,7 +20218,7 @@ const coordinate :{
   },
   "CALDECOTT HILL ESTATE": {
     totalRent: 461900,
-    totalArea: null,
+    totalArea: 165750,
     LATITUDE: 1.3354732831175455,
     LONGITUTDE: 103.83448001513085,
     nonlanded: 0,
@@ -20314,7 +20314,7 @@ const coordinate :{
   },
   JIA: {
     totalRent: 208700,
-    totalArea: null,
+    totalArea: 68550,
     LATITUDE: 1.3025016929940278,
     LONGITUTDE: 103.84761391237139,
     nonlanded: 38,
@@ -20346,7 +20346,7 @@ const coordinate :{
   },
   "RESIDENCES AT EMERALD HILL": {
     totalRent: 651771.5,
-    totalArea: null,
+    totalArea: 182050,
     LATITUDE: 1.305446358904275,
     LONGITUTDE: 103.83914898198896,
     nonlanded: 62,
@@ -20370,7 +20370,7 @@ const coordinate :{
   },
   JERVOISVILLE: {
     totalRent: 119900,
-    totalArea: null,
+    totalArea: 41250,
     LATITUDE: 1.2945597285223656,
     LONGITUTDE: 103.82263600479729,
     nonlanded: 0,
@@ -20378,7 +20378,7 @@ const coordinate :{
   },
   "CASA MELWANI": {
     totalRent: 71050,
-    totalArea: null,
+    totalArea: 30300,
     LATITUDE: 1.3161687159355588,
     LONGITUTDE: 103.8424994296987,
     nonlanded: 15,
@@ -20434,7 +20434,7 @@ const coordinate :{
   },
   "SWISS CLUB PARK": {
     totalRent: 492925,
-    totalArea: null,
+    totalArea: 180750,
     LATITUDE: 1.3358849102524697,
     LONGITUTDE: 103.78929252327005,
     nonlanded: 0,
@@ -20450,7 +20450,7 @@ const coordinate :{
   },
   "LITTLE INDIA CONSERVATION AREA": {
     totalRent: 126590,
-    totalArea: null,
+    totalArea: 35750,
     LATITUDE: 1.3053739347404818,
     LONGITUTDE: 103.85279452924453,
     nonlanded: 9,
@@ -20458,7 +20458,7 @@ const coordinate :{
   },
   SKYPARK: {
     totalRent: 614338,
-    totalArea: null,
+    totalArea: 117400,
     LATITUDE: 1.2972255399360857,
     LONGITUTDE: 103.83611703011705,
     nonlanded: 44,
@@ -20498,7 +20498,7 @@ const coordinate :{
   },
   "THE 101": {
     totalRent: 50530,
-    totalArea: null,
+    totalArea: 19700,
     LATITUDE: 1.2976858010872607,
     LONGITUTDE: 103.85700519826088,
     nonlanded: 23,
@@ -20514,7 +20514,7 @@ const coordinate :{
   },
   "LUCKY PARK": {
     totalRent: 406300,
-    totalArea: null,
+    totalArea: 155750,
     LATITUDE: 1.3280527663415895,
     LONGITUTDE: 103.79243220000158,
     nonlanded: 0,
@@ -20626,7 +20626,7 @@ const coordinate :{
   },
   SUNGROVE: {
     totalRent: 114100,
-    totalArea: null,
+    totalArea: 90250,
     LATITUDE: 1.312498601373682,
     LONGITUTDE: 103.75610942821282,
     nonlanded: 0,
@@ -20842,7 +20842,7 @@ const coordinate :{
   },
   "FLORENCE GROVE": {
     totalRent: 36800,
-    totalArea: null,
+    totalArea: 13500,
     LATITUDE: 1.3622522999248046,
     LONGITUTDE: 103.88582423290997,
     nonlanded: 0,
@@ -21010,7 +21010,7 @@ const coordinate :{
   },
   "HOLLAND VILLAGE": {
     totalRent: 91000,
-    totalArea: null,
+    totalArea: 13050,
     LATITUDE: 1.3106515527018328,
     LONGITUTDE: 103.79490073416798,
     nonlanded: 8,
@@ -21066,7 +21066,7 @@ const coordinate :{
   },
   "TOH ESTATE": {
     totalRent: 386479.5,
-    totalArea: null,
+    totalArea: 187250,
     LATITUDE: 1.3644747379539286,
     LONGITUTDE: 103.97399800319869,
     nonlanded: 0,
@@ -21258,7 +21258,7 @@ const coordinate :{
   },
   "111 EMERALD HILL": {
     totalRent: 592980,
-    totalArea: null,
+    totalArea: 122700,
     LATITUDE: 1.3051094715042588,
     LONGITUTDE: 103.83931975911324,
     nonlanded: 55,
@@ -21274,7 +21274,7 @@ const coordinate :{
   },
   "CAMDEN PARK": {
     totalRent: 170900,
-    totalArea: null,
+    totalArea: 42750,
     LATITUDE: 1.3293803291205537,
     LONGITUTDE: 103.81657683729411,
     nonlanded: 0,
@@ -21314,7 +21314,7 @@ const coordinate :{
   },
   "PARC STEVENS": {
     totalRent: 402550,
-    totalArea: null,
+    totalArea: 108800,
     LATITUDE: 1.3168644948312798,
     LONGITUTDE: 103.82677876959073,
     nonlanded: 46,
@@ -21642,7 +21642,7 @@ const coordinate :{
   },
   "CAMWOOD PARK": {
     totalRent: 150000,
-    totalArea: null,
+    totalArea: 50250,
     LATITUDE: 1.3149621544774697,
     LONGITUTDE: 103.81148393758026,
     nonlanded: 0,
@@ -21706,7 +21706,7 @@ const coordinate :{
   },
   "THE FOREST BY WANGZ": {
     totalRent: 98000,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.3183533600156103,
     LONGITUTDE: 103.84778271579587,
     nonlanded: 1,
@@ -21890,7 +21890,7 @@ const coordinate :{
   },
   "MOUNT ECHO PARK": {
     totalRent: 372750,
-    totalArea: null,
+    totalArea: 122750,
     LATITUDE: 1.295411660396138,
     LONGITUTDE: 103.82026845103186,
     nonlanded: 0,
@@ -22058,7 +22058,7 @@ const coordinate :{
   },
   "LA DOLCE VITA": {
     totalRent: 252437.5,
-    totalArea: null,
+    totalArea: 98200,
     LATITUDE: 1.346093218992257,
     LONGITUTDE: 103.88036147167053,
     nonlanded: 60,
@@ -22170,7 +22170,7 @@ const coordinate :{
   },
   "MCMAHON PARK": {
     totalRent: 526020,
-    totalArea: null,
+    totalArea: 214500,
     LATITUDE: 1.3154093144245558,
     LONGITUTDE: 103.78909538850903,
     nonlanded: 0,
@@ -22314,7 +22314,7 @@ const coordinate :{
   },
   "LADYHILL PARK": {
     totalRent: 284000,
-    totalArea: null,
+    totalArea: 44750,
     LATITUDE: 1.31160469314639,
     LONGITUTDE: 103.82408018302414,
     nonlanded: 0,
@@ -22514,7 +22514,7 @@ const coordinate :{
   },
   "SEMBAWANG SPRINGS ESTATE": {
     totalRent: 454399,
-    totalArea: null,
+    totalArea: 228900,
     LATITUDE: 1.437133144383115,
     LONGITUTDE: 103.82684192573451,
     nonlanded: 26,
@@ -22594,7 +22594,7 @@ const coordinate :{
   },
   "KILBURN ESTATE": {
     totalRent: 421890,
-    totalArea: null,
+    totalArea: 125500,
     LATITUDE: 1.339245543203264,
     LONGITUTDE: 103.78387939165447,
     nonlanded: 0,
@@ -22666,7 +22666,7 @@ const coordinate :{
   },
   BOTANIKA: {
     totalRent: 345200,
-    totalArea: null,
+    totalArea: 82750,
     LATITUDE: 1.3097711847004647,
     LONGITUTDE: 103.80807113045425,
     nonlanded: 39,
@@ -22682,7 +22682,7 @@ const coordinate :{
   },
   "3 ORCHARD BY-THE-PARK": {
     totalRent: 588776,
-    totalArea: null,
+    totalArea: 81900,
     LATITUDE: 1.3032554744299134,
     LONGITUTDE: 103.82476151437947,
     nonlanded: 46,
@@ -22706,7 +22706,7 @@ const coordinate :{
   },
   "NOVENA GARDENS": {
     totalRent: 97450,
-    totalArea: null,
+    totalArea: 39650,
     LATITUDE: 1.320422255232887,
     LONGITUTDE: 103.84191176411812,
     nonlanded: 20,
@@ -22994,7 +22994,7 @@ const coordinate :{
   },
   "GARDEN APARTMENTS": {
     totalRent: 156150,
-    totalArea: null,
+    totalArea: 50650,
     LATITUDE: 1.3125930444702025,
     LONGITUTDE: 103.82510546603785,
     nonlanded: 20,
@@ -23026,7 +23026,7 @@ const coordinate :{
   },
   "SHELFORD VIEW": {
     totalRent: 136125,
-    totalArea: null,
+    totalArea: 43600,
     LATITUDE: 1.3289544489166152,
     LONGITUTDE: 103.81201569782684,
     nonlanded: 16,
@@ -23050,7 +23050,7 @@ const coordinate :{
   },
   "REBECCA PARK": {
     totalRent: 161000,
-    totalArea: null,
+    totalArea: 56000,
     LATITUDE: 1.3208358840912917,
     LONGITUTDE: 103.80125148714359,
     nonlanded: 0,
@@ -23098,7 +23098,7 @@ const coordinate :{
   },
   "GREEN HILL ESTATE": {
     totalRent: 437358,
-    totalArea: null,
+    totalArea: 196500,
     LATITUDE: 1.3694847869738724,
     LONGITUTDE: 103.77129090426496,
     nonlanded: 0,
@@ -23146,7 +23146,7 @@ const coordinate :{
   },
   "CORAL ISLAND": {
     totalRent: 455300,
-    totalArea: null,
+    totalArea: 120250,
     LATITUDE: 1.2514768817704867,
     LONGITUTDE: 103.84656553919835,
     nonlanded: 0,
@@ -23154,7 +23154,7 @@ const coordinate :{
   },
   "FORD PLACE": {
     totalRent: 273700,
-    totalArea: null,
+    totalArea: 78750,
     LATITUDE: 1.3127937250803008,
     LONGITUTDE: 103.79580569685403,
     nonlanded: 0,
@@ -23330,7 +23330,7 @@ const coordinate :{
   },
   "ONE AKYAB": {
     totalRent: 39300,
-    totalArea: null,
+    totalArea: 23700,
     LATITUDE: 1.3226670262645044,
     LONGITUTDE: 103.84773546423364,
     nonlanded: 10,
@@ -23530,7 +23530,7 @@ const coordinate :{
   },
   "OEI TIONG HAM PARK": {
     totalRent: 535950,
-    totalArea: null,
+    totalArea: 201500,
     LATITUDE: 1.3170288399155627,
     LONGITUTDE: 103.79378490834921,
     nonlanded: 0,
@@ -23554,7 +23554,7 @@ const coordinate :{
   },
   "CAIRNHILL ASTORIA": {
     totalRent: 294300,
-    totalArea: null,
+    totalArea: 110550,
     LATITUDE: 1.3070897251418656,
     LONGITUTDE: 103.83937416510072,
     nonlanded: 72,
@@ -23674,7 +23674,7 @@ const coordinate :{
   },
   "ORCHID VILLAGE": {
     totalRent: 911450,
-    totalArea: null,
+    totalArea: 359000,
     LATITUDE: 1.3337492007966856,
     LONGITUTDE: 103.80008113729208,
     nonlanded: 0,
@@ -23690,7 +23690,7 @@ const coordinate :{
   },
   "EDEN RESIDENCES CAPITOL": {
     totalRent: 572425,
-    totalArea: null,
+    totalArea: 101000,
     LATITUDE: 1.2929311199042333,
     LONGITUTDE: 103.85111788928357,
     nonlanded: 37,
@@ -23762,7 +23762,7 @@ const coordinate :{
   },
   "HOLLAND 100": {
     totalRent: 380600,
-    totalArea: null,
+    totalArea: 111600,
     LATITUDE: 1.311939742273586,
     LONGITUTDE: 103.80211294750993,
     nonlanded: 68,
@@ -23898,7 +23898,7 @@ const coordinate :{
   },
   "TANGLIN RESIDENCES": {
     totalRent: 451725,
-    totalArea: null,
+    totalArea: 94850,
     LATITUDE: 1.3059318945171876,
     LONGITUTDE: 103.82416731121718,
     nonlanded: 48,
@@ -24002,7 +24002,7 @@ const coordinate :{
   },
   "KAMPONG GLAM CONSERVATION AREA": {
     totalRent: 65550,
-    totalArea: null,
+    totalArea: 18750,
     LATITUDE: 1.303351373801906,
     LONGITUTDE: 103.86039214880938,
     nonlanded: 4,
@@ -24106,7 +24106,7 @@ const coordinate :{
   },
   "CLAYMORE PLAZA": {
     totalRent: 203345,
-    totalArea: null,
+    totalArea: 64200,
     LATITUDE: 1.3068702701532269,
     LONGITUTDE: 103.83153479977194,
     nonlanded: 41,
@@ -24154,7 +24154,7 @@ const coordinate :{
   },
   "ST PATRICK'S RESIDENCES": {
     totalRent: 332254,
-    totalArea: null,
+    totalArea: 117800,
     LATITUDE: 1.3077703672582746,
     LONGITUTDE: 103.91484080866051,
     nonlanded: 65,
@@ -24362,7 +24362,7 @@ const coordinate :{
   },
   "OXLEY RESIDENCE": {
     totalRent: 390700,
-    totalArea: null,
+    totalArea: 103000,
     LATITUDE: 1.2968120490836128,
     LONGITUTDE: 103.84158656692074,
     nonlanded: 26,
@@ -24402,7 +24402,7 @@ const coordinate :{
   },
   "TRENDALE TOWER": {
     totalRent: 130825,
-    totalArea: null,
+    totalArea: 50250,
     LATITUDE: 1.3095723490830857,
     LONGITUTDE: 103.83581691835204,
     nonlanded: 17,
@@ -24410,7 +24410,7 @@ const coordinate :{
   },
   "VICTORIA PARK": {
     totalRent: 259305,
-    totalArea: null,
+    totalArea: 59250,
     LATITUDE: 1.3196169158799052,
     LONGITUTDE: 103.80168860386031,
     nonlanded: 0,
@@ -24610,7 +24610,7 @@ const coordinate :{
   },
   "ARTHUR MANSIONS": {
     totalRent: 227738,
-    totalArea: null,
+    totalArea: 78000,
     LATITUDE: 1.2988220858792252,
     LONGITUTDE: 103.88710005728865,
     nonlanded: 41,
@@ -24666,7 +24666,7 @@ const coordinate :{
   },
   "DLV.": {
     totalRent: 163410,
-    totalArea: null,
+    totalArea: 46250,
     LATITUDE: 1.315388393412982,
     LONGITUTDE: 103.8251886404718,
     nonlanded: 44,
@@ -24794,7 +24794,7 @@ const coordinate :{
   },
   "UNIT 8": {
     totalRent: 70700,
-    totalArea: null,
+    totalArea: 24000,
     LATITUDE: 1.3096702758986303,
     LONGITUTDE: 103.80595119883378,
     nonlanded: 8,
@@ -24946,7 +24946,7 @@ const coordinate :{
   },
   "ASHLEY GREEN": {
     totalRent: 165950,
-    totalArea: null,
+    totalArea: 51500,
     LATITUDE: 1.3212251680807923,
     LONGITUTDE: 103.78394300535147,
     nonlanded: 0,
@@ -25090,7 +25090,7 @@ const coordinate :{
   },
   "THE TOMLINSON": {
     totalRent: 227840,
-    totalArea: null,
+    totalArea: 58600,
     LATITUDE: 1.3044797822417091,
     LONGITUTDE: 103.82602949444035,
     nonlanded: 23,
@@ -25106,7 +25106,7 @@ const coordinate :{
   },
   "SEVEN OAKS": {
     totalRent: 152000,
-    totalArea: null,
+    totalArea: 40000,
     LATITUDE: 1.330295128156138,
     LONGITUTDE: 103.78924902615296,
     nonlanded: 0,
@@ -25114,7 +25114,7 @@ const coordinate :{
   },
   "SELBY GARDENS": {
     totalRent: 136150,
-    totalArea: null,
+    totalArea: 56250,
     LATITUDE: 1.3241261112221432,
     LONGITUTDE: 103.79333723170055,
     nonlanded: 0,
@@ -25138,7 +25138,7 @@ const coordinate :{
   },
   "TOP TEN": {
     totalRent: 63500,
-    totalArea: null,
+    totalArea: 22450,
     LATITUDE: 1.304926651013984,
     LONGITUTDE: 103.8397524492874,
     nonlanded: 10,
@@ -25226,7 +25226,7 @@ const coordinate :{
   },
   "1 NASSIM": {
     totalRent: 120386,
-    totalArea: null,
+    totalArea: 43000,
     LATITUDE: 1.3069375753850156,
     LONGITUTDE: 103.82662951092729,
     nonlanded: 20,
@@ -25290,7 +25290,7 @@ const coordinate :{
   },
   "MOUNTBATTEN LIGHTS": {
     totalRent: 56300,
-    totalArea: null,
+    totalArea: 36500,
     LATITUDE: 1.3010591323579412,
     LONGITUTDE: 103.88902555970509,
     nonlanded: 0,
@@ -25306,7 +25306,7 @@ const coordinate :{
   },
   "CORONATION VILLE": {
     totalRent: 122450,
-    totalArea: null,
+    totalArea: 43750,
     LATITUDE: 1.322097912212393,
     LONGITUTDE: 103.80441393593937,
     nonlanded: 0,
@@ -25314,7 +25314,7 @@ const coordinate :{
   },
   "EASTWOOD CENTRE": {
     totalRent: 65580,
-    totalArea: null,
+    totalArea: 26550,
     LATITUDE: 1.321358215622225,
     LONGITUTDE: 103.95533429007301,
     nonlanded: 20,
@@ -25354,7 +25354,7 @@ const coordinate :{
   },
   "THE VANTAGE": {
     totalRent: 184900,
-    totalArea: null,
+    totalArea: 42000,
     LATITUDE: 1.308771716727844,
     LONGITUTDE: 103.82798788231712,
     nonlanded: 14,
@@ -25490,7 +25490,7 @@ const coordinate :{
   },
   "BIN TONG PARK": {
     totalRent: 490400,
-    totalArea: null,
+    totalArea: 142500,
     LATITUDE: 1.3201570106179903,
     LONGITUTDE: 103.79918338792481,
     nonlanded: 0,
@@ -25522,7 +25522,7 @@ const coordinate :{
   },
   "TELOK AYER CONSERVATION AREA": {
     totalRent: 84150,
-    totalArea: null,
+    totalArea: 16500,
     LATITUDE: 1.2810324163722573,
     LONGITUTDE: 103.84568451399488,
     nonlanded: 0,
@@ -25602,7 +25602,7 @@ const coordinate :{
   },
   "CANNE VILLE": {
     totalRent: 66600,
-    totalArea: null,
+    totalArea: 25750,
     LATITUDE: 1.3120021311145393,
     LONGITUTDE: 103.8745280556164,
     nonlanded: 16,
@@ -25650,7 +25650,7 @@ const coordinate :{
   },
   "LUXURY APARTMENTS": {
     totalRent: 184850,
-    totalArea: null,
+    totalArea: 68700,
     LATITUDE: 1.3169472545083696,
     LONGITUTDE: 103.8391646279526,
     nonlanded: 23,
@@ -25690,7 +25690,7 @@ const coordinate :{
   },
   "NADIA MANSIONS": {
     totalRent: 100902.5,
-    totalArea: null,
+    totalArea: 50950,
     LATITUDE: 1.3281952636360215,
     LONGITUTDE: 103.84844645018508,
     nonlanded: 22,
@@ -25698,7 +25698,7 @@ const coordinate :{
   },
   "GALLOP GARDENS": {
     totalRent: 612140,
-    totalArea: null,
+    totalArea: 134250,
     LATITUDE: 1.3139581787694594,
     LONGITUTDE: 103.8131709679287,
     nonlanded: 0,
@@ -25738,7 +25738,7 @@ const coordinate :{
   },
   "SCULPTURA ARDMORE": {
     totalRent: 369000,
-    totalArea: null,
+    totalArea: 32050,
     LATITUDE: 1.3090384442853087,
     LONGITUTDE: 103.83023638841429,
     nonlanded: 11,
@@ -25762,7 +25762,7 @@ const coordinate :{
   },
   "HILLS APARTMENT": {
     totalRent: 153460,
-    totalArea: null,
+    totalArea: 38950,
     LATITUDE: 1.3209094124617802,
     LONGITUTDE: 103.83361559696685,
     nonlanded: 13,
@@ -25810,7 +25810,7 @@ const coordinate :{
   },
   "DALVEY VILLAS": {
     totalRent: 174000,
-    totalArea: null,
+    totalArea: 47750,
     LATITUDE: 1.317729280184721,
     LONGITUTDE: 103.82222237500379,
     nonlanded: 0,
@@ -25914,7 +25914,7 @@ const coordinate :{
   },
   "TANGLIN HILL VILLAS": {
     totalRent: 37800,
-    totalArea: null,
+    totalArea: 14250,
     LATITUDE: 1.3011495576935344,
     LONGITUTDE: 103.81663570041998,
     nonlanded: 0,
@@ -26066,7 +26066,7 @@ const coordinate :{
   },
   "DEVONSHIRE BUILDING": {
     totalRent: 90195,
-    totalArea: null,
+    totalArea: 42200,
     LATITUDE: 1.2981216915283995,
     LONGITUTDE: 103.83793894297916,
     nonlanded: 27,
@@ -26114,7 +26114,7 @@ const coordinate :{
   },
   "OEI TIONG HAM PARK RESIDENCES": {
     totalRent: 373575,
-    totalArea: null,
+    totalArea: 75000,
     LATITUDE: 1.3138326151361543,
     LONGITUTDE: 103.79325180294109,
     nonlanded: 25,
@@ -26138,7 +26138,7 @@ const coordinate :{
   },
   "BISHOPSGATE RESIDENCES": {
     totalRent: 382850,
-    totalArea: null,
+    totalArea: 61200,
     LATITUDE: 1.2983521364578063,
     LONGITUTDE: 103.82445614425039,
     nonlanded: 21,
@@ -26234,7 +26234,7 @@ const coordinate :{
   },
   "BALMORAL POINT": {
     totalRent: 170600,
-    totalArea: null,
+    totalArea: 55250,
     LATITUDE: 1.3163531103253299,
     LONGITUTDE: 103.83327126898973,
     nonlanded: 20,
@@ -26322,7 +26322,7 @@ const coordinate :{
   },
   "THE TWINS": {
     totalRent: 99450,
-    totalArea: null,
+    totalArea: 36000,
     LATITUDE: 1.3146869803383807,
     LONGITUTDE: 103.83452977112165,
     nonlanded: 15,
@@ -26370,7 +26370,7 @@ const coordinate :{
   },
   PALISADES: {
     totalRent: 118450,
-    totalArea: null,
+    totalArea: 49600,
     LATITUDE: 1.2871729748471183,
     LONGITUTDE: 103.78020860591505,
     nonlanded: 17,
@@ -26482,7 +26482,7 @@ const coordinate :{
   },
   "SRI MENANTI ESTATE": {
     totalRent: 117850,
-    totalArea: null,
+    totalArea: 32750,
     LATITUDE: 1.2944495875823112,
     LONGITUTDE: 103.81870019664086,
     nonlanded: 0,
@@ -26490,7 +26490,7 @@ const coordinate :{
   },
   "NASSIM LODGE": {
     totalRent: 102700,
-    totalArea: null,
+    totalArea: 18000,
     LATITUDE: 1.3071859057988982,
     LONGITUTDE: 103.82562525803014,
     nonlanded: 6,
@@ -26586,7 +26586,7 @@ const coordinate :{
   },
   "JERVOIS VIEW": {
     totalRent: 87250,
-    totalArea: null,
+    totalArea: 27650,
     LATITUDE: 1.2938275360556366,
     LONGITUTDE: 103.82400717531719,
     nonlanded: 11,
@@ -26618,7 +26618,7 @@ const coordinate :{
   },
   "GALLOP VILLAS": {
     totalRent: 137800,
-    totalArea: null,
+    totalArea: 45250,
     LATITUDE: 1.3195367181527613,
     LONGITUTDE: 103.81105514992,
     nonlanded: 0,
@@ -26722,7 +26722,7 @@ const coordinate :{
   },
   "SANNY PARK": {
     totalRent: 198400,
-    totalArea: null,
+    totalArea: 81000,
     LATITUDE: 1.3253447183090628,
     LONGITUTDE: 103.8260095510507,
     nonlanded: 0,
@@ -26842,7 +26842,7 @@ const coordinate :{
   },
   "PARKWAY APARTMENT": {
     totalRent: 13300,
-    totalArea: null,
+    totalArea: 12000,
     LATITUDE: 1.2994204067193782,
     LONGITUTDE: 103.89963782594052,
     nonlanded: 4,
@@ -26914,7 +26914,7 @@ const coordinate :{
   },
   "MARGOLIOUTH VILLAS": {
     totalRent: 67000,
-    totalArea: null,
+    totalArea: 24000,
     LATITUDE: 1.3182137396221116,
     LONGITUTDE: 103.82338503584559,
     nonlanded: 0,
@@ -27026,7 +27026,7 @@ const coordinate :{
   },
   "LE NOUVEL ARDMORE": {
     totalRent: 369888,
-    totalArea: null,
+    totalArea: 21000,
     LATITUDE: 1.3104954655728502,
     LONGITUTDE: 103.82799151661943,
     nonlanded: 7,
@@ -27082,7 +27082,7 @@ const coordinate :{
   },
   "BRIZAY PARK": {
     totalRent: 142600,
-    totalArea: null,
+    totalArea: 47500,
     LATITUDE: 1.3313184514815022,
     LONGITUTDE: 103.78779628482735,
     nonlanded: 0,
@@ -27138,7 +27138,7 @@ const coordinate :{
   },
   "TUDOR TEN": {
     totalRent: 172700,
-    totalArea: null,
+    totalArea: 91500,
     LATITUDE: 1.3268483894542336,
     LONGITUTDE: 103.81912221099213,
     nonlanded: 0,
@@ -27154,7 +27154,7 @@ const coordinate :{
   },
   "AVENUE VILLAS": {
     totalRent: 106000,
-    totalArea: null,
+    totalArea: 34750,
     LATITUDE: 1.3275120680986634,
     LONGITUTDE: 103.79473000764078,
     nonlanded: 0,
@@ -27234,7 +27234,7 @@ const coordinate :{
   },
   "WHITE HOUSE RESIDENCES": {
     totalRent: 198888,
-    totalArea: null,
+    totalArea: 48250,
     LATITUDE: 1.3178499030274418,
     LONGITUTDE: 103.82510329373643,
     nonlanded: 10,
@@ -27266,7 +27266,7 @@ const coordinate :{
   },
   "CLUNY PARK": {
     totalRent: 21450,
-    totalArea: null,
+    totalArea: 8000,
     LATITUDE: 1.317441377177861,
     LONGITUTDE: 103.81500291121142,
     nonlanded: 0,
@@ -27410,7 +27410,7 @@ const coordinate :{
   },
   "RESIDENCE 8": {
     totalRent: 141000,
-    totalArea: null,
+    totalArea: 82250,
     LATITUDE: 1.3022489388552694,
     LONGITUTDE: 103.82567964316377,
     nonlanded: 0,
@@ -27554,7 +27554,7 @@ const coordinate :{
   },
   "SHELFORD MANSIONS": {
     totalRent: 33950,
-    totalArea: null,
+    totalArea: 15000,
     LATITUDE: 1.3282489081477444,
     LONGITUTDE: 103.81176074705712,
     nonlanded: 5,
@@ -27578,7 +27578,7 @@ const coordinate :{
   },
   "IVORY APARTMENTS": {
     totalRent: 17900,
-    totalArea: null,
+    totalArea: 12000,
     LATITUDE: 1.3101866826107489,
     LONGITUTDE: 103.91575308284573,
     nonlanded: 4,
@@ -27666,7 +27666,7 @@ const coordinate :{
   },
   "VILLAS HOLLAND": {
     totalRent: 257285.5,
-    totalArea: null,
+    totalArea: 56000,
     LATITUDE: 1.3189313452148603,
     LONGITUTDE: 103.7855735922278,
     nonlanded: 0,
@@ -27722,7 +27722,7 @@ const coordinate :{
   },
   "VICTORY 8": {
     totalRent: 204299,
-    totalArea: null,
+    totalArea: 22750,
     LATITUDE: 1.4419137970772837,
     LONGITUTDE: 103.82362059341328,
     nonlanded: 27,
@@ -27738,7 +27738,7 @@ const coordinate :{
   },
   "PEIRCE VILLAS": {
     totalRent: 440750,
-    totalArea: null,
+    totalArea: 109500,
     LATITUDE: 1.3043929192993704,
     LONGITUTDE: 103.80602628951517,
     nonlanded: 0,
@@ -27890,7 +27890,7 @@ const coordinate :{
   },
   "SIN CHUAN GARDEN": {
     totalRent: 31700,
-    totalArea: null,
+    totalArea: 15250,
     LATITUDE: 1.3215395001596246,
     LONGITUTDE: 103.91847717243546,
     nonlanded: 0,
@@ -27914,7 +27914,7 @@ const coordinate :{
   },
   "TERESA VILLAS": {
     totalRent: 27100,
-    totalArea: null,
+    totalArea: 23500,
     LATITUDE: 1.2762722159722528,
     LONGITUTDE: 103.824906280208,
     nonlanded: 0,
@@ -27954,7 +27954,7 @@ const coordinate :{
   },
   CASCATA: {
     totalRent: 32700,
-    totalArea: null,
+    totalArea: 13950,
     LATITUDE: 1.3284886583147952,
     LONGITUTDE: 103.90853372466522,
     nonlanded: 8,
@@ -28090,7 +28090,7 @@ const coordinate :{
   },
   "TREVOSE 12": {
     totalRent: 164400,
-    totalArea: null,
+    totalArea: 80500,
     LATITUDE: 1.3227650679073872,
     LONGITUTDE: 103.82408334142674,
     nonlanded: 0,
@@ -28162,7 +28162,7 @@ const coordinate :{
   },
   "SUMMER GROVE": {
     totalRent: 11000,
-    totalArea: null,
+    totalArea: 8000,
     LATITUDE: 1.352213764392654,
     LONGITUTDE: 103.87552368107046,
     nonlanded: 0,
@@ -28338,7 +28338,7 @@ const coordinate :{
   },
   "SERENE PARK": {
     totalRent: 59188,
-    totalArea: null,
+    totalArea: 27750,
     LATITUDE: 1.3782781886022688,
     LONGITUTDE: 103.83534196360287,
     nonlanded: 0,
@@ -28506,7 +28506,7 @@ const coordinate :{
   },
   "VICTORY POINT": {
     totalRent: 24600,
-    totalArea: null,
+    totalArea: 3750,
     LATITUDE: 1.3223601120664896,
     LONGITUTDE: 103.85256173986129,
     nonlanded: 2,
@@ -28514,7 +28514,7 @@ const coordinate :{
   },
   "HIGHLAND CENTRE": {
     totalRent: 3700,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.355442610329055,
     LONGITUTDE: 103.8771881807683,
     nonlanded: 1,
@@ -28634,7 +28634,7 @@ const coordinate :{
   },
   "THE GLENCAIRD RESIDENCES": {
     totalRent: 76000,
-    totalArea: null,
+    totalArea: 15250,
     LATITUDE: 1.3152076041789529,
     LONGITUTDE: 103.8224232970948,
     nonlanded: 0,
@@ -28674,7 +28674,7 @@ const coordinate :{
   },
   "TONG GUAN BUILDING": {
     totalRent: 41250,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.3104332288217322,
     LONGITUTDE: 103.85621702112923,
     nonlanded: 1,
@@ -28746,7 +28746,7 @@ const coordinate :{
   },
   "VILLA DE JERVOIS": {
     totalRent: 74000,
-    totalArea: null,
+    totalArea: 16000,
     LATITUDE: 1.2966581168939162,
     LONGITUTDE: 103.8189366443083,
     nonlanded: 0,
@@ -28810,7 +28810,7 @@ const coordinate :{
   },
   EDEN: {
     totalRent: 275500,
-    totalArea: null,
+    totalArea: 27000,
     LATITUDE: 1.310079005932071,
     LONGITUTDE: 103.83185100841665,
     nonlanded: 9,
@@ -29010,7 +29010,7 @@ const coordinate :{
   },
   "HOLLAND VALE": {
     totalRent: 67000,
-    totalArea: null,
+    totalArea: 16000,
     LATITUDE: 1.307863374760566,
     LONGITUTDE: 103.80590501402159,
     nonlanded: 0,
@@ -29034,7 +29034,7 @@ const coordinate :{
   },
   "MOULMEIN STUDIOS": {
     totalRent: 69000,
-    totalArea: null,
+    totalArea: 6000,
     LATITUDE: 1.3183913602717316,
     LONGITUTDE: 103.84743272345371,
     nonlanded: 2,
@@ -29066,7 +29066,7 @@ const coordinate :{
   },
   "ST THOMAS LODGE": {
     totalRent: 42000,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.2977069922859288,
     LONGITUTDE: 103.83577720239393,
     nonlanded: 1,
@@ -29218,7 +29218,7 @@ const coordinate :{
   },
   MEYERHOUSE: {
     totalRent: 282550,
-    totalArea: null,
+    totalArea: 37500,
     LATITUDE: 1.2981601559564235,
     LONGITUTDE: 103.89336691251725,
     nonlanded: 13,
@@ -29234,7 +29234,7 @@ const coordinate :{
   },
   "ST RESIDENCES NOVENA": {
     totalRent: 199000,
-    totalArea: null,
+    totalArea: 6000,
     LATITUDE: 1.3183533600156103,
     LONGITUTDE: 103.84778271579587,
     nonlanded: 2,
@@ -29298,7 +29298,7 @@ const coordinate :{
   },
   "THE POST": {
     totalRent: 42500,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.296710235751917,
     LONGITUTDE: 103.85504507380263,
     nonlanded: 1,
@@ -29618,7 +29618,7 @@ const coordinate :{
   },
   "YINCHUAN BUILDING": {
     totalRent: 11000,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.3140199415818574,
     LONGITUTDE: 103.88579235966188,
     nonlanded: 1,
@@ -29834,7 +29834,7 @@ const coordinate :{
   },
   "BOURNEMOUTH EIGHT": {
     totalRent: 28000,
-    totalArea: null,
+    totalArea: 16000,
     LATITUDE: 1.3021566249178689,
     LONGITUTDE: 103.89123864558496,
     nonlanded: 0,
@@ -29842,7 +29842,7 @@ const coordinate :{
   },
   "ZAMAN CENTRE": {
     totalRent: 35700,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.310133220469275,
     LONGITUTDE: 103.85381384442815,
     nonlanded: 1,
@@ -29906,7 +29906,7 @@ const coordinate :{
   },
   "OPAL EAST": {
     totalRent: 44950,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.3107910432792398,
     LONGITUTDE: 103.91366028439515,
     nonlanded: 1,
@@ -29962,7 +29962,7 @@ const coordinate :{
   },
   "CASEY LODGE": {
     totalRent: 31360,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.3160354614862457,
     LONGITUTDE: 103.90650219328288,
     nonlanded: 1,
@@ -30098,7 +30098,7 @@ const coordinate :{
   },
   "NASSIM VILLE": {
     totalRent: 31500,
-    totalArea: null,
+    totalArea: 5400,
     LATITUDE: 1.3076569866637346,
     LONGITUTDE: 103.82492070020493,
     nonlanded: 3,
@@ -30114,7 +30114,7 @@ const coordinate :{
   },
   "PARKWAY APARTMENTS": {
     totalRent: 10800,
-    totalArea: null,
+    totalArea: 3000,
     LATITUDE: 1.2994204067193782,
     LONGITUTDE: 103.89963782594052,
     nonlanded: 1,
