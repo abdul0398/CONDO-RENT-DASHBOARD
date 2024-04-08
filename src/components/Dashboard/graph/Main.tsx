@@ -21,8 +21,7 @@ function getRandomColor() {
 
 // Defining the LineChart component
 const Graph = () => {
-    const [isLoading, setLoading] = useState(true);
-    const {graphCalculation} = useContext(MyContext);
+    const {graphCalculation, isLoading} = useContext(MyContext);
     const [dynamicDataset, setData] = useState<any[]>([]);
     const [dynamicLabels, setLabels] = useState<string[]>([])
 
@@ -45,8 +44,6 @@ const Graph = () => {
         ]
         setData(dataset);
         setLabels(labels);
-        setLoading(false);
-
     }, [graphCalculation]);
     const data = {
         labels: dynamicLabels,

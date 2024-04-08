@@ -55,9 +55,6 @@ export default function Projects() {
   const [isReady, setIsReady] = useState(false);
 const array = data as rentalData[];
 
-
-
-
   // Filter streets based on search query
   const filteredProjects = projects.filter((project, index) =>
     project.toLowerCase().includes(searchQuery.toLowerCase())
@@ -118,7 +115,6 @@ const array = data as rentalData[];
           setIsLoading(false);
           
         }else{
-          
       const res = await fetch("/api/processData", {
         method: "POST",
         body: JSON.stringify(preData),
@@ -133,8 +129,8 @@ const array = data as rentalData[];
       setAreas(data.areas);
       setGraphCalculation(data.graphCalculation)
       
-      setIsLoading(false);
       setLocalLoading(true);
+      setIsLoading(false);
     }
   }
     processData();
