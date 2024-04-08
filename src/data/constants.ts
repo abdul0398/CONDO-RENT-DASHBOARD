@@ -5144,8 +5144,8 @@ const allGraphData = {
 
 const coordinate :{
   [key: string]: {
-    totalRent: number | null;
-    totalArea: number | null;
+    totalRent: number;
+    totalArea: number;
     LATITUDE: number;
     LONGITUTDE: number;
     nonlanded: number;
