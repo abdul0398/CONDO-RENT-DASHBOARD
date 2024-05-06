@@ -4,6 +4,7 @@ import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjec
 import { ResponseBody, rentalData } from "@/types/data";
 import { useContext, useEffect, useState } from "react";
 import data from "@/data/rentals1.json";
+import WindowedSelect from "react-windowed-select";
 export default function Properties() {
 
   const {
@@ -11,18 +12,17 @@ export default function Properties() {
     setAreas,
     setFlatTypes,
     setMonths,
-    setProperties,
     setdistricts,
     setprojects,
     setStreets,
     setSelectedProjectType,
-    selectedAreas,
+    selectedArea,
     selectedFlatType,
-    selectedDistrictNames,
-    selectedMonths,
+    selectedDistrictName,
+    selectedMonth,
     selectedProjectType,
-    selectedprojects,
-    selectedStreetNames,
+    selectedproject,
+    selectedStreetName,
     isLoading,
     setIsLoading,
     setTransactions,
@@ -54,22 +54,24 @@ export default function Properties() {
     setIsLoading(true);
     async function processData() {
       const preData = {
-        selectedDistrictNames,
-        selectedStreetNames,
-        selectedprojects,
+        selectedDistrictName,
+        selectedStreetName,
+        selectedproject,
         selectedFlatType,
-        selectedMonths,
+        selectedMonth,
         selectedProjectType,
-        selectedAreas,
+        selectedArea,
       }
 
-      if (selectedDistrictNames.length === 0 &&
-        selectedStreetNames.length === 0 &&
-        selectedprojects.length === 0 &&
+      if (
+        selectedDistrictName == "" &&
+        selectedStreetName == '' &&
+        selectedproject == "" &&
         selectedFlatType === "" &&
-        selectedMonths.length === 0 &&
+        selectedMonth == "" &&
         selectedProjectType === "" &&
-        selectedAreas.length === 0) {
+        selectedArea == ""
+      ) {
         setprojects(allProjects);
         setdistricts(allDistricts);
         setStreets(allStreets);
@@ -123,15 +125,27 @@ export default function Properties() {
       : "";
   };
 
+  const handleSelect = (e: any) => {
+    setSelectedProjectType(e.value as string);
+  }
+
+  const options = properties.map((propertie) => {
+    return {
+      value: propertie,
+      label: propertie,
+    }
+  })
+
   return (
-    <div className="flex flex-row gap-7 overflow-x-auto">
-      {
-        properties.map((propertyType, index) => (
-          <Button key={index} className={getButtonClassName(propertyType)} onClick={() => handleButtonClick(propertyType)} variant="outline">
-            {propertyType}
-          </Button>
-        ))
-      }
+    <div className="">
+       <WindowedSelect
+          placeholder="Select Property Type"
+          options={options}
+          className="text-xs"
+          value={selectedProjectType ? { value: selectedProjectType, label: selectedProjectType } : null}
+          windowThreshold={50}
+          onChange={(e: any) => handleSelect(e)}
+        />
     </div>
 
   );

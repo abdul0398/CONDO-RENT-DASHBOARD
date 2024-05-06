@@ -4,6 +4,7 @@ import { MyContext } from "@/context/context";
 import { allAreas, allBedrooms, allDistricts, allGraphData, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
 import data from '@/data/rentals1.json';
 import { rentalData } from '@/types/data';
+import WindowedSelect from 'react-windowed-select';
 
 interface RowProps {
     index: number;
@@ -28,14 +29,14 @@ const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
 export default function Months() {
     const {
         months,
-        selectedMonths,
-        selectedAreas,
-        selectedDistrictNames,
+        selectedMonth,
+        selectedArea,
+        selectedDistrictName,
         selectedFlatType,
         selectedProjectType,
-        selectedStreetNames,
-        selectedprojects,
-        setSelectedMonths,
+        selectedStreetName,
+        selectedproject,
+        setSelectedMonth,
         setAreas,
         setFlatTypes,
         setIsLoading,
@@ -52,26 +53,6 @@ export default function Months() {
     const [localLoading, setLocalLoading] = useState(true);
     const array = data as rentalData[];
 
-
-    // Filter streets based on search query
-    const filteredMonths = months.filter((month, index) =>
-        month.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
-    const itemData = filteredMonths.map((month, index) => ({
-        month,
-        selected: selectedMonths.includes(month) ? true : false,
-    }));
-
-    const handleCheckboxChange = (name: string, checked: boolean) => {
-        // Update selectedStreetNames based on the checkbox change
-        if (checked) {
-            setSelectedMonths(prev => [...prev, name]);
-        } else {
-            setSelectedMonths(prev => prev.filter(name => name !== name));
-        }
-        setIsLoading(true);
-    };
     const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
@@ -86,21 +67,23 @@ export default function Months() {
         setIsLoading(true);
         async function processData() {
             const preData = {
-                selectedDistrictNames,
-                selectedStreetNames,
-                selectedprojects,
+                selectedDistrictName,
+                selectedStreetName,
+                selectedproject,
                 selectedFlatType,
-                selectedMonths,
+                selectedMonth,
                 selectedProjectType,
-                selectedAreas,
+                selectedArea,
             };
-            if (selectedDistrictNames.length === 0 &&
-                selectedStreetNames.length === 0 &&
-                selectedprojects.length === 0 &&
+            if (
+                selectedDistrictName == "" &&
+                selectedStreetName == '' &&
+                selectedproject == "" &&
                 selectedFlatType === "" &&
-                selectedMonths.length === 0 &&
+                selectedMonth == "" &&
                 selectedProjectType === "" &&
-                selectedAreas.length === 0) {
+                selectedArea == ""
+            ) {
                 setprojects(allProjects);
                 setStreets(allStreets);
                 setdistricts(allDistricts);
@@ -135,7 +118,7 @@ export default function Months() {
             }
         }
         processData();
-    }, [selectedMonths])
+    }, [selectedMonth])
 
 
     if (isLoading && localLoading) {
@@ -146,28 +129,27 @@ export default function Months() {
         );
     }
 
+    const handleSelect = (e: any) => {
+        setSelectedMonth(e.value as string);
+      }
+    
+      const options = months.map((month) => {
+        return {
+          value: month,
+          label: month,
+        }
+      })
+
     return (
-        <section className="overflow-hidden">
-            <div className="h-full bg-white overflow-auto min-w-[150px]">
-                <input
-                    type="text"
-                    className="mb-2 w-full h-3 border-0 rounded-none focus:outline-none px-3 py-1 text-sm"
-                    placeholder="Search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <div className="pb-1 px-2 text-xsm">
-                    <List
-                        height={215}
-                        itemCount={itemData.length}
-                        itemSize={40}
-                        width="100%"
-                        itemData={itemData} // Pass combined data to the Row component
-                    >
-                        {props => <Row {...props} onCheckboxChange={handleCheckboxChange} />}
-                    </List>
-                </div>
-            </div>
+        <section >
+            <WindowedSelect
+                placeholder="Select Month"
+                options={options}
+                className="text-xs"
+                value={selectedMonth ? { value: selectedMonth, label: selectedMonth } : null}
+                windowThreshold={50}
+                onChange={(e: any) => handleSelect(e)}
+            />
         </section>
     );
 }

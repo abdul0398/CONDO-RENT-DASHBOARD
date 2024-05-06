@@ -59,10 +59,13 @@ const Graph = () => {
         );
     }
 
+    const options = {
+        maintainAspectRatio:false
+    }
 
     return (
         <div className="h-96 border bg-white w-full ps-5">
-            <Line height={1000} width={1300} data={data} />
+            <Line height={1000} width={4000} data={data} options={options} />
         </div>
     );
 };

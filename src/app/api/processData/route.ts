@@ -23,13 +23,13 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     const {
-      selectedDistrictNames,
-      selectedStreetNames,
-      selectedprojects,
+      selectedDistrictName,
+      selectedStreetName,
+      selectedproject,
       selectedFlatType,
-      selectedMonths,
+      selectedMonth,
       selectedProjectType,
-      selectedAreas,
+      selectedArea,
     }: RequestBody = body;
 
     const filterDistricts: string[] = [];
@@ -76,24 +76,24 @@ export async function POST(req: NextRequest) {
 
       
 
-      if (selectedDistrictNames.length > 0) {
-        if (selectedDistrictNames.includes(district)) {
+      if (selectedDistrictName) {
+        if (selectedDistrictName == district) {
           isDistrictPresent = true;
         }
       } else {
         isDistrictPresent = true;
       }
 
-      if (selectedStreetNames.length > 0) {
-        if (selectedStreetNames.includes(street)) {
+      if (selectedStreetName) {
+        if (selectedStreetName == street) {
           isStreetPresent = true;
         }
       } else {
         isStreetPresent = true;
       }
 
-      if (selectedprojects.length > 0) {
-        if (selectedprojects.includes(project)) {
+      if (selectedproject) {
+        if (selectedproject == project) {
           isProjectPresent = true;
         }
       } else {
@@ -108,8 +108,8 @@ export async function POST(req: NextRequest) {
         isFlatTypePresent = true;
       }
 
-      if (selectedMonths.length > 0) {
-        if (selectedMonths.includes(month)) {
+      if (selectedMonth) {
+        if (selectedMonth == month) {
           isMonthPresent = true;
         }
       } else {
@@ -124,8 +124,8 @@ export async function POST(req: NextRequest) {
         isProjectTypePresent = true;
       }
 
-      if (selectedAreas.length > 0) {
-        if (selectedAreas.includes(area)) {
+      if (selectedArea) {
+        if (selectedArea == area) {
           isAreaPresent = true;
         }
       } else {

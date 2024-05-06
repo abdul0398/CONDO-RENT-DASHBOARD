@@ -9,77 +9,81 @@ import Districts from "./districts/Main";
 import Areas from "./areas/Main";
 import Transactions from "./transaction-table/Main";
 import { Button } from "../ui/button";
-import { useContext } from "react";
+import { MouseEvent, useContext, useRef, useState } from "react";
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import { allGraphData } from "@/data/constants";
+import Sidebar from "./sidebar/Main";
 
 export default function Dashboard() {
-    const {setSelectedAreas, setGraphCalculation, setSelectedDistrictsNames, setSelectedFlatType, setSelectedMonths, setSelectedProjectType, setSelectedStreetNames, setSelectedprojects} = useContext(MyContext)
+    const { setSelectedArea, setGraphCalculation, setSelectedDistrictsName, setSelectedFlatType, setSelectedMonth, setSelectedProjectType, setSelectedStreetName, setSelectedproject } = useContext(MyContext)
 
     const handleReset = (e: any) => {
         e.preventDefault()
-        setSelectedAreas([])
+        setSelectedArea("")
         setGraphCalculation(allGraphData)
-        setSelectedDistrictsNames([])
+        setSelectedDistrictsName('')
         setSelectedFlatType('')
-        setSelectedMonths([])
+        setSelectedMonth("")
         setSelectedProjectType('')
-        setSelectedStreetNames([])
-        setSelectedprojects([])
+        setSelectedStreetName("")
+        setSelectedproject("")
+    }
 
+    const [selected, setSelected] = useState<string | null>('filters');
+    const [isOpen, setIsOpen] = useState(true);
+
+
+    const mq = useRef(window.matchMedia("(max-width: 498px)"));
+
+    const scrollHandler = (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        const targetId = event.currentTarget.getAttribute('data-target');
+        if (targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        if (mq.current.matches) setIsOpen(false);
+
+
+        setSelected(targetId)
     }
 
 
     return (
-        <section className="mb-52 w-full mt-5 mx-auto bg-gray-100 shadow-md p-3 overflow-auto ">
-            {/* <Towns /> */}
-            <section className="h-40 w-full relative">
-            <Button className="bg-black text-white hover:bg-black hover:text-white absolute end-0" onClick={(e)=>{handleReset(e)}} variant="outline">Reset</Button>
-            </section>
-            <section className="flex mt-5">
-                <div className="w-[400px] border border-slate-300 h-[250px]">
-                    <MapCompenent />
-                </div>
-                <div className="w-[280px] border border-slate-300 ms-5 h-[250px]">
+        <section className="mb-52 w-full mt-5 mx-auto p-3 overflow-auto ">
+            <Sidebar scrollHandler={scrollHandler} selected={selected} isOpen={isOpen} setIsOpen={setIsOpen} />
+            <section className="w-full md:w-4/5 lg:w-5/6 ms-auto p-5">
+                <section className="h-11 w-full relative">
+                    <Button className="bg-black text-white hover:bg-black hover:text-white absolute end-0" onClick={(e) => { handleReset(e) }} variant="outline">Reset</Button>
+                </section>
+                <h2 id="filters" className="ps-4 text-xl my-4">Filters</h2>
+                <section  className="flex gap-3 flex-wrap justify-center">
                     <Districts />
-                </div>
-                <div className="w-[180px] border border-slate-300 mx-5">
                     <Projects />
-                </div>
-                <div className="w-[180px] border border-slate-300 me-5">
                     <Streets />
-                </div>
-                <div className="w-[150px] border border-slate-300">
                     <Months />
-                </div>
-            </section>
-            <section className="flex w-full mt-5">
-                <div className="w-1/2 h-28 me-5">
-                    <h2 className="">Bedrooms</h2>
-                    <div className="w-full overflow-x-auto overflow-y-hidden">
-                        <FlatType />
+                    <FlatType />
+                    <Properties />
+                    <Areas />
+                </section>
+                <h2 id="map" className="ps-4 text-xl my-4">Map</h2>
+                <section  className="flex mt-5 w-full flex-col">
+                    <div className="p-3 rounded-lg border bg-white h-96">
+                        <MapCompenent />
                     </div>
-                </div>
-                <div className="w-1/2 h-28">
-                    <h2 className="">Property Type</h2>
-                    <div className="">
-                        <div className="w-full">
-                            <Properties />
-                        </div>
+                </section>
+                <h2 id="graph"  className="ps-4 text-xl my-4">Graph</h2>
+                <section className="w-full h-96 flex">
+                    <div className="w-full">
+                        <Graph />
                     </div>
-                </div>
-            </section>
-            <section className="w-100 h-96 flex">
-                <div className="w-1/2">
-                    <Graph />
-                </div>
-                <div className="w-1/2">
-                    <Areas/>                
-                </div>
-
-            </section>
-            <section className="mt-5">
-                <Transactions />
+                </section>
+                <h2 id="transactions" className="ps-4 text-xl my-4">Transactions</h2>
+                <section  className="mt-5">
+                    <Transactions />
+                </section>
             </section>
         </section>
     )

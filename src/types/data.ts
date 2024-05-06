@@ -39,13 +39,13 @@ export type rentalData = {
 
 
 export type RequestBody ={
-  selectedDistrictNames: string[];
-  selectedStreetNames: string[];
-  selectedprojects: string[];
+  selectedDistrictName: string;
+  selectedStreetName: string;
+  selectedproject: string;
   selectedFlatType: (string| undefined);
-  selectedMonths: string[];
+  selectedMonth: string;
   selectedProjectType: string;
-  selectedAreas: string[];
+  selectedArea: string;
 };
 
 

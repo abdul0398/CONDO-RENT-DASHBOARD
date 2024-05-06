@@ -1,48 +1,27 @@
-import React, { useState, useContext, useEffect, use } from "react";
-import { FixedSizeList as List } from "react-window";
+import React, { useState, useContext, useEffect} from "react";
 import { MyContext } from "@/context/context";
 import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
+import WindowedSelect from "react-windowed-select";
 
-interface RowProps {
-  index: number;
-  style: React.CSSProperties;
-  data: { street: string; selected: boolean }[];
-  onCheckboxChange: (name:string,checked: boolean) => void;
-}
-
-const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
-  return (
-    <div style={style} className="flex mx-auto items-center">
-      <input
-        type="checkbox"
-        onChange={(e) => onCheckboxChange(data[index].street, e.target.checked)}
-        checked={data[index].selected}
-        className="mr-2"
-      />
-      <p className="ms-1 text-xs text-slate-600 ">{data[index].street}</p>
-    </div>
-  );
-};
 
 export default function Streets() {
   const {
     streets,
-    selectedDistrictNames,
-    selectedAreas,
+    selectedDistrictName,
+    selectedArea,
     selectedFlatType,
-    selectedMonths,
+    selectedMonth,
     selectedProjectType,
-    selectedStreetNames,
-    setSelectedStreetNames,
-    selectedprojects,
+    selectedStreetName,
+    setSelectedStreetName,
+    selectedproject,
     setAreas,
     setFlatTypes,
     setMonths,
     setProperties,
     setprojects,
-    setStreets,
     setdistricts,
     isLoading,
     setIsLoading,
@@ -50,32 +29,8 @@ export default function Streets() {
     setGraphCalculation
   } = useContext(MyContext);
 
-  const [searchQuery, setSearchQuery] = useState("");
   const [localLoading, setLocalLoading] = useState(true);
   const array = data as rentalData[];
-
-
-  // Filter streets based on search query
-  const filteredStreets = streets.filter((street, index) =>
-    street.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const itemData = filteredStreets.map((street, index) => ({
-    street,
-    selected: selectedStreetNames.includes(street) ? true : false,
-  }));
-
-  const handleCheckboxChange = (name: string, checked: boolean) => {
-    // Update selectedStreetNames based on the checkbox change
-    if (checked) {
-        setSelectedStreetNames(prev => [...prev, name]);
-    } else {
-        setSelectedStreetNames(prev => prev.filter(name => name !== name));
-    }
-
-    setIsLoading(true);
-    setLocalLoading(false);
-  };
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -89,21 +44,23 @@ export default function Streets() {
     setIsLoading(true);
     async function processData() {
       const preData = {
-        selectedDistrictNames,
-        selectedStreetNames,
-        selectedprojects,
+        selectedDistrictName,
+        selectedStreetName,
+        selectedproject,
         selectedFlatType,
-        selectedMonths,
+        selectedMonth,
         selectedProjectType,
-        selectedAreas,
+        selectedArea,
       };
-      if(selectedDistrictNames.length === 0 && 
-        selectedStreetNames.length === 0 &&
-        selectedprojects.length === 0 &&
+      if(
+        selectedDistrictName == "" &&
+        selectedStreetName == '' &&
+        selectedproject == "" &&
         selectedFlatType === "" &&
-        selectedMonths.length === 0 &&
+        selectedMonth == "" &&
         selectedProjectType === "" &&
-        selectedAreas.length === 0){
+        selectedArea == ""
+      ){
           setprojects(allProjects);
           setdistricts(allDistricts);
           setMonths(allMonths);
@@ -137,7 +94,7 @@ export default function Streets() {
     }
   }
     processData();
-  }, [selectedStreetNames]);
+  }, [selectedStreetName]);
 
   if (isLoading && localLoading) {
     return (
@@ -148,30 +105,28 @@ export default function Streets() {
   }
 
 
+  const handleSelect = (e: any) => {
+    setSelectedStreetName(e.value as string);
+  }
+
+  const options = streets.map((street) => {
+    return {
+      value: street,
+      label: street,
+    }
+  })
+
+
   return (
-    <section className="overflow-hidden">
-      <div className="h-full bg-white overflow-auto min-w-[150px]">
-        <input
-          type="text"
-          className="mb-2 w-full h-3 border-0 rounded-none focus:outline-none px-3 py-1 text-sm"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+    <section>
+     <WindowedSelect
+          placeholder="Select Street"
+          options={options}
+          className="text-xs"
+          value={selectedStreetName ? { value: selectedStreetName, label: selectedStreetName } : null}
+          windowThreshold={50}
+          onChange={(e: any) => handleSelect(e)}
         />
-        <div className="pb-1 px-2 text-xsm">
-          <List
-            height={215}
-            itemCount={itemData.length}
-            itemSize={40}
-            width="100%"
-            itemData={itemData} // Pass combined data to the Row component
-          >
-            {(props) => (
-              <Row {...props} onCheckboxChange={handleCheckboxChange} />
-            )}
-          </List>
-        </div>
-      </div>
     </section>
   );
 }

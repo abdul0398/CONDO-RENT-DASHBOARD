@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { MyContext } from "@/context/context";
-import { filterHandler } from "@/actions/filterHandler";
-import { ResponseBody, filterHandlerReturn, rentalData } from "@/types/data";
+import { ResponseBody, rentalData } from "@/types/data";
 import React, { useContext, useEffect, useMemo } from "react";
-import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import { allAreas, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
 import data from "@/data/rentals1.json";
+import WindowedSelect from "react-windowed-select";
+
 
 export default function FlatType() {
   const {
@@ -14,34 +15,24 @@ export default function FlatType() {
     isLoading,
     setIsLoading,
     setAreas,
-    setFlatTypes,
     setMonths,
     setProperties,
     setprojects,
     setStreets,
     setdistricts,
-    selectedDistrictNames,
-    selectedStreetNames,
-    selectedprojects,
-    selectedMonths,
+    selectedDistrictName,
+    selectedStreetName,
+    selectedproject,
+    selectedMonth,
     selectedProjectType,
-    selectedAreas,
+    selectedArea,
     setTransactions,
     setGraphCalculation
-
   } = useContext(MyContext);
   const [isReady, setIsReady] = React.useState(false);
   const [localLoading, setLocalLoading] = React.useState(true);
   const array = data as rentalData[];
 
-
-  const handleButtonClick = (flatType: string | undefined) => {
-    if (flatType === selectedFlatType) {
-      setSelectedFlatType(undefined);
-    } else {
-      setSelectedFlatType(flatType);
-    }
-  };
 
   useEffect(() => {
     // Set isReady to true after the initial render
@@ -54,23 +45,23 @@ export default function FlatType() {
     setIsLoading(true);
     async function processData() {
       const preData = {
-        selectedDistrictNames,
-        selectedStreetNames,
-        selectedprojects,
+        selectedDistrictName,
+        selectedStreetName,
+        selectedproject,
         selectedFlatType,
-        selectedMonths,
+        selectedMonth,
         selectedProjectType,
-        selectedAreas,
+        selectedArea,
       };
 
       if (
-        selectedDistrictNames.length === 0 &&
-        selectedStreetNames.length === 0 &&
-        selectedprojects.length === 0 &&
+        selectedDistrictName == "" &&
+        selectedStreetName == "" &&
+        selectedproject == "" &&
         selectedFlatType === "" &&
-        selectedMonths.length === 0 &&
+        selectedMonth == "" &&
         selectedProjectType === "" &&
-        selectedAreas.length === 0
+        selectedArea == ""
       ) {
         setprojects(allProjects);
         setStreets(allStreets);
@@ -119,22 +110,28 @@ export default function FlatType() {
     );
   }
 
+  const handleSelect = (e: any) => {
+    setSelectedFlatType(e.value as string);
+  }
+
+
+  const options = flatTypes.map((flatType) => {
+    return {
+      value: flatType,
+      label: flatType,
+    }
+  })
+
   return (
-    <div className="w-full">
-      <div className="">
-        <div className="flex flex-row gap-7">
-          {flatTypes.map((type, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              onClick={() => handleButtonClick(type)}
-              className={getButtonClassName(type)}
-            >
-              {type?type:'Blank'}
-            </Button>
-          ))}
-        </div>
-      </div>
+    <div>
+      <WindowedSelect
+        placeholder="Select FlatType"
+        options={options}
+        className="text-xs"
+        value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
+        windowThreshold={50}
+        onChange={(e: any) => handleSelect(e)}
+      />
     </div>
   );
 }

@@ -29,6 +29,7 @@
     "react-map-gl": "^7.1.7",
     "react-virtualized": "^9.22.5",
     "react-window": "^1.8.10",
+    "react-windowed-select": "^5.2.0",
     "recharts": "^2.12.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"

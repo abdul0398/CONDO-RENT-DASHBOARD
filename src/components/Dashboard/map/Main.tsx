@@ -11,7 +11,7 @@ import { MyContext } from "@/context/context";
 import { coordinate } from "@/data/constants";
 
 export default function MapComponent() {
-  const { projects, isLoading, selectedprojects } = React.useContext(MyContext);
+  const { projects, isLoading, selectedproject } = React.useContext(MyContext);
 
   if (isLoading){
     return (
@@ -20,7 +20,7 @@ export default function MapComponent() {
       </div>
     );  
   }
-  const usefulProjects = selectedprojects.length > 0 ? selectedprojects : projects;
+  const usefulProjects = selectedproject ? [selectedproject] : projects;
 
 
 

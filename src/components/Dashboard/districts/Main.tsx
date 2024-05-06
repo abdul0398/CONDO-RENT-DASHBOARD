@@ -1,9 +1,7 @@
-import React, { useState, useContext, useEffect, use } from "react";
-import { FixedSizeList as List } from "react-window";
+import React, { useState, useContext, useEffect } from "react";
 import { MyContext } from "@/context/context";
 import { ResponseBody, rentalData } from "@/types/data";
 import {
-  allDistricts,
   allProjects,
   allStreets,
   allMonths,
@@ -12,29 +10,9 @@ import {
   allPropertyTypes,
   allGraphData,
 } from "@/data/constants";
-
+import WindowedSelect from "react-windowed-select";
 import data from "@/data/rentals1.json";
 
-interface RowProps {
-  index: number;
-  style: React.CSSProperties;
-  data: { district: string; selected: boolean }[];
-  onCheckboxChange: (name: string, checked: boolean) => void;
-}
-
-const Row: React.FC<RowProps> = ({ index, style, data, onCheckboxChange }) => {
-  return (
-    <div style={style} className="flex mx-auto items-center">
-      <input
-        type="checkbox"
-        onChange={(e) => onCheckboxChange(data[index].district, e.target.checked)}
-        checked={data[index].selected}
-        className="mr-2"
-      />
-      <p className="ms-1 text-xs text-slate-600 ">D{data[index].district}</p>
-    </div>
-  );
-};
 
 export default function Districts() {
   const {
@@ -45,48 +23,24 @@ export default function Districts() {
     setProperties,
     setprojects,
     setStreets,
-    selectedAreas,
+    selectedArea,
     selectedFlatType,
-    selectedDistrictNames,
-    selectedMonths,
+    selectedDistrictName,
+    selectedMonth,
     selectedProjectType,
-    selectedprojects,
-    selectedStreetNames,
-    setSelectedDistrictsNames,
+    selectedproject,
+    selectedStreetName,
+    setSelectedDistrictsName,
     isLoading,
     setTransactions,
     setIsLoading,
     setGraphCalculation
   } = useContext(MyContext);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [localLoading, setLocalLoading] = useState(true);
   const array = data as rentalData[];
 
-
-
-  // Filter streets based on search query
-  const filteredDistricts = districts.filter((district, index) =>
-    district.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const itemData = filteredDistricts.map((district, index) => ({
-    district,
-    selected: selectedDistrictNames.includes(district) ? true : false,
-  }));
-
-  const handleCheckboxChange = (name: string, checked: boolean) => {
-
-    // Update selectedStreetNames based on the checkbox change
-    if (checked) {
-      setSelectedDistrictsNames((prev) => [...prev, name]);
-    } else {
-      setSelectedDistrictsNames((prev) =>
-        prev.filter((name) => name != name)
-      );
-    }
-    setIsLoading(true);
-  };
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -99,57 +53,59 @@ export default function Districts() {
     setLocalLoading(false)
     setIsLoading(true);
     async function processData() {
-        const preData = {
-            selectedDistrictNames,
-            selectedStreetNames,
-            selectedprojects,
-            selectedFlatType,
-            selectedMonths,
-            selectedProjectType ,
-            selectedAreas,
-        }
+      const preData = {
+        selectedDistrictName,
+        selectedStreetName,
+        selectedproject,
+        selectedFlatType,
+        selectedMonth,
+        selectedProjectType,
+        selectedArea,
+      }
 
-        if(selectedDistrictNames.length === 0 && 
-          selectedStreetNames.length === 0 &&
-          selectedprojects.length === 0 &&
-          selectedFlatType === "" &&
-          selectedMonths.length === 0 &&
-          selectedProjectType === "" &&
-          selectedAreas.length === 0){
-            setprojects(allProjects);
-            setStreets(allStreets);
-            setMonths(allMonths);
-            setFlatTypes(allBedrooms);
-            setProperties(allPropertyTypes);
-            setAreas(allAreas);
-            setTransactions(array);
-            setGraphCalculation(allGraphData)
+      if (
+        selectedDistrictName == "" &&
+        selectedStreetName == '' &&
+        selectedproject == "" &&
+        selectedFlatType === "" &&
+        selectedMonth == "" &&
+        selectedProjectType === "" &&
+        selectedArea == ""
+      ) {
+        setprojects(allProjects);
+        setStreets(allStreets);
+        setMonths(allMonths);
+        setFlatTypes(allBedrooms);
+        setProperties(allPropertyTypes);
+        setAreas(allAreas);
+        setTransactions(array);
+        setGraphCalculation(allGraphData)
 
-            
-            setLocalLoading(true);
-            setIsLoading(false);
-            
-          }else{
-            
-            const res = await fetch("/api/processData", {
-              method: "POST",
-              body: JSON.stringify(preData),
-            });
-            const data :ResponseBody = await res.json();
-            setprojects(data.projects);
-            setStreets(data.streets);
-            setMonths(data.months);
-            setFlatTypes(data.flatTypes);
-            setProperties(data.projectTypes);
-            setAreas(data.areas);
-            setTransactions(data.rentalData);
-            setGraphCalculation(data.graphCalculation);
-            setLocalLoading(true);
-            setIsLoading(false);
-        }
+
+        setLocalLoading(true);
+        setIsLoading(false);
+
+      } else {
+
+        const res = await fetch("/api/processData", {
+          method: "POST",
+          body: JSON.stringify(preData),
+        });
+        const data: ResponseBody = await res.json();
+        setprojects(data.projects);
+        setStreets(data.streets);
+        setMonths(data.months);
+        setFlatTypes(data.flatTypes);
+        setProperties(data.projectTypes);
+        setAreas(data.areas);
+        setTransactions(data.rentalData);
+        setGraphCalculation(data.graphCalculation);
+        setLocalLoading(true);
+        setIsLoading(false);
+      }
     }
     processData();
-  }, [selectedDistrictNames]);
+  }, [selectedDistrictName]);
 
 
   if (isLoading && localLoading) {
@@ -159,30 +115,28 @@ export default function Districts() {
       </div>
     );
   }
+
+  const handleSelect = (e: any) => {
+    setSelectedDistrictsName(e.value as string);
+  }
+
+  const options = districts.map((district) => {
+    return {
+      value: district,
+      label: district,
+    }
+  })
+
   return (
-    <section className="overflow-hidden">
-      <div className="h-full bg-white overflow-auto min-w-[150px]">
-        <input
-          type="text"
-          className="mb-2 w-full h-3 border-0 rounded-none focus:outline-none px-3 py-1 text-sm"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+    <section>
+        <WindowedSelect
+          placeholder="Select Districts"
+          options={options}
+          className="text-xs"
+          value={selectedDistrictName ? { value: selectedDistrictName, label: selectedDistrictName } : null}
+          windowThreshold={50}
+          onChange={(e: any) => handleSelect(e)}
         />
-        <div className="pb-1 px-2 text-xsm">
-          <List
-            height={215}
-            itemCount={itemData.length}
-            itemSize={40}
-            width="100%"
-            itemData={itemData} // Pass combined data to the Row component
-          >
-            {(props) => (
-              <Row {...props} onCheckboxChange={handleCheckboxChange} />
-            )}
-          </List>
-        </div>
-      </div>
-    </section>
+    </section >
   );
 }
