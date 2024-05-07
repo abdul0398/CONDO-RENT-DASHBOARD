@@ -82,8 +82,10 @@ export default function Dashboard() {
                 </section>
                 <h2 id="transactions" className="ps-4 text-xl my-4">Transactions</h2>
             </section>
-            <section className="min-w-[400px] mt-5">
+            <section className="min-w-[400px] md:w-4/5 lg:w-5/6 mt-5 ms-auto ps-5  ">
+                <div className="rounded-lg border">
                 <Transactions />
+                </div>
             </section>
         </section>
     )
