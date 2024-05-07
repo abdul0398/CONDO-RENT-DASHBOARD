@@ -19,14 +19,14 @@ export default function Dashboard() {
 
     const handleReset = (e: any) => {
         e.preventDefault()
-        setSelectedArea("")
+        setSelectedArea('')
         setGraphCalculation(allGraphData)
         setSelectedDistrictsName('')
         setSelectedFlatType('')
-        setSelectedMonth("")
+        setSelectedMonth('')
         setSelectedProjectType('')
-        setSelectedStreetName("")
-        setSelectedproject("")
+        setSelectedStreetName('')
+        setSelectedproject('')
     }
 
     const [selected, setSelected] = useState<string | null>('filters');
@@ -59,7 +59,7 @@ export default function Dashboard() {
                     <Button className="bg-black text-white hover:bg-black hover:text-white absolute end-0" onClick={(e) => { handleReset(e) }} variant="outline">Reset</Button>
                 </section>
                 <h2 id="filters" className="ps-4 text-xl my-4">Filters</h2>
-                <section  className="flex gap-3 flex-wrap justify-center">
+                <section className="flex gap-3 flex-wrap justify-center">
                     <Districts />
                     <Projects />
                     <Streets />
@@ -69,21 +69,21 @@ export default function Dashboard() {
                     <Areas />
                 </section>
                 <h2 id="map" className="ps-4 text-xl my-4">Map</h2>
-                <section  className="flex mt-5 w-full flex-col">
+                <section className="flex mt-5 w-full flex-col">
                     <div className="p-3 rounded-lg border bg-white h-96">
                         <MapCompenent />
                     </div>
                 </section>
-                <h2 id="graph"  className="ps-4 text-xl my-4">Graph</h2>
+                <h2 id="graph" className="ps-4 text-xl my-4">Graph</h2>
                 <section className="w-full h-96 flex">
                     <div className="w-full">
                         <Graph />
                     </div>
                 </section>
                 <h2 id="transactions" className="ps-4 text-xl my-4">Transactions</h2>
-                <section  className="mt-5">
-                    <Transactions />
-                </section>
+            </section>
+            <section className="min-w-[400px] mt-5">
+                <Transactions />
             </section>
         </section>
     )

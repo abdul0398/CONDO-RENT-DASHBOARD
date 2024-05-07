@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { MyContext } from "@/context/context";
 import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allStreets } from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
@@ -23,12 +22,10 @@ export default function Properties() {
     selectedProjectType,
     selectedproject,
     selectedStreetName,
-    isLoading,
     setIsLoading,
     setTransactions,
     setGraphCalculation
   } = useContext(MyContext)
-  const [localLoading, setLocalLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
   const array = data as rentalData[];
 
@@ -50,7 +47,6 @@ export default function Properties() {
 
   useEffect(() => {
     if (!isReady) return;
-    setLocalLoading(false)
     setIsLoading(true);
     async function processData() {
       const preData = {
@@ -82,7 +78,6 @@ export default function Properties() {
           setGraphCalculation(allGraphData)
 
 
-        setLocalLoading(true);
         setIsLoading(false);
 
       } else {
@@ -101,7 +96,6 @@ export default function Properties() {
         setTransactions(data.rentalData);
         setGraphCalculation(data.graphCalculation);
 
-        setLocalLoading(true);
         setIsLoading(false);
       }
     }
@@ -109,21 +103,6 @@ export default function Properties() {
   }, [selectedProjectType]);
 
 
-
-
-
-  if (isLoading && localLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );
-  }
-  const getButtonClassName = (propertyType: string) => {
-    return selectedProjectType === propertyType
-      ? "bg-black text-white hover:bg-black hover:text-white"
-      : "";
-  };
 
   const handleSelect = (e: any) => {
     setSelectedProjectType(e.value as string);

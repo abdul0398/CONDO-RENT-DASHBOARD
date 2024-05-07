@@ -31,14 +31,12 @@ export default function Districts() {
     selectedproject,
     selectedStreetName,
     setSelectedDistrictsName,
-    isLoading,
     setTransactions,
     setIsLoading,
     setGraphCalculation
   } = useContext(MyContext);
 
   // const [searchQuery, setSearchQuery] = useState("");
-  const [localLoading, setLocalLoading] = useState(true);
   const array = data as rentalData[];
 
   const [isReady, setIsReady] = useState(false);
@@ -50,7 +48,6 @@ export default function Districts() {
 
   useEffect(() => {
     if (!isReady) return;
-    setLocalLoading(false)
     setIsLoading(true);
     async function processData() {
       const preData = {
@@ -82,7 +79,6 @@ export default function Districts() {
         setGraphCalculation(allGraphData)
 
 
-        setLocalLoading(true);
         setIsLoading(false);
 
       } else {
@@ -100,21 +96,12 @@ export default function Districts() {
         setAreas(data.areas);
         setTransactions(data.rentalData);
         setGraphCalculation(data.graphCalculation);
-        setLocalLoading(true);
         setIsLoading(false);
       }
     }
     processData();
   }, [selectedDistrictName]);
 
-
-  if (isLoading && localLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );
-  }
 
   const handleSelect = (e: any) => {
     setSelectedDistrictsName(e.value as string);

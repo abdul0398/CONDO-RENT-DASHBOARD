@@ -26,10 +26,9 @@ export default function Projects() {
     setTransactions,
     setMonths,
     setGraphCalculation,
-    isLoading
+    
   } = useContext(MyContext);
 
-  const [localLoading, setLocalLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
   const array = data as rentalData[];
 
@@ -39,7 +38,6 @@ export default function Projects() {
 
   useEffect(() => {
     if (!isReady) return;
-    setLocalLoading(false);
     setIsLoading(true)
     async function processData() {
       const preData = {
@@ -71,7 +69,6 @@ export default function Projects() {
         setGraphCalculation(allGraphData)
 
 
-        setLocalLoading(true);
         setIsLoading(false);
 
       } else {
@@ -89,21 +86,12 @@ export default function Projects() {
         setAreas(data.areas);
         setGraphCalculation(data.graphCalculation)
 
-        setLocalLoading(true);
         setIsLoading(false);
       }
     }
     processData();
   }, [selectedproject]);
 
-
-  if (isLoading && localLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );
-  }
 
   const handleSelect = (e: any) => {
     setSelectedproject(e.value as string);

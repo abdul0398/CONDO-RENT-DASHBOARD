@@ -9,19 +9,11 @@ import { MyContext } from "@/context/context";
 Chart.register(...registerables);
 
 
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 
 // Defining the LineChart component
 const Graph = () => {
-    const {graphCalculation, isLoading} = useContext(MyContext);
+    const {graphCalculation} = useContext(MyContext);
     const [dynamicDataset, setData] = useState<any[]>([]);
     const [dynamicLabels, setLabels] = useState<string[]>([])
 
@@ -49,15 +41,6 @@ const Graph = () => {
         labels: dynamicLabels,
         datasets: dynamicDataset
     };
-
-    
-    if (isLoading) {
-        return (
-          <div className="h-full w-full flex items-center justify-center bg-white">
-            <p className="text-lg">Loading...</p>
-          </div>
-        );
-    }
 
     const options = {
         maintainAspectRatio:false

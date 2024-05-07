@@ -45,12 +45,9 @@ export default function Months() {
         setStreets,
         setprojects,
         setTransactions,
-        setGraphCalculation,
-        isLoading
+        setGraphCalculation
     } = useContext(MyContext);
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const [localLoading, setLocalLoading] = useState(true);
     const array = data as rentalData[];
 
     const [isReady, setIsReady] = useState(false);
@@ -63,7 +60,6 @@ export default function Months() {
 
     useEffect(() => {
         if (!isReady) return;
-        setLocalLoading(false);
         setIsLoading(true);
         async function processData() {
             const preData = {
@@ -92,10 +88,6 @@ export default function Months() {
                 setProperties(allPropertyTypes);
                 setTransactions(array);
                 setGraphCalculation(allGraphData)
-
-
-
-                setLocalLoading(true);
                 setIsLoading(false);
 
             } else {
@@ -112,22 +104,12 @@ export default function Months() {
                 setFlatTypes(data.flatTypes);
                 setTransactions(data.rentalData);
                 setGraphCalculation(data.graphCalculation);
-
-                setLocalLoading(true);
                 setIsLoading(false);
             }
         }
         processData();
     }, [selectedMonth])
 
-
-    if (isLoading && localLoading) {
-        return (
-            <div className="h-full w-full flex items-center justify-center bg-white">
-                <p className="text-lg">Loading...</p>
-            </div>
-        );
-    }
 
     const handleSelect = (e: any) => {
         setSelectedMonth(e.value as string);

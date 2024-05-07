@@ -11,15 +11,7 @@ import { MyContext } from "@/context/context";
 import { coordinate } from "@/data/constants";
 
 export default function MapComponent() {
-  const { projects, isLoading, selectedproject } = React.useContext(MyContext);
-
-  if (isLoading){
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );  
-  }
+  const { projects, selectedproject } = React.useContext(MyContext);
   const usefulProjects = selectedproject ? [selectedproject] : projects;
 
 

@@ -9,7 +9,6 @@ import WindowedSelect from "react-windowed-select";
 export default function Areas() {
   const {
     selectedFlatType,
-    isLoading,
     setIsLoading,
     setFlatTypes,
     setMonths,
@@ -28,11 +27,9 @@ export default function Areas() {
     setTransactions,
     setGraphCalculation,
   } = useContext(MyContext);
-  const [localLoading, setLocalLoading] = useState(true);
   const array = data as rentalData[];
 
   useEffect(() => {
-    setLocalLoading(false);
     setIsLoading(true);
     async function processData() {
       const preData = {
@@ -62,7 +59,6 @@ export default function Areas() {
         setFlatTypes(allBedrooms);
         setTransactions(array);
         setGraphCalculation(allGraphData);
-        setLocalLoading(true);
         setIsLoading(false);
       } else {
         const res = await fetch("/api/processData", {
@@ -79,21 +75,12 @@ export default function Areas() {
         setTransactions(data.rentalData);
         setGraphCalculation(data.graphCalculation);
 
-        setLocalLoading(true);
         setIsLoading(false);
       }
     }
     processData();
   }, [selectedArea]);
 
-
-  if (isLoading && localLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );
-  }
 
   const handleSelect = (e: any) => {
     setSelectedArea(e.value as string);

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect} from "react";
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes } from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 import WindowedSelect from "react-windowed-select";
@@ -23,13 +23,11 @@ export default function Streets() {
     setProperties,
     setprojects,
     setdistricts,
-    isLoading,
     setIsLoading,
     setTransactions,
     setGraphCalculation
   } = useContext(MyContext);
 
-  const [localLoading, setLocalLoading] = useState(true);
   const array = data as rentalData[];
   const [isReady, setIsReady] = useState(false);
 
@@ -40,7 +38,6 @@ export default function Streets() {
 
   useEffect(() => {
     if (!isReady) return;
-    setLocalLoading(false);
     setIsLoading(true);
     async function processData() {
       const preData = {
@@ -71,7 +68,6 @@ export default function Streets() {
           setGraphCalculation(allGraphData)
 
 
-          setLocalLoading(true);
           setIsLoading(false);
         }else{
           
@@ -90,19 +86,10 @@ export default function Streets() {
       setGraphCalculation(data.graphCalculation);
       
       setIsLoading(false);
-      setLocalLoading(true);
     }
   }
     processData();
   }, [selectedStreetName]);
-
-  if (isLoading && localLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );
-  }
 
 
   const handleSelect = (e: any) => {

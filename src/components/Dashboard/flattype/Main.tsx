@@ -12,7 +12,6 @@ export default function FlatType() {
     flatTypes,
     setSelectedFlatType,
     selectedFlatType,
-    isLoading,
     setIsLoading,
     setAreas,
     setMonths,
@@ -30,7 +29,6 @@ export default function FlatType() {
     setGraphCalculation
   } = useContext(MyContext);
   const [isReady, setIsReady] = React.useState(false);
-  const [localLoading, setLocalLoading] = React.useState(true);
   const array = data as rentalData[];
 
 
@@ -41,7 +39,6 @@ export default function FlatType() {
 
   useEffect(() => {
     if (!isReady) return;
-    setLocalLoading(false);
     setIsLoading(true);
     async function processData() {
       const preData = {
@@ -73,7 +70,6 @@ export default function FlatType() {
         setGraphCalculation(allGraphData)
 
 
-        setLocalLoading(true);
         setIsLoading(false);
       } else {
         const res = await fetch("/api/processData", {
@@ -90,25 +86,11 @@ export default function FlatType() {
         setTransactions(data.rentalData);
         setGraphCalculation(data.graphCalculation);
 
-        setLocalLoading(true);
         setIsLoading(false);
       }
     }
     processData();
   }, [selectedFlatType]);
-
-  const getButtonClassName = (type: string | undefined) => {
-    return selectedFlatType === type
-      ? "bg-black text-white hover:bg-black hover:text-white"
-      : "";
-  };
-  if (isLoading && localLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <p className="text-lg">Loading...</p>
-      </div>
-    );
-  }
 
   const handleSelect = (e: any) => {
     setSelectedFlatType(e.value as string);
