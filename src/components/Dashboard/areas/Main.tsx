@@ -93,6 +93,9 @@ export default function Areas() {
     }
   })
 
+  const styles = {
+    container: (css: any) => ({ ...css, width: '180px' }),
+  };
 
   return (
     <div className="">
@@ -100,6 +103,7 @@ export default function Areas() {
         placeholder="Select Area"
         options={options}
         className="text-xs"
+        styles={styles}
         value={selectedArea ? { value: selectedArea, label: selectedArea } : null}
         windowThreshold={50}
         onChange={(e: any) => handleSelect(e)}

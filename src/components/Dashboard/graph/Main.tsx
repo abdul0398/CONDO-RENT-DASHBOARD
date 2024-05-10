@@ -1,9 +1,10 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart } from 'chart.js';
+import { Chart, ChartOptions } from 'chart.js';
 import { registerables } from 'chart.js';
 import { MyContext } from "@/context/context";
+import { convertDateFormat } from "../../../../libs/tools";
 
 // Register the CategoryScale plugin
 Chart.register(...registerables);
@@ -19,36 +20,65 @@ const Graph = () => {
 
     useEffect(() => {
         const labels: string[] = Object.keys(graphCalculation);
+        const labelsDate = labels.map((date) => convertDateFormat(date));
        const dataset =  [
             {
-                label: 'Rents',
+                label: 'Rent',
                 data: Object.values(graphCalculation).map((data: any) => {
                     return data.averageRent;
                 }),
+                pointStyle: 'circle',
+                pointRadius: 5,
+                pointHoverRadius: 10,
             },
             {
                 label: 'Rent/Sqft',
                 data: Object.values(graphCalculation).map((data: any) => {
                     return data.averageRentSqft;
                 }),
+                pointStyle: 'circle',
+                pointRadius: 5,
+                pointHoverRadius: 10,
 
             },
         ]
         setData(dataset);
-        setLabels(labels);
+        setLabels(labelsDate);
     }, [graphCalculation]);
     const data = {
         labels: dynamicLabels,
         datasets: dynamicDataset
     };
 
-    const options = {
-        maintainAspectRatio:false
+    const options :ChartOptions<'line'> = {
+        maintainAspectRatio:false,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Average Rent',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                }
+            }
+        }
     }
 
     return (
-        <div className="h-96 border bg-white w-full ps-5">
-            <Line height={1000} width={4000} data={data} options={options} />
+        <div className="">
+            <Line height={700} width={2000} data={data} options={options} />
         </div>
     );
 };

@@ -103,12 +103,18 @@ export default function Streets() {
     }
   })
 
+  const styles = {
+    container: (css: any) => ({ ...css, width: '180px' }),
+  };
+
+
 
   return (
     <section>
      <WindowedSelect
           placeholder="Select Street"
           options={options}
+          styles={styles}
           className="text-xs"
           value={selectedStreetName ? { value: selectedStreetName, label: selectedStreetName } : null}
           windowThreshold={50}

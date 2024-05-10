@@ -114,12 +114,17 @@ export default function Districts() {
     }
   })
 
+  const styles = {
+    container: (css: any) => ({ ...css, width: '180px' }),
+  };
+
   return (
     <section>
         <WindowedSelect
           placeholder="Select Districts"
           options={options}
           className="text-xs"
+          styles={styles}
           value={selectedDistrictName ? { value: selectedDistrictName, label: selectedDistrictName } : null}
           windowThreshold={50}
           onChange={(e: any) => handleSelect(e)}

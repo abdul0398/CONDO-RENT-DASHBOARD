@@ -1,19 +1,27 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as React from "react";
 import Map, {
-  MapRef,
   Marker,
-  FullscreenControl,
   ScaleControl,
 } from "react-map-gl/maplibre";
-import { GoDotFill } from "react-icons/go";
 import { MyContext } from "@/context/context";
+import { FaHouseUser } from "react-icons/fa";
 import { coordinate } from "@/data/constants";
 
 export default function MapComponent() {
-  const { projects, selectedproject } = React.useContext(MyContext);
-  const usefulProjects = selectedproject ? [selectedproject] : projects;
+  const { projects, selectedproject, selectedDistrictName, setSelectedproject } = React.useContext(MyContext);
+  const [isModal, setModal] = React.useState("");
 
+  const usefulProjects: string[] = [];
+
+  if (selectedDistrictName != '' || selectedproject != '' || projects.length <= 30) {
+    if (selectedproject != '' && selectedDistrictName == '') {
+      usefulProjects.push(selectedproject);
+    }else {
+      usefulProjects.push(...projects);
+    }
+
+  }
 
 
   return (
@@ -34,25 +42,30 @@ export default function MapComponent() {
             longitude={coordinate[project].LONGITUTDE}
             offset={[0, -50]}
           >
-            <div style={{ position: "relative", textAlign: "center" }}>
-              <GoDotFill
-                size={20}
-                opacity={0.3}
-                className="hover:opacity-100 cursor-pointer"
+            {
+              isModal == project &&
+              <div className="bg-white shadow-lg border py-1 px-2 rounded-lg">
+                <p>{project}</p>
+              </div>
+            }
+            <div>
+              <FaHouseUser
+                size={30}
+                onClick={() => {
+                  setSelectedproject(project);
+                  setModal(project);
+                }}
+                className="mx-auto hover:opacity-100 cursor-pointer"
                 data-id={project}
                 title={`Project:  ${project}\nProperty Type:  ${coordinate[project].nonlanded > coordinate[project].executive
-                    ? "Non-Landed"
-                    : "Executive Condo"
+                  ? "Non-Landed"
+                  : "Executive Condo"
                   } \nMediun of rent (psf):  ${Math.round(coordinate[project].totalRent / coordinate[project].totalArea
                   )}\nRentals Count:  ${coordinate[project].nonlanded > coordinate[project].executive
                     ? coordinate[project].nonlanded
                     : coordinate[project].executive
                   }`}
-                color={
-                  coordinate[project].nonlanded > coordinate[project].executive
-                    ? "#460FFA"
-                    : "#825CFF"
-                }
+                color={"#000000"}
               />
             </div>
           </Marker>

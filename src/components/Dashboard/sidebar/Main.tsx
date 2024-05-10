@@ -54,12 +54,12 @@ export default function Sidebar({ scrollHandler, selected, isOpen, setIsOpen }: 
                             <li className="h-10">
 
                             </li>
-                            <li className="mt-0">
+                            {/* <li className="mt-0">
                                 <a onClick={(event) => scrollHandler(event)} data-target="filters" className={`flex items-center h-10 ms-auto w-[90%] rounded-s-3xl  ${selected == "filters" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
                                     <span className="flex-1 ps-5 ms-3 text-xl font-sans whitespace-nowrap cursor-pointer">Filters</span>
                                 </a>
-                            </li>
+                            </li> */}
                             <li className="mt-0">
                                 <a onClick={(event) => scrollHandler(event)} data-target="map" className={`flex items-center h-10 ms-auto w-[90%] rounded-s-3xl  ${selected == "map" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 

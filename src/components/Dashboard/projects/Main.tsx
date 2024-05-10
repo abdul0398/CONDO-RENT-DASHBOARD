@@ -104,6 +104,9 @@ export default function Projects() {
     }
   })
 
+  const styles = {
+    container: (css: any) => ({ ...css, width: '180px' }),
+  };
 
   return (
 
@@ -111,6 +114,7 @@ export default function Projects() {
       <WindowedSelect
         placeholder="Select Project"
         options={options}
+        styles={styles}
         className="text-xs"
         value={selectedproject ? { value: selectedproject, label: selectedproject } : null}
         windowThreshold={50}

@@ -104,11 +104,16 @@ export default function FlatType() {
     }
   })
 
+  const styles = {
+    container: (css: any) => ({ ...css, width: '180px' }),
+  };
+
   return (
     <div>
       <WindowedSelect
         placeholder="Select FlatType"
         options={options}
+        styles={styles}
         className="text-xs"
         value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
         windowThreshold={50}

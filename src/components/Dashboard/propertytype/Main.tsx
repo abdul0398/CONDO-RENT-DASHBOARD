@@ -115,11 +115,16 @@ export default function Properties() {
     }
   })
 
+  const styles = {
+    container: (css: any) => ({ ...css, width: '180px' }),
+  };
+
   return (
     <div className="">
        <WindowedSelect
           placeholder="Select Property Type"
           options={options}
+          styles={styles}
           className="text-xs"
           value={selectedProjectType ? { value: selectedProjectType, label: selectedProjectType } : null}
           windowThreshold={50}

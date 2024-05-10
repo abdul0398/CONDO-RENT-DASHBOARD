@@ -122,12 +122,18 @@ export default function Months() {
         }
       })
 
+      const styles = {
+        container: (css: any) => ({ ...css, width: '180px' }),
+      };
+
+
     return (
         <section >
             <WindowedSelect
                 placeholder="Select Month"
                 options={options}
                 className="text-xs"
+                styles={styles}
                 value={selectedMonth ? { value: selectedMonth, label: selectedMonth } : null}
                 windowThreshold={50}
                 onChange={(e: any) => handleSelect(e)}
