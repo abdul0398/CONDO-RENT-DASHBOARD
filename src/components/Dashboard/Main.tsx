@@ -72,7 +72,7 @@ export default function Dashboard() {
                     <div className="rounded-lg border bg-white shadow-lg">
                         <div className="flex gap-2 lg:flex-row md:flex-row flex-col">
                             <h2 id="map" className="ps-4 text-xl my-4 whitespace-nowrap">Map</h2>
-                            <div className="flex gap-1 items-center flex-wrap justify-center">
+                            <div className="flex gap-1 items-center flex-wrap justify-center pt-2">
                                 <Districts />
                                 <Projects />
                                 <Streets />

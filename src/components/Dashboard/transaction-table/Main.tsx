@@ -11,12 +11,17 @@ const List = dynamic(() => import('react-window').then((mod) => mod.FixedSizeLis
 });
 
 export default function Transactions() {
-  const { transactions, setIsLoading, setTransactions } = useContext(MyContext);
+  const {
+    transactions,
+    setTransactions
+  } = useContext(MyContext);
 
+
+  const trimTransactions: any = transactions.length > 50000 ? transactions.slice(0, 50000) : transactions;
 
   // Define the Row component with proper types for props
   const Row: React.FC<ListChildComponentProps> = ({ index, style }) => {
-    const transaction = transactions[index];
+    const transaction = trimTransactions[index];
 
     if (!transaction) {
       return null; // Return null if transaction is not available
@@ -38,17 +43,28 @@ export default function Transactions() {
   };
 
   const handleSort = async (type: string) => {
-    setIsLoading(true);
-    const res = await fetch('/api/sortdata', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ type, transactions }),
+    const isSortedAscending = trimTransactions.every((transaction: any, index: number) => {
+      if (index === 0) return true;
+      if (type === "rent" || type == 'district') {
+        return (
+          parseInt(transaction[type]) >= parseInt(trimTransactions[index - 1][type])
+        );
+      } else {
+        return transaction[type] >= trimTransactions[index - 1][type];
+      }
     });
-    const data = await res.json();
-    setIsLoading(false);
-    setTransactions(data.transactions);
+    if (isSortedAscending) {
+      setTransactions([...trimTransactions.reverse()]);
+    } else {
+      const sortedTransactions = [...trimTransactions].sort((a: any, b: any) => {
+        if (type === "rent") {
+          return parseInt(a[type]) - parseInt(b[type]);
+        } else {
+          return a[type].localeCompare(b[type]);
+        }
+      });
+      setTransactions(sortedTransactions);
+    }
   }
 
 
@@ -77,7 +93,7 @@ export default function Transactions() {
               <div className="overflow-hidden">
                 <List
                   height={480}
-                  itemCount={transactions.length}
+                  itemCount={trimTransactions.length}
                   itemSize={50}
                   width={'100%'}
                 >
