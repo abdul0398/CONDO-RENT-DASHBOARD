@@ -1,10 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from "react";
 import { MyContext } from "@/context/context";
-import { allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from '@/data/constants';
-import { ResponseBody, rentalData } from '@/types/data';
+import {
+  allBedrooms,
+  allDistricts,
+  allGraphData,
+  allMonths,
+  allProjects,
+  allPropertyTypes,
+  allStreets,
+} from "@/data/constants";
+import { ResponseBody, rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 import WindowedSelect from "react-windowed-select";
-
+import { customStyles } from "@/style/select";
 
 export default function Areas() {
   const {
@@ -44,7 +52,7 @@ export default function Areas() {
 
       if (
         selectedDistrictName == "" &&
-        selectedStreetName == '' &&
+        selectedStreetName == "" &&
         selectedproject == "" &&
         selectedFlatType === "" &&
         selectedMonth == "" &&
@@ -81,21 +89,16 @@ export default function Areas() {
     processData();
   }, [selectedArea]);
 
-
   const handleSelect = (e: any) => {
     setSelectedArea(e.value as string);
-  }
+  };
 
   const options = areas.map((area) => {
     return {
       value: area,
       label: area,
-    }
-  })
-
-  const styles = {
-    container: (css: any) => ({ ...css, width: '180px' }),
-  };
+    };
+  });
 
   return (
     <div className="">
@@ -103,9 +106,12 @@ export default function Areas() {
         placeholder="Select Area"
         options={options}
         className="text-xs"
-        styles={styles}
-        value={selectedArea ? { value: selectedArea, label: selectedArea } : null}
+        styles={customStyles}
+        value={
+          selectedArea ? { value: selectedArea, label: selectedArea } : null
+        }
         windowThreshold={50}
+        menuPortalTarget={document.querySelector("body")}
         onChange={(e: any) => handleSelect(e)}
       />
     </div>

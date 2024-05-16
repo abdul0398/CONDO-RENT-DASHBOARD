@@ -1,10 +1,18 @@
-import React, { useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes } from "@/data/constants";
+import {
+  allAreas,
+  allBedrooms,
+  allDistricts,
+  allGraphData,
+  allMonths,
+  allProjects,
+  allPropertyTypes,
+} from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 import WindowedSelect from "react-windowed-select";
-
+import { customStyles } from "@/style/select";
 
 export default function Streets() {
   const {
@@ -25,7 +33,7 @@ export default function Streets() {
     setdistricts,
     setIsLoading,
     setTransactions,
-    setGraphCalculation
+    setGraphCalculation,
   } = useContext(MyContext);
 
   const array = data as rentalData[];
@@ -49,77 +57,73 @@ export default function Streets() {
         selectedProjectType,
         selectedArea,
       };
-      if(
+      if (
         selectedDistrictName == "" &&
-        selectedStreetName == '' &&
+        selectedStreetName == "" &&
         selectedproject == "" &&
         selectedFlatType === "" &&
         selectedMonth == "" &&
         selectedProjectType === "" &&
         selectedArea == ""
-      ){
-          setprojects(allProjects);
-          setdistricts(allDistricts);
-          setMonths(allMonths);
-          setAreas(allAreas);
-          setProperties(allPropertyTypes);
-          setFlatTypes(allBedrooms);
-          setTransactions(array);
-          setGraphCalculation(allGraphData)
+      ) {
+        setprojects(allProjects);
+        setdistricts(allDistricts);
+        setMonths(allMonths);
+        setAreas(allAreas);
+        setProperties(allPropertyTypes);
+        setFlatTypes(allBedrooms);
+        setTransactions(array);
+        setGraphCalculation(allGraphData);
 
+        setIsLoading(false);
+      } else {
+        const res = await fetch("/api/processData", {
+          method: "POST",
+          body: JSON.stringify(preData),
+        });
+        const data: ResponseBody = await res.json();
+        setprojects(data.projects);
+        setdistricts(data.districts);
+        setMonths(data.months);
+        setAreas(data.areas);
+        setProperties(data.projectTypes);
+        setFlatTypes(data.flatTypes);
+        setTransactions(data.rentalData);
+        setGraphCalculation(data.graphCalculation);
 
-          setIsLoading(false);
-        }else{
-          
-      const res = await fetch("/api/processData", {
-        method: "POST",
-        body: JSON.stringify(preData),
-      });
-      const data: ResponseBody = await res.json();
-      setprojects(data.projects);
-      setdistricts(data.districts);
-      setMonths(data.months);
-      setAreas(data.areas);
-      setProperties(data.projectTypes);
-      setFlatTypes(data.flatTypes);
-      setTransactions(data.rentalData);
-      setGraphCalculation(data.graphCalculation);
-      
-      setIsLoading(false);
+        setIsLoading(false);
+      }
     }
-  }
     processData();
   }, [selectedStreetName]);
 
-
   const handleSelect = (e: any) => {
     setSelectedStreetName(e.value as string);
-  }
+  };
 
   const options = streets.map((street) => {
     return {
       value: street,
       label: street,
-    }
-  })
-
-  const styles = {
-    container: (css: any) => ({ ...css, width: '180px' }),
-  };
-
-
+    };
+  });
 
   return (
     <section>
-     <WindowedSelect
-          placeholder="Select Street"
-          options={options}
-          styles={styles}
-          className="text-xs"
-          value={selectedStreetName ? { value: selectedStreetName, label: selectedStreetName } : null}
-          windowThreshold={50}
-          onChange={(e: any) => handleSelect(e)}
-        />
+      <WindowedSelect
+        placeholder="Select Street"
+        options={options}
+        styles={customStyles}
+        className="text-xs"
+        value={
+          selectedStreetName
+            ? { value: selectedStreetName, label: selectedStreetName }
+            : null
+        }
+        windowThreshold={50}
+        menuPortalTarget={document.querySelector("body")}
+        onChange={(e: any) => handleSelect(e)}
+      />
     </section>
   );
 }

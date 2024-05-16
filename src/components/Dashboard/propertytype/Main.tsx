@@ -1,11 +1,19 @@
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allProjects, allStreets } from "@/data/constants";
+import {
+  allAreas,
+  allBedrooms,
+  allDistricts,
+  allGraphData,
+  allMonths,
+  allProjects,
+  allStreets,
+} from "@/data/constants";
 import { ResponseBody, rentalData } from "@/types/data";
 import { useContext, useEffect, useState } from "react";
 import data from "@/data/rentals1.json";
 import WindowedSelect from "react-windowed-select";
+import { customStyles } from "@/style/select";
 export default function Properties() {
-
   const {
     properties,
     setAreas,
@@ -24,12 +32,10 @@ export default function Properties() {
     selectedStreetName,
     setIsLoading,
     setTransactions,
-    setGraphCalculation
-  } = useContext(MyContext)
+    setGraphCalculation,
+  } = useContext(MyContext);
   const [isReady, setIsReady] = useState(false);
   const array = data as rentalData[];
-
-
 
   const handleButtonClick = (propertyType: string) => {
     if (selectedProjectType === propertyType) {
@@ -37,8 +43,7 @@ export default function Properties() {
     } else {
       setSelectedProjectType(propertyType);
     }
-
-  }
+  };
 
   useEffect(() => {
     // Set isReady to true after the initial render
@@ -57,11 +62,11 @@ export default function Properties() {
         selectedMonth,
         selectedProjectType,
         selectedArea,
-      }
+      };
 
       if (
         selectedDistrictName == "" &&
-        selectedStreetName == '' &&
+        selectedStreetName == "" &&
         selectedproject == "" &&
         selectedFlatType === "" &&
         selectedMonth == "" &&
@@ -74,14 +79,11 @@ export default function Properties() {
         setMonths(allMonths);
         setFlatTypes(allBedrooms);
         setAreas(allAreas);
-          setTransactions(array);
-          setGraphCalculation(allGraphData)
-
+        setTransactions(array);
+        setGraphCalculation(allGraphData);
 
         setIsLoading(false);
-
       } else {
-
         const res = await fetch("/api/processData", {
           method: "POST",
           body: JSON.stringify(preData),
@@ -102,35 +104,33 @@ export default function Properties() {
     processData();
   }, [selectedProjectType]);
 
-
-
   const handleSelect = (e: any) => {
     setSelectedProjectType(e.value as string);
-  }
+  };
 
   const options = properties.map((propertie) => {
     return {
       value: propertie,
       label: propertie,
-    }
-  })
-
-  const styles = {
-    container: (css: any) => ({ ...css, width: '180px' }),
-  };
+    };
+  });
 
   return (
     <div className="">
-       <WindowedSelect
-          placeholder="Select Property Type"
-          options={options}
-          styles={styles}
-          className="text-xs"
-          value={selectedProjectType ? { value: selectedProjectType, label: selectedProjectType } : null}
-          windowThreshold={50}
-          onChange={(e: any) => handleSelect(e)}
-        />
+      <WindowedSelect
+        placeholder="Select Property Type"
+        options={options}
+        styles={customStyles}
+        className="text-xs"
+        value={
+          selectedProjectType
+            ? { value: selectedProjectType, label: selectedProjectType }
+            : null
+        }
+        windowThreshold={50}
+        menuPortalTarget={document.querySelector("body")}
+        onChange={(e: any) => handleSelect(e)}
+      />
     </div>
-
   );
 }

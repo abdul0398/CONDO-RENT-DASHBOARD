@@ -2,10 +2,18 @@ import { Button } from "@/components/ui/button";
 import { MyContext } from "@/context/context";
 import { ResponseBody, rentalData } from "@/types/data";
 import React, { useContext, useEffect, useMemo } from "react";
-import { allAreas, allDistricts, allGraphData, allMonths, allProjects, allPropertyTypes, allStreets } from "@/data/constants";
+import {
+  allAreas,
+  allDistricts,
+  allGraphData,
+  allMonths,
+  allProjects,
+  allPropertyTypes,
+  allStreets,
+} from "@/data/constants";
 import data from "@/data/rentals1.json";
 import WindowedSelect from "react-windowed-select";
-
+import { customStyles } from "@/style/select";
 
 export default function FlatType() {
   const {
@@ -26,11 +34,10 @@ export default function FlatType() {
     selectedProjectType,
     selectedArea,
     setTransactions,
-    setGraphCalculation
+    setGraphCalculation,
   } = useContext(MyContext);
   const [isReady, setIsReady] = React.useState(false);
   const array = data as rentalData[];
-
 
   useEffect(() => {
     // Set isReady to true after the initial render
@@ -67,8 +74,7 @@ export default function FlatType() {
         setProperties(allPropertyTypes);
         setAreas(allAreas);
         setTransactions(array);
-        setGraphCalculation(allGraphData)
-
+        setGraphCalculation(allGraphData);
 
         setIsLoading(false);
       } else {
@@ -94,29 +100,29 @@ export default function FlatType() {
 
   const handleSelect = (e: any) => {
     setSelectedFlatType(e.value as string);
-  }
-
+  };
 
   const options = flatTypes.map((flatType) => {
     return {
       value: flatType,
       label: flatType,
-    }
-  })
-
-  const styles = {
-    container: (css: any) => ({ ...css, width: '180px' }),
-  };
+    };
+  });
 
   return (
     <div>
       <WindowedSelect
         placeholder="Select FlatType"
         options={options}
-        styles={styles}
+        styles={customStyles}
         className="text-xs"
-        value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
+        value={
+          selectedFlatType
+            ? { value: selectedFlatType, label: selectedFlatType }
+            : null
+        }
         windowThreshold={50}
+        menuPortalTarget={document.querySelector("body")}
         onChange={(e: any) => handleSelect(e)}
       />
     </div>

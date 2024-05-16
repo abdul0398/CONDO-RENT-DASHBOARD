@@ -12,7 +12,7 @@ import {
 } from "@/data/constants";
 import WindowedSelect from "react-windowed-select";
 import data from "@/data/rentals1.json";
-
+import { customStyles } from "@/style/select";
 
 export default function Districts() {
   const {
@@ -33,7 +33,7 @@ export default function Districts() {
     setSelectedDistrictsName,
     setTransactions,
     setIsLoading,
-    setGraphCalculation
+    setGraphCalculation,
   } = useContext(MyContext);
 
   // const [searchQuery, setSearchQuery] = useState("");
@@ -58,11 +58,11 @@ export default function Districts() {
         selectedMonth,
         selectedProjectType,
         selectedArea,
-      }
+      };
 
       if (
         selectedDistrictName == "" &&
-        selectedStreetName == '' &&
+        selectedStreetName == "" &&
         selectedproject == "" &&
         selectedFlatType === "" &&
         selectedMonth == "" &&
@@ -76,13 +76,10 @@ export default function Districts() {
         setProperties(allPropertyTypes);
         setAreas(allAreas);
         setTransactions(array);
-        setGraphCalculation(allGraphData)
-
+        setGraphCalculation(allGraphData);
 
         setIsLoading(false);
-
       } else {
-
         const res = await fetch("/api/processData", {
           method: "POST",
           body: JSON.stringify(preData),
@@ -102,33 +99,33 @@ export default function Districts() {
     processData();
   }, [selectedDistrictName]);
 
-
   const handleSelect = (e: any) => {
     setSelectedDistrictsName(e.value as string);
-  }
+  };
 
   const options = districts.map((district) => {
     return {
       value: district,
       label: district,
-    }
-  })
-
-  const styles = {
-    container: (css: any) => ({ ...css, width: '180px' }),
-  };
+    };
+  });
 
   return (
     <section>
-        <WindowedSelect
-          placeholder="Select Districts"
-          options={options}
-          className="text-xs"
-          styles={styles}
-          value={selectedDistrictName ? { value: selectedDistrictName, label: selectedDistrictName } : null}
-          windowThreshold={50}
-          onChange={(e: any) => handleSelect(e)}
-        />
-    </section >
+      <WindowedSelect
+        placeholder="Select Districts"
+        options={options}
+        className="text-xs"
+        styles={customStyles}
+        value={
+          selectedDistrictName
+            ? { value: selectedDistrictName, label: selectedDistrictName }
+            : null
+        }
+        windowThreshold={50}
+        menuPortalTarget={document.querySelector("body")}
+        onChange={(e: any) => handleSelect(e)}
+      />
+    </section>
   );
 }

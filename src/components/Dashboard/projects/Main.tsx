@@ -1,10 +1,18 @@
-import React, { useState, useContext, useEffect, } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { MyContext } from "@/context/context";
-import { allAreas, allBedrooms, allDistricts, allGraphData, allMonths, allPropertyTypes, allStreets } from "@/data/constants";
+import {
+  allAreas,
+  allBedrooms,
+  allDistricts,
+  allGraphData,
+  allMonths,
+  allPropertyTypes,
+  allStreets,
+} from "@/data/constants";
 import data from "@/data/rentals1.json";
 import { rentalData } from "@/types/data";
 import WindowedSelect from "react-windowed-select";
-
+import { customStyles } from "@/style/select";
 
 export default function Projects() {
   const {
@@ -26,7 +34,6 @@ export default function Projects() {
     setTransactions,
     setMonths,
     setGraphCalculation,
-    
   } = useContext(MyContext);
 
   const [isReady, setIsReady] = useState(false);
@@ -38,7 +45,7 @@ export default function Projects() {
 
   useEffect(() => {
     if (!isReady) return;
-    setIsLoading(true)
+    setIsLoading(true);
     async function processData() {
       const preData = {
         selectedDistrictName,
@@ -52,7 +59,7 @@ export default function Projects() {
 
       if (
         selectedDistrictName == "" &&
-        selectedStreetName == '' &&
+        selectedStreetName == "" &&
         selectedproject == "" &&
         selectedFlatType === "" &&
         selectedMonth == "" &&
@@ -66,11 +73,9 @@ export default function Projects() {
         setProperties(allPropertyTypes);
         setFlatTypes(allBedrooms);
         setTransactions(array);
-        setGraphCalculation(allGraphData)
-
+        setGraphCalculation(allGraphData);
 
         setIsLoading(false);
-
       } else {
         const res = await fetch("/api/processData", {
           method: "POST",
@@ -84,7 +89,7 @@ export default function Projects() {
         setFlatTypes(data.flatTypes);
         setTransactions(data.rentalData);
         setAreas(data.areas);
-        setGraphCalculation(data.graphCalculation)
+        setGraphCalculation(data.graphCalculation);
 
         setIsLoading(false);
       }
@@ -92,32 +97,31 @@ export default function Projects() {
     processData();
   }, [selectedproject]);
 
-
   const handleSelect = (e: any) => {
     setSelectedproject(e.value as string);
-  }
+  };
 
   const options = projects.map((project) => {
     return {
       value: project,
       label: project,
-    }
-  })
-
-  const styles = {
-    container: (css: any) => ({ ...css, width: '180px' }),
-  };
+    };
+  });
 
   return (
-
     <section>
       <WindowedSelect
         placeholder="Select Project"
         options={options}
-        styles={styles}
+        styles={customStyles}
         className="text-xs"
-        value={selectedproject ? { value: selectedproject, label: selectedproject } : null}
+        value={
+          selectedproject
+            ? { value: selectedproject, label: selectedproject }
+            : null
+        }
         windowThreshold={50}
+        menuPortalTarget={document.querySelector("body")}
         onChange={(e: any) => handleSelect(e)}
       />
     </section>
