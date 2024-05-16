@@ -66,10 +66,10 @@ export default function Dashboard() {
     slider.scrollLeft -= 400;
   };
   return (
-    <section className="w-[90%] mt-5 mx-auto lg:p-3 md:p-3 overflow-hidden flex">
+    <section className="md:w-[90%] lg:w-[90%] w-full mt-5 mx-auto lg:p-3 md:p-3 overflow-hidden flex">
       <Sidebar selectedView={selectedView} setSelectedView={setSelectedView} />
 
-      <div className="w-full sm:w-5/6 overflow-y-auto max-h-[90vh] border rounded-r-3xl shadow-lg">
+      <div className="w-full sm:w-full overflow-y-auto max-h-[90vh] border rounded-3xl lg:rounded-l-none md:rounded-l-none shadow-lg">
         <section className="w-full lg:p-5 md:p-5 p-2">
           <section className="h-11 w-full relative">
             <Button
