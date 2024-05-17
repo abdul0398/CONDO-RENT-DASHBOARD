@@ -16,10 +16,14 @@ import { rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 import dynamic from "next/dynamic";
 import { BsBuildings } from "react-icons/bs";
+import { useSearchParams } from "next/navigation";
 const Dashboard = dynamic(() => import("@/components/Dashboard/Main"), {
   ssr: false,
 });
 export default function Home() {
+  const searchParams = useSearchParams();
+  const project = searchParams.get("project");
+  const validProject = project && allProjects.includes(project) ? project : "";
   const array = data as rentalData[];
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -33,7 +37,7 @@ export default function Home() {
   const [areas, setAreas] = useState<string[]>(allAreas);
   const [selectedDistrictName, setSelectedDistrictsName] = useState<string>("");
   const [selectedStreetName, setSelectedStreetName] = useState<string>("");
-  const [selectedproject, setSelectedproject] = useState<string>("");
+  const [selectedproject, setSelectedproject] = useState<string>(validProject);
   const [selectedFlatType, setSelectedFlatType] = useState<string | undefined>(
     ""
   );
