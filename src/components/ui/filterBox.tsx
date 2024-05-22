@@ -21,7 +21,7 @@ export default function FilterBox({
         </div>
       </div>
       <hr className="border-1 border-white" />
-      <div className="w-full pb-0 p-4 overflow-visible">{select}</div>
+      <div className="w-full pb-0 overflow-visible">{select}</div>
     </div>
   );
 }

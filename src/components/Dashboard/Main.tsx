@@ -87,7 +87,7 @@ export default function Dashboard() {
 
         <div className="w-full pb-5 max-w-[100%] rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 no-scrollbar shadow-md">
           <section className="w-full lg:p-5 md:p-5 p-2">
-            <section className="w-full h-10 mt-3 relative">
+            <section className="w-full h-10 mt-1 relative">
               <div className="flex justify-end h-14 mt-2">
                 <Button
                   variant="default"
@@ -104,7 +104,7 @@ export default function Dashboard() {
               </div>
             </section>
             <section>
-              <div className="filter-slider h-[700px] lg:h-48 mt-10 lg:mt-5 grid grid-cols-2 lg:flex gap-3 lg:gap-8 overflow-x-scroll lg:overflow-x-hidden scroll-smooth mx-auto whitespace-nowrap lg:whitespace-normal lg:grid-cols-4 lg:w-[90%] md:w-[90%] w-full p-1 lg:p-2 no-scrollbar rounded-md">
+              <div className="filter-slider h-[700px] pt-2 lg:py-0 lg:h-48 mt-5 lg:mt-5 grid grid-cols-2 lg:flex gap-3 lg:gap-8 overflow-x-scroll lg:overflow-x-hidden scroll-smooth mx-auto whitespace-nowrap lg:whitespace-normal lg:grid-cols-4 lg:w-[90%] md:w-[90%] w-full p-1 lg:p-2 no-scrollbar rounded-md">
                 <FilterBox
                   select={<Districts />}
                   name="Districts"
