@@ -23,12 +23,10 @@ const Dashboard = dynamic(() => import("@/components/Dashboard/Main"), {
 export default function Home() {
   const searchParams = useSearchParams();
   const project = searchParams.get("project");
-  console.log(project);
 
   const validProject = project && allProjects.includes(project) ? project : "";
   const array = data as rentalData[];
 
-  console.log(validProject);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [districts, setdistricts] = useState<string[]>(allDistricts);
   const [streets, setStreets] = useState<string[]>(allStreets);
@@ -115,7 +113,7 @@ export default function Home() {
       {isLoading && (
         <div className="bg-black fixed z-50 w-full h-full flex justify-center items-center opacity-80">
           <div role="status">
-            <Image src="/logo.png" alt="loading" width={100} height={100} />
+            <Image src="/logo.png" alt="loading" width={220} height={220} />
             <p className="text-white text-center">Loading...</p>
           </div>
         </div>

@@ -92,11 +92,11 @@ export default function Dashboard() {
           isMobile={isMobile}
         />
 
-        <div className="w-full max-w-[100%] rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 shadow-md">
+        <div className="w-full max-w-[100%] rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 no-scrollbar shadow-md">
           <section className="w-full lg:p-5 md:p-5 p-2">
-            <section className="w-full h-10 mt-10 relative">
+            <section className="w-full h-10 mt-7 relative">
               <Button
-                className="bg-[#0e4884] font-bold text-white hover:bg-black hover:text-white absolute end-0"
+                className="bg-[#0e4884] font-bold text-white hover:bg-[#0e4884] hover:text-white absolute end-0"
                 onClick={(e) => {
                   handleReset(e);
                 }}
@@ -106,7 +106,7 @@ export default function Dashboard() {
               </Button>
             </section>
             <section>
-              <div className="filter-slider h-48 mt-10 flex gap-8 overflow-x-scroll scroll-smooth mx-auto whitespace-nowrap w-[90%] p-2 no-scrollbar rounded-md">
+              <div className="filter-slider h-48 mt-5 flex gap-8 overflow-x-scroll scroll-smooth mx-auto whitespace-nowrap md:w-[90%] w-full lg:w-[90%] p-2 no-scrollbar rounded-md">
                 <FilterBox
                   select={<Districts />}
                   name="Districts"
@@ -172,7 +172,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </section>
-            <section className="w-[90%] overflow-x-auto overflow-y-hidden mx-auto border h-[700px] pb-3 mt-10 rounded-xl">
+            <section className="md:w-[90%] w-full lg:w-[90%] overflow-x-auto overflow-y-hidden mx-auto border h-[700px] pb-3 mt-10 rounded-xl">
               <div className="min-w-[700px] w-full">
                 <div className="bg-[#0e4884] w-full h-14 rounded-t-xl flex items-center ps-3">
                   <Button
@@ -216,7 +216,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </section>
-            <section className="p-7 relative  bg-[url('/building-banner.jpeg')]  bg-cover bg-center before:bg-blue-400 bg-no-repeat w-[90%] mx-auto h-52 border rounded-xl mt-10">
+            <section className="p-7 relative  bg-[url('/building-banner.jpeg')]  bg-cover bg-center before:bg-blue-400 bg-no-repeat lg:w-[90%] w-full md:w-[90%] mx-auto h-52 border rounded-xl mt-10">
               <div className="lg:w-2/3 md:2/3 w-full">
                 <h2 className="lg:text-3xl md:text-2xl text-xl text-white z-20 opacity-100">
                   Discover your dream condo rental and make it your home
