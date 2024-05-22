@@ -1,6 +1,6 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as React from "react";
-import Map, { Marker, ScaleControl } from "react-map-gl/maplibre";
+import Map, { Marker } from "react-map-gl/maplibre";
 import { MyContext } from "@/context/context";
 import { FaHouseUser } from "react-icons/fa";
 import { coordinate } from "@/data/constants";
