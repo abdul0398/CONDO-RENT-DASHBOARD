@@ -15,8 +15,8 @@ import {
 import { rentalData } from "@/types/data";
 import data from "@/data/rentals1.json";
 import dynamic from "next/dynamic";
-import { BsBuildings } from "react-icons/bs";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 const Dashboard = dynamic(() => import("@/components/Dashboard/Main"), {
   ssr: false,
 });
@@ -115,8 +115,8 @@ export default function Home() {
       {isLoading && (
         <div className="bg-black fixed z-50 w-full h-full flex justify-center items-center opacity-80">
           <div role="status">
-            <BsBuildings size={50} color="white" />
-            <p className="text-white">Loading...</p>
+            <Image src="/logo.png" alt="loading" width={100} height={100} />
+            <p className="text-white text-center">Loading...</p>
           </div>
         </div>
       )}
