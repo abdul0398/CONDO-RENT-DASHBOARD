@@ -19,22 +19,25 @@ export const customStyles = {
       ...provided,
       color: "black", // Adjust text color
       outline: "none",
-      fontSize: "0.875rem",
+      fontSize: "0.77rem",
+      
     }),
     singleValue: (provided: any) => ({
       ...provided,
       color: "#4A5568", // Adjust text color
-      fontSize: "0.875rem",
+      fontSize: "0.77rem",
+      
 
     }),
     placeholder: (provided: any) => ({
       ...provided,
       color: "black", // Adjust placeholder color
-      fontSize: "0.875rem",
+      fontSize: "0.77rem",
     }),
     option: (provided: any, state: any) => ({
       ...provided,
-      fontSize: "0.875rem",
+      fontSize: "0.77rem",
+      
       zIndex: 9999,
     }),
     indicatorsContainer: (provided:any) => ({

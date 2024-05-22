@@ -104,7 +104,7 @@ export default function Dashboard() {
               </div>
             </section>
             <section>
-              <div className="filter-slider h-48 mt-5 flex gap-8 overflow-x-scroll scroll-smooth mx-auto whitespace-nowrap md:w-[90%] w-full lg:w-[90%] p-2 no-scrollbar rounded-md">
+              <div className="filter-slider h-[700px] lg:h-48 mt-10 lg:mt-5 grid grid-cols-2 lg:flex gap-3 lg:gap-8 overflow-x-scroll lg:overflow-x-hidden scroll-smooth mx-auto whitespace-nowrap lg:whitespace-normal lg:grid-cols-4 lg:w-[90%] md:w-[90%] w-full p-1 lg:p-2 no-scrollbar rounded-md">
                 <FilterBox
                   select={<Districts />}
                   name="Districts"
@@ -123,7 +123,6 @@ export default function Dashboard() {
                   selected={selectedStreetName}
                   icon={<FaStreetView className="text-2xl text-white" />}
                 />
-
                 <FilterBox
                   select={<FlatType />}
                   name="Flat Type"
