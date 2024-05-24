@@ -27,7 +27,7 @@ export default function Home() {
   const validProject = project && allProjects.includes(project) ? project : "";
   const array = data as rentalData[];
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [districts, setdistricts] = useState<string[]>(allDistricts);
   const [streets, setStreets] = useState<string[]>(allStreets);
   const [projects, setprojects] = useState<string[]>(allProjects);
