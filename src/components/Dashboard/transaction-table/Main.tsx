@@ -34,7 +34,7 @@ export default function Transactions() {
   });
 
   useEffect(() => {
-    setTransactions(transactions.slice(0, 50000));
+    setListings(transactions.slice(0, 50000));
   }, [transactions]);
 
   // Define the Row component with proper types for props
