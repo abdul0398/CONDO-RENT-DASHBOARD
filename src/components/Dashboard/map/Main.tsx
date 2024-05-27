@@ -4,7 +4,7 @@ import Map, { Marker } from "react-map-gl/maplibre";
 import { MyContext } from "@/context/context";
 import { FaHouseUser } from "react-icons/fa";
 import { coordinate } from "@/data/constants";
-
+import "maplibre-gl/dist/maplibre-gl.css";
 export default function MapComponent() {
   const {
     projects,
@@ -13,6 +13,11 @@ export default function MapComponent() {
     setSelectedproject,
   } = React.useContext(MyContext);
   const [isModal, setModal] = React.useState("");
+  const [viewState, setViewState] = React.useState({
+    latitude: 1.30743547948389,
+    longitude: 103.854713903431,
+    zoom: 10,
+  });
 
   const usefulProjects: string[] = [];
 
@@ -31,17 +36,27 @@ export default function MapComponent() {
   // Calculate the center coordinates for the first usefulProject
   const firstUsefulProject = usefulProjects[0];
   const firstUsefulProjectCoordinate = coordinate[firstUsefulProject] || {
-    LATITUDE: 1.3521,
-    LONGITUTDE: 103.8198,
+    LATITUDE: 1.30743547948389,
+    LONGITUTDE: 103.854713903431,
   };
   const centerCoordinates = {
     latitude: firstUsefulProjectCoordinate.LATITUDE,
     longitude: firstUsefulProjectCoordinate.LONGITUTDE,
-    zoom: firstUsefulProject ? 12 : 10,
+    zoom: 14,
   };
+
+  React.useEffect(() => {
+    if (usefulProjects.length > 0) {
+      setViewState(centerCoordinates);
+    }
+  }, [selectedproject, selectedDistrictName]);
 
   return (
     <Map
+      {...viewState}
+      onMove={(e) => {
+        setViewState(e.viewState);
+      }}
       maxBounds={[103.596, 1.1443, 104.1, 1.4835]}
       mapStyle="https://www.onemap.gov.sg/maps/json/raster/mbstyle/Default.json"
     >
@@ -51,14 +66,20 @@ export default function MapComponent() {
             key={index}
             latitude={coordinate[project].LATITUDE}
             longitude={coordinate[project].LONGITUTDE}
-            offset={[0, -50]}
+            offset={[0, 0]}
           >
             {isModal == project && (
               <div className="bg-white shadow-lg border py-1 px-2 rounded-lg">
                 <p>{project}</p>
               </div>
             )}
-            <div>
+            <div
+              onClick={() => {
+                setSelectedproject(project);
+                setModal(project);
+              }}
+              className="mx-auto w-12 h-12 rounded-full border bg-white flex justify-center items-center shadow-lg"
+            >
               <FaHouseUser
                 size={30}
                 onClick={() => {
