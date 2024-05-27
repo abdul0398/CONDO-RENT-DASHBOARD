@@ -16,40 +16,41 @@ export default function MapComponent() {
   const [viewState, setViewState] = React.useState({
     latitude: 1.30743547948389,
     longitude: 103.854713903431,
-    zoom: 10,
+    zoom: 12,
   });
 
-  const usefulProjects: string[] = [];
-
-  if (
-    selectedDistrictName != "" ||
-    selectedproject != "" ||
-    projects.length <= 30
-  ) {
-    if (selectedproject != "" && selectedDistrictName == "") {
-      usefulProjects.push(selectedproject);
-    } else {
-      usefulProjects.push(...projects);
+  const usefulProjects = React.useMemo(() => {
+    if (selectedDistrictName || selectedproject || projects.length <= 30) {
+      if (selectedproject && !selectedDistrictName) {
+        return [selectedproject];
+      } else {
+        return projects;
+      }
     }
-  }
-
-  // Calculate the center coordinates for the first usefulProject
-  const firstUsefulProject = usefulProjects[0];
-  const firstUsefulProjectCoordinate = coordinate[firstUsefulProject] || {
-    LATITUDE: 1.30743547948389,
-    LONGITUTDE: 103.854713903431,
-  };
-  const centerCoordinates = {
-    latitude: firstUsefulProjectCoordinate.LATITUDE,
-    longitude: firstUsefulProjectCoordinate.LONGITUTDE,
-    zoom: 14,
-  };
+    return [];
+  }, [selectedDistrictName, selectedproject, projects]);
 
   React.useEffect(() => {
-    if (usefulProjects.length > 0) {
-      setViewState(centerCoordinates);
+    if (selectedproject) {
+      setViewState({
+        latitude: coordinate[selectedproject]?.LATITUDE,
+        longitude: coordinate[selectedproject]?.LONGITUTDE,
+        zoom: 16,
+      });
+      setModal(selectedproject);
+    } else if (usefulProjects.length > 0) {
+      const projectWithCoordinate = usefulProjects[usefulProjects.length - 1];
+      const firstUsefulProjectCoordinate = coordinate[projectWithCoordinate];
+      if (firstUsefulProjectCoordinate) {
+        setViewState({
+          latitude: firstUsefulProjectCoordinate.LATITUDE,
+          longitude: firstUsefulProjectCoordinate.LONGITUTDE,
+          zoom: 14,
+        });
+      }
+      setModal("");
     }
-  }, [selectedproject, selectedDistrictName]);
+  }, [selectedproject, selectedDistrictName, usefulProjects]);
 
   return (
     <Map
@@ -61,48 +62,54 @@ export default function MapComponent() {
       mapStyle="https://www.onemap.gov.sg/maps/json/raster/mbstyle/Default.json"
     >
       {usefulProjects?.map((project, index) => {
+        const projCoords = coordinate[project];
         return (
-          <Marker
-            key={index}
-            latitude={coordinate[project].LATITUDE}
-            longitude={coordinate[project].LONGITUTDE}
-            offset={[0, 0]}
-          >
-            {isModal == project && (
-              <div className="bg-white shadow-lg border py-1 px-2 rounded-lg">
-                <p>{project}</p>
-              </div>
-            )}
-            <div
-              onClick={() => {
-                setSelectedproject(project);
-                setModal(project);
-              }}
-              className="mx-auto w-12 h-12 rounded-full border bg-white flex justify-center items-center shadow-lg"
+          projCoords && (
+            <Marker
+              key={index}
+              latitude={coordinate[project].LATITUDE}
+              longitude={coordinate[project].LONGITUTDE}
+              offset={[0, 0]}
             >
-              <FaHouseUser
-                size={30}
+              {isModal == project && (
+                <div className="bg-white shadow-lg border z-50 py-1 px-2 rounded-lg">
+                  <p>{project}</p>
+                </div>
+              )}
+              <div
                 onClick={() => {
                   setSelectedproject(project);
                   setModal(project);
                 }}
-                className="mx-auto hover:opacity-100 cursor-pointer"
-                data-id={project}
-                title={`Project:  ${project}\nProperty Type:  ${
-                  coordinate[project].nonlanded > coordinate[project].executive
-                    ? "Non-Landed"
-                    : "Executive Condo"
-                } \nMediun of rent (psf):  ${Math.round(
-                  coordinate[project].totalRent / coordinate[project].totalArea
-                )}\nRentals Count:  ${
-                  coordinate[project].nonlanded > coordinate[project].executive
-                    ? coordinate[project].nonlanded
-                    : coordinate[project].executive
-                }`}
-                color={"#000000"}
-              />
-            </div>
-          </Marker>
+                className="mx-auto w-12 h-12  hover:scale-125 duration-150 rounded-full border bg-white flex justify-center items-center shadow-lg"
+              >
+                <FaHouseUser
+                  size={30}
+                  onClick={() => {
+                    setSelectedproject(project);
+                    setModal(project);
+                  }}
+                  className="mx-auto hover:opacity-100 cursor-pointer"
+                  data-id={project}
+                  title={`Project:  ${project}\nProperty Type:  ${
+                    coordinate[project].nonlanded >
+                    coordinate[project].executive
+                      ? "Non-Landed"
+                      : "Executive Condo"
+                  } \nMediun of rent (psf):  ${Math.round(
+                    coordinate[project].totalRent /
+                      coordinate[project].totalArea
+                  )}\nRentals Count:  ${
+                    coordinate[project].nonlanded >
+                    coordinate[project].executive
+                      ? coordinate[project].nonlanded
+                      : coordinate[project].executive
+                  }`}
+                  color={"#000000"}
+                />
+              </div>
+            </Marker>
+          )
         );
       })}
     </Map>
