@@ -23,6 +23,10 @@ const Dashboard = dynamic(() => import("@/components/Dashboard/Main"), {
 export default function Home() {
   const searchParams = useSearchParams();
   const project = searchParams.get("project");
+  const street = searchParams.get("street");
+
+   const validStreet = street && allStreets.includes(street) ? street :  "";
+  
 
   const validProject = project && allProjects.includes(project) ? project : "";
   const array = data as rentalData[];
@@ -37,7 +41,7 @@ export default function Home() {
   const [properties, setProperties] = useState<string[]>(allPropertyTypes);
   const [areas, setAreas] = useState<string[]>(allAreas);
   const [selectedDistrictName, setSelectedDistrictsName] = useState<string>("");
-  const [selectedStreetName, setSelectedStreetName] = useState<string>("");
+  const [selectedStreetName, setSelectedStreetName] = useState<string>(validStreet);
   const [selectedproject, setSelectedproject] = useState<string>(validProject);
   const [selectedFlatType, setSelectedFlatType] = useState<string | undefined>(
     ""
